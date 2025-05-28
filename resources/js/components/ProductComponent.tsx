@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { HiUser, HiMail, HiPhone, HiShoppingCart } from 'react-icons/hi';
+import { HiUser, HiMail, HiPhone, HiShoppingCart, HiShieldCheck, HiSparkles, HiClock } from 'react-icons/hi';
 
 const ProductComponent = () => {
   return (
@@ -17,7 +17,7 @@ const ProductComponent = () => {
           transition={{ duration: 0.8 }}
           className="space-y-6"
         >
-          <h3 className="text-4xl font-extrabold leading-snug tracking-tight mb-4">
+          <h3 className="text-4xl font-extrabold leading-snug tracking-tight mb-4 text-center">
             Commandez votre produit
           </h3>
           <form className="space-y-5">
@@ -69,9 +69,10 @@ const ProductComponent = () => {
                 duration: 2,
                 ease: 'easeInOut',
               }}
-              className="w-full py-4 text-lg font-bold bg-orange-600 text-white rounded-xl shadow-md hover:bg-orange-700 transition"
+              className="w-full py-4 text-lg font-bold bg-orange-600 text-white rounded-xl shadow-md hover:bg-orange-700 transition flex items-center justify-center gap-2"
             >
-              Envoyer / إرسال
+              <HiShoppingCart className="w-5 h-5" />
+              Commander / إرسال
             </motion.button>
           </form>
         </motion.div>
@@ -117,23 +118,29 @@ const ProductComponent = () => {
             {
               title: 'Protection SPF50+',
               description: 'Offre une protection solaire optimale pour votre peau.',
+              icon: <HiShieldCheck className="w-6 h-6 text-orange-600" />,
             },
             {
               title: 'Hydratation Intense',
               description: 'Garde votre peau douce et hydratée toute la journée.',
+              icon: <HiSparkles className="w-6 h-6 text-orange-600" />,
             },
             {
               title: 'Formule Anti-âge',
               description: 'Réduit les signes de vieillissement et améliore l’éclat.',
+              icon: <HiClock className="w-6 h-6 text-orange-600" />,
             },
           ].map((feature, idx) => (
             <motion.div
               key={idx}
               whileHover={{ scale: 1.05 }}
-              className="p-6 rounded-xl shadow-lg bg-zinc-100 dark:bg-zinc-800"
+              className="p-6 rounded-xl shadow-lg bg-zinc-100 dark:bg-zinc-800 flex items-center gap-4"
             >
-              <h4 className="text-xl font-bold mb-2">{feature.title}</h4>
-              <p className="text-gray-700 dark:text-gray-300">{feature.description}</p>
+              {feature.icon}
+              <div>
+                <h4 className="text-xl font-bold mb-2">{feature.title}</h4>
+                <p className="text-gray-700 dark:text-gray-300">{feature.description}</p>
+              </div>
             </motion.div>
           ))}
         </div>
