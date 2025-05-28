@@ -11,6 +11,13 @@ const ProductComponent = () => {
     setIsDarkMode(dark);
   }, []);
 
+  // Toggle dark mode dynamically
+  const toggleDarkMode = () => {
+    setIsDarkMode((prev) => !prev);
+    document.documentElement.classList.toggle('dark', !isDarkMode);
+    localStorage.setItem('theme', !isDarkMode ? 'dark' : 'light');
+  };
+
   return (
     <section
       id="product"
@@ -19,6 +26,16 @@ const ProductComponent = () => {
       } mt-10`}
     >
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+        {/* Dark Mode Toggle */}
+        <div className="absolute top-4 right-4">
+          <button
+            onClick={toggleDarkMode}
+            className="py-2 px-4 rounded-lg text-sm font-medium bg-orange-600 text-white hover:bg-orange-700 transition"
+          >
+            {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+          </button>
+        </div>
 
         {/* Left: Form */}
         <motion.div
@@ -91,8 +108,8 @@ const ProductComponent = () => {
           </form>
         </motion.div>
 
-      {/* Right: Image */}
-      <motion.div
+        {/* Right: Image */}
+        <motion.div
           initial={{ opacity: 0, x: -60 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
