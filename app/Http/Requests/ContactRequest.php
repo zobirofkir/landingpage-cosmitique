@@ -36,6 +36,9 @@ class ContactRequest extends FormRequest
     public function messages(): array
     {
         return [
+            /**
+             * French messages
+             */
             "name.required" => "Le nom est requis.",
             "name.string" => "Le nom doit être une chaîne de caractères.",
             "name.max" => "Le nom ne doit pas dépasser 255 caractères.",
@@ -45,6 +48,19 @@ class ContactRequest extends FormRequest
             "message.required" => "Le message est requis.",
             "message.string" => "Le message doit être une chaîne de caractères.",
             "message.max" => "Le message ne doit pas dépasser 1000 caractères.",
+
+            /**
+             * Arabic messages
+             */
+            "name.required" => "الاسم مطلوب.",
+            "name.string" => "يجب أن يكون الاسم نصًا.",
+            "name.max" => "يجب ألا يتجاوز الاسم 255 حرفًا.",
+            "email.required" => "البريد الإلكتروني مطلوب.",
+            "email.email" => "يجب أن يكون البريد الإلكتروني صالحًا.",
+            "email.max" => "يجب ألا يتجاوز البريد الإلكتروني 255 حرفًا.",
+            "message.required" => "الرسالة مطلوبة.",
+            "message.string" => "يجب أن تكون الرسالة نصًا.",
+            "message.max" => "يجب ألا تتجاوز الرسالة 1000 حرف.",
         ];
     }
 }

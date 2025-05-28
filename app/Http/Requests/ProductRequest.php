@@ -38,6 +38,9 @@ class ProductRequest extends FormRequest
     public function messages(): array
     {
         return [
+            /**
+             * French messages
+             */
             'name.required' => 'Le nom est obligatoire.',
             'name.string' => 'Le nom doit être une chaîne de caractères.',
             'name.max' => 'Le nom ne doit pas dépasser 255 caractères.',
@@ -53,6 +56,25 @@ class ProductRequest extends FormRequest
             'address.required' => 'L\'adresse est obligatoire.',
             'address.string' => 'L\'adresse doit être une chaîne de caractères.',
             'address.max' => 'L\'adresse ne doit pas dépasser 500 caractères.',
+
+            /**
+             * Arabic messages
+             */
+            'name.required' => 'الاسم مطلوب.',
+            'name.string' => 'يجب أن يكون الاسم نصًا.',
+            'name.max' => 'يجب ألا يتجاوز الاسم 255 حرفًا.',
+            'email.required' => 'البريد الإلكتروني مطلوب.',
+            'email.email' => 'يجب أن يكون البريد الإلكتروني عنوان بريد إلكتروني صالحًا.',
+            'email.max' => 'يجب ألا يتجاوز البريد الإلكتروني 255 حرفًا.',
+            'quantity.required' => 'الكمية مطلوبة.',
+            'quantity.integer' => 'يجب أن تكون الكمية عددًا صحيحًا.',
+            'quantity.min' => 'يجب أن تكون الكمية على الأقل 1.',
+            'phone.required' => 'رقم الهاتف مطلوب.',
+            'phone.string' => 'يجب أن يكون رقم الهاتف نصًا.',
+            'phone.max' => 'يجب ألا يتجاوز رقم الهاتف 15 حرفًا.',
+            'address.required' => 'العنوان مطلوب.',
+            'address.string' => 'يجب أن يكون العنوان نصًا.',
+            'address.max' => 'يجب ألا يتجاوز العنوان 500 حرفًا.',
         ];
     }
 }
