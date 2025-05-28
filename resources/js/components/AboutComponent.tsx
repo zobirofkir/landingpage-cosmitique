@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '../lib/utils';
 
@@ -7,6 +7,12 @@ interface AboutProps {
 }
 
 const AboutComponent: React.FC<AboutProps> = ({ className }) => {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+  const toggleExpand = (index: number) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
+
   return (
     <section
       className={cn(
@@ -112,20 +118,27 @@ const AboutComponent: React.FC<AboutProps> = ({ className }) => {
                   description: "Nettoie en profondeur tout en respectant l'équilibre naturel de la peau, idéal pour les peaux sensibles.",
                 },
               ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                >
-                  <h4 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">
+                <div key={index} className="border-b border-gray-300 pb-4">
+                  <button
+                    onClick={() => toggleExpand(index)}
+                    className="w-full text-left flex justify-between items-center text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2"
+                  >
                     {item.title}
-                  </h4>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    {item.description}
-                  </p>
-                </motion.div>
+                    <span className="text-orange-600">
+                      {expandedIndex === index ? '▲' : '▼'}
+                    </span>
+                  </button>
+                  {expandedIndex === index && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                      className="text-gray-600 dark:text-gray-300"
+                    >
+                      <p>{item.description}</p>
+                    </motion.div>
+                  )}
+                </div>
               ))}
             </div>
 
