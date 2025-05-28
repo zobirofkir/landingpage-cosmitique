@@ -62,31 +62,43 @@ const TesimenialComponent = () => {
 				</motion.div>
 
 				{/* Testimonial Cards */}
-				<div className="flex overflow-x-auto space-x-8 px-4">
-					{testimonials.map((testimonial, index) => (
-						<motion.div
-							key={index}
-							initial={{ opacity: 0, y: 30 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true }}
-							transition={{ duration: 0.6, delay: index * 0.2 }}
-							className="flex-shrink-0 w-80 p-6 rounded-2xl shadow-lg bg-white dark:bg-gray-900 border border-orange-200 dark:border-gray-700"
-						>
-							<div className="flex flex-col items-center">
-								<img
-									src={testimonial.image}
-									alt={testimonial.name}
-									className="w-24 h-24 rounded-full mb-4 shadow-md"
-								/>
-								<h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">
-									{testimonial.name}
-								</h3>
-								<p className="text-gray-600 dark:text-gray-300 text-sm">
-									{testimonial.feedback}
-								</p>
-							</div>
-						</motion.div>
-					))}
+				<div className="overflow-hidden">
+					<motion.div
+						className="flex space-x-8 px-4"
+						initial={{ x: 0 }}
+						animate={{ x: -2000 }}
+						transition={{
+							repeat: Infinity,
+							repeatType: 'loop',
+							duration: 20,
+							ease: 'linear',
+						}}
+					>
+						{testimonials.map((testimonial, index) => (
+							<motion.div
+								key={index}
+								initial={{ opacity: 0, y: 30 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true }}
+								transition={{ duration: 0.6, delay: index * 0.2 }}
+								className="flex-shrink-0 w-80 p-6 rounded-2xl shadow-lg bg-white dark:bg-gray-900 border border-orange-200 dark:border-gray-700"
+							>
+								<div className="flex flex-col items-center">
+									<img
+										src={testimonial.image}
+										alt={testimonial.name}
+										className="w-24 h-24 rounded-full mb-4 shadow-md"
+									/>
+									<h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">
+										{testimonial.name}
+									</h3>
+									<p className="text-gray-600 dark:text-gray-300 text-sm">
+										{testimonial.feedback}
+									</p>
+								</div>
+							</motion.div>
+						))}
+					</motion.div>
 				</div>
 			</div>
 		</section>
