@@ -124,20 +124,26 @@ const AboutComponent: React.FC<AboutProps> = ({ className }) => {
                     className="w-full text-left flex justify-between items-center text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2"
                   >
                     {item.title}
-                    <span className="text-orange-600">
-                      {expandedIndex === index ? '▲' : '▼'}
-                    </span>
-                  </button>
-                  {expandedIndex === index && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
+                    <motion.span
+                      initial={{ rotate: 0 }}
+                      animate={{ rotate: expandedIndex === index ? 180 : 0 }}
                       transition={{ duration: 0.3 }}
-                      className="text-gray-600 dark:text-gray-300"
+                      className="text-orange-600"
                     >
-                      <p>{item.description}</p>
-                    </motion.div>
-                  )}
+                      ▼
+                    </motion.span>
+                  </button>
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{
+                      height: expandedIndex === index ? 'auto' : 0,
+                      opacity: expandedIndex === index ? 1 : 0,
+                    }}
+                    transition={{ duration: 0.4, ease: 'easeInOut' }}
+                    className="overflow-hidden text-gray-600 dark:text-gray-300"
+                  >
+                    <p>{item.description}</p>
+                  </motion.div>
                 </div>
               ))}
             </div>
