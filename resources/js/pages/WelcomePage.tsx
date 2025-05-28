@@ -8,7 +8,7 @@ import { motion } from 'framer-motion'
 import BrandComponent from '@/components/BannerComponent'
 import BannerComponent from '@/components/BannerComponent'
 import ContactComponent from '@/components/ContactComponent'
-import TesimenialComponent from '@/components/TesimenialComponent'
+import TestimenialComponent from '@/components/TestimenialComponent'
 import CtaComponent from '@/components/CtaComponent'
 
 const WelcomePage = () => {
@@ -24,7 +24,7 @@ const WelcomePage = () => {
 
       <ProductComponent />
 
-      <TesimenialComponent />
+      <TestimenialComponent />
 
       <FaqComponent />
 

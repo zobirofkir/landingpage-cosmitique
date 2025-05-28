@@ -46,7 +46,7 @@ const testimonials = [
 	},
 ];
 
-const TesimenialComponent = () => {
+const TestimenialComponent = () => {
 	return (
 		<section
 			id="testimonials"
@@ -111,4 +111,4 @@ const TesimenialComponent = () => {
 	);
 };
 
-export default TesimenialComponent;
+export default TestimenialComponent;
