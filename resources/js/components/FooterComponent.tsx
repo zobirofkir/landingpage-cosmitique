@@ -18,23 +18,23 @@ const FooterComponent = () => {
             <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-4">Liens utiles</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#home" className="text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400">
+                <a href="/#" className="text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400">
                   Accueil
                 </a>
               </li>
               <li>
-                <a href="#products" className="text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400">
-                  Produits
+                <a href="/#abouts" className="text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400">
+                  À propos
                 </a>
               </li>
               <li>
-                <a href="#faq" className="text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400">
+                <a href="/#products" className="text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400">
+                  Product
+                </a>
+              </li>
+              <li>
+                <a href="/#faq" className="text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400">
                   FAQ
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400">
-                  Contact
                 </a>
               </li>
             </ul>
