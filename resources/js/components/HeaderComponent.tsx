@@ -51,7 +51,7 @@ const HeaderComponent = () => {
           whileHover={{ scale: 1.1 }}
           className="cursor-pointer"
         >
-          <img src={Logo} alt="Logo" className="md:h-20 md:w-20 h-[55px] " />
+          <img src={Logo} alt="Logo" className="md:h-15 md:w-15 h-[40px] " />
         </motion.div>
         <div className="hidden md:flex space-x-6">
           <motion.a whileHover={{ scale: 1.1 }} href="/#" className="cursor-pointer flex items-center font-bold">
