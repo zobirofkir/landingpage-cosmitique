@@ -97,44 +97,37 @@ const HeaderComponent = () => {
               )}
             </AnimatePresence>
           </motion.button>
-          <button onClick={toggleSidebar} className="md:hidden p-2 rounded-full border border-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700">
-            {isSidebarOpen ? <HiX className="w-6 h-6" /> : <HiMenu className="w-6 h-6" />}
-          </button>
+          <div className="relative">
+            <button onClick={toggleSidebar} className="md:hidden p-2 rounded-full border border-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700">
+              {isSidebarOpen ? <HiX className="w-6 h-6" /> : <HiMenu className="w-6 h-6" />}
+            </button>
+            {isSidebarOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+                className={`absolute right-0 mt-2 w-48 bg-white dark:bg-black text-black dark:text-white shadow-lg rounded-md`}
+              >
+                <ul className="flex flex-col space-y-2 p-4">
+                  <li>
+                    <a href="/#" className="cursor-pointer font-bold">Accueil</a>
+                  </li>
+                  <li>
+                    <a href="/#abouts" className="cursor-pointer font-bold">À propos</a>
+                  </li>
+                  <li>
+                    <a href="/#faq" className="cursor-pointer font-bold">FAQ</a>
+                  </li>
+                  <li>
+                    <a href="/#contacts" className="cursor-pointer font-bold">Contact</a>
+                  </li>
+                </ul>
+              </motion.div>
+            )}
+          </div>
         </div>
       </motion.nav>
-
-      {/* Sidebar for Mobile */}
-      <AnimatePresence>
-        {isSidebarOpen && (
-          <motion.div
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ duration: 0.5 }}
-            className={`fixed top-0 right-0 w-full h-full ${isDarkMode ? 'bg-black text-white' : 'bg-white text-gray-800'} shadow-lg`}
-          >
-            <div className="flex justify-end p-4">
-              <button onClick={toggleSidebar} className="p-2 rounded-full border border-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700">
-                <HiX className="w-6 h-6" />
-              </button>
-            </div>
-            <ul className="flex flex-col space-y-6 p-6">
-              <li>
-                <a href="/#" className="cursor-pointer font-bold">Accueil</a>
-              </li>
-              <li>
-                <a href="/#abouts" className="cursor-pointer font-bold">À propos</a>
-              </li>
-              <li>
-                <a href="/#faq" className="cursor-pointer font-bold">FAQ</a>
-              </li>
-              <li>
-                <a href="/#contacts" className="cursor-pointer font-bold">Contact</a>
-              </li>
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </header>
   );
 };
