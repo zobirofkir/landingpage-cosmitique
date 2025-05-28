@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { HiUser, HiMail, HiPhone, HiShoppingCart } from 'react-icons/hi';
 import FeatureProductComponent from './FeatureProductComponent';
+import LidermSticker from '@/asstes/images/liderm-sticker.jpg';
 
 const ProductComponent = () => {
   return (
@@ -95,7 +96,7 @@ const ProductComponent = () => {
         >
           <div className="aspect-square overflow-hidden rounded-3xl shadow-2xl bg-orange-100 dark:bg-orange-900/20">
             <img
-              src="https://blueviolet-curlew-711794.hostingersite.com/wp-content/uploads/2025/05/Liderm-Banner-51.jpg"
+              src={LidermSticker}
               alt="Liderm Extreme Glow Fluid SPF50+"
               className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-105"
             />
