@@ -1,10 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { HiUser, HiMail, HiPhone, HiShoppingCart } from 'react-icons/hi';
 import FeatureProductComponent from './FeatureProductComponent';
 import LidermSticker from '@/asstes/images/liderm-sticker.jpg';
+import axios from 'axios';
 
 const ProductComponent = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    quantity: '',
+    phone: '',
+    address: '',
+  });
+  const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState('');
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrors({});
+    setSuccessMessage('');
+
+    try {
+      const response = await axios.post('/products', formData);
+      setSuccessMessage(response.data.message);
+      setFormData({ name: '', email: '', quantity: '', phone: '', address: '' });
+    } catch (error) {
+      if (error.response && error.response.status === 422) {
+        setErrors(error.response.data.errors);
+      }
+    }
+  };
+
   return (
     <section
       id="products"
@@ -22,30 +53,37 @@ const ProductComponent = () => {
           <h3 className="text-4xl font-extrabold leading-snug tracking-tight mb-4 text-center">
             Commandez votre produit
           </h3>
-          <form className="space-y-5 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-zinc-800 dark:to-zinc-900 p-6 rounded-2xl shadow-lg border border-orange-300 dark:border-zinc-700">
-            {/* Input Group Template */}
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-5 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-zinc-800 dark:to-zinc-900 p-6 rounded-2xl shadow-lg border border-orange-300 dark:border-zinc-700"
+          >
             {[
               {
+                name: 'name',
                 icon: <HiUser className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
                 placeholder: 'Nom / الاسم',
                 type: 'text',
               },
               {
+                name: 'email',
                 icon: <HiMail className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
                 placeholder: 'Email / البريد الإلكتروني',
                 type: 'email',
               },
               {
+                name: 'quantity',
                 icon: <HiShoppingCart className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
                 placeholder: 'Quantité / الكمية',
                 type: 'number',
               },
               {
+                name: 'phone',
                 icon: <HiPhone className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
                 placeholder: 'Numéro de téléphone / رقم الهاتف',
                 type: 'tel',
               },
               {
+                name: 'address',
                 icon: <HiUser className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
                 placeholder: 'Adresse / العنوان',
                 type: 'text',
@@ -63,14 +101,20 @@ const ProductComponent = () => {
                   {field.icon}
                 </div>
                 <input
+                  name={field.name}
                   type={field.type}
                   placeholder={field.placeholder}
+                  value={formData[field.name]}
+                  onChange={handleChange}
                   className="w-full pl-10 pr-4 py-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-orange-500 transition bg-white text-gray-900 border-orange-200 shadow-sm hover:shadow-md dark:bg-zinc-800 dark:text-white dark:border-orange-400"
                 />
+                {errors[field.name] && (
+                  <p className="text-red-500 text-sm mt-1">{errors[field.name][0]}</p>
+                )}
               </motion.div>
             ))}
 
-            {/* Submit Button with Enhanced Animation */}
+            {/* Submit Button */}
             <motion.button
               type="submit"
               whileHover={{ scale: 1.1, rotate: 2 }}
@@ -89,6 +133,11 @@ const ProductComponent = () => {
               Commander / إرسال
             </motion.button>
           </form>
+          {successMessage && (
+            <div className="mt-4 p-4 bg-green-100 text-green-800 rounded-lg shadow-md">
+              {successMessage}
+            </div>
+          )}
         </motion.div>
 
         {/* Right: Image */}
@@ -115,14 +164,8 @@ const ProductComponent = () => {
           </div>
         </motion.div>
       </div>
-      
-      {
-        /**
-         * Featured Product
-         */
-      }
-      <FeatureProductComponent />
 
+      <FeatureProductComponent />
     </section>
   );
 };
