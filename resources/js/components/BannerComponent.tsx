@@ -1,9 +1,9 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-const BrandComponent = () => {
+const BannerComponent = () => {
   return (
-    <div className="relative bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 py-6 px-4 sm:px-8 lg:px-16">
+    <div className="relative text-gray-900 dark:text-gray-100">
 
       {/* Auto Scrolling Banner */}
       <div className="overflow-hidden whitespace-nowrap rounded-lg shadow-md bg-orange-100 dark:bg-orange-900">
@@ -36,4 +36,4 @@ const BrandComponent = () => {
   )
 }
 
-export default BrandComponent
+export default BannerComponent

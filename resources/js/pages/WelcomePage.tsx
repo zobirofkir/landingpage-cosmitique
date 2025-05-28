@@ -5,7 +5,7 @@ import SliderComponent from '@/components/SliderComponent'
 import React from 'react'
 import { HiOutlineChat, HiOutlineStar } from 'react-icons/hi'
 import { motion } from 'framer-motion'
-import BrandComponent from '@/components/BrandComponent'
+import BrandComponent from '@/components/BannerComponent'
 
 const WelcomePage = () => {
   return (
