@@ -31,10 +31,10 @@ const HeaderComponent = () => {
         </motion.div>
         <div className="hidden md:flex space-x-6">
           <motion.a whileHover={{ scale: 1.1 }} href="#" className="cursor-pointer flex items-center">
-            <span>Home</span>
+            <span>Accueil</span>
           </motion.a>
           <motion.a whileHover={{ scale: 1.1 }} href="#" className="cursor-pointer flex items-center">
-            <span>About</span>
+            <span>À propos</span>
           </motion.a>
           <motion.a whileHover={{ scale: 1.1 }} href="#" className="cursor-pointer flex items-center">
             <span>Services</span>
@@ -96,10 +96,10 @@ const HeaderComponent = () => {
             </div>
             <ul className="flex flex-col space-y-6 p-6">
               <li>
-                <a href="#" className="cursor-pointer">Home</a>
+                <a href="#" className="cursor-pointer">Accueil</a>
               </li>
               <li>
-                <a href="#" className="cursor-pointer">About</a>
+                <a href="#" className="cursor-pointer">À propos</a>
               </li>
               <li>
                 <a href="#" className="cursor-pointer">Services</a>
