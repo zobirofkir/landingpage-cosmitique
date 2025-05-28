@@ -117,10 +117,10 @@ const HeaderComponent = () => {
                     <a href="/#abouts" className="cursor-pointer font-bold">À propos</a>
                   </li>
                   <li>
-                    <a href="/#faq" className="cursor-pointer font-bold">FAQ</a>
+                    <a href="/#products" className="cursor-pointer font-bold">Product</a>
                   </li>
                   <li>
-                    <a href="/#contacts" className="cursor-pointer font-bold">Contact</a>
+                    <a href="/#faq" className="cursor-pointer font-bold">FAQ</a>
                   </li>
                 </ul>
               </motion.div>
