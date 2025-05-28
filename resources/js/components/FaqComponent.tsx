@@ -8,24 +8,24 @@ interface FaqItem {
 
 const faqData: FaqItem[] = [
   {
-    question: "Quels sont les principaux actifs du Liderm Extreme Glow Fluid SPF50+ ?",
-    answer: "Le produit contient de la niacinamide, de l’acide hyaluronique et des antioxydants naturels qui protègent, hydratent et réparent la barrière cutanée.",
+    question: "À qui s’adresse cet écran solaire ?",
+    answer: "À tous les types de peau, même sensibles. Parfait pour les adultes cherchant une protection quotidienne anti-âge et anti-taches.",
   },
   {
-    question: "Convient-il aux peaux sensibles ?",
-    answer: "Oui, le Liderm Extreme Glow Fluid SPF50+ est testé sous contrôle dermatologique et convient aux peaux sensibles et réactives.",
+    question: "Peut-on l’utiliser si l’on a des taches pigmentaires ?",
+    answer: "Oui, grâce à la niacinamide et l’extrait de réglisse, il aide à prévenir et réduire les taches brunes.",
   },
   {
-    question: "Est-il résistant à l’eau ?",
-    answer: "Oui, le produit est résistant à l’eau et à la transpiration, idéal pour une protection efficace tout au long de la journée.",
+    question: "Ce produit résiste-t-il à l’eau ?",
+    answer: "Oui, il est résistant à l’eau et à la transpiration. Réappliquez après la baignade ou l’essuyage.",
   },
   {
-    question: "Le produit contient-il des filtres solaires controversés ?",
-    answer: "Non, le Liderm Extreme Glow Fluid SPF50+ est conçu sans parabènes, silicones, ni filtres solaires controversés.",
+    question: "L’écran solaire Liderm est-il parfumé ?",
+    answer: "Non, il est sans parfum, idéal pour les peaux sensibles ou allergiques.",
   },
   {
-    question: "Comment intégrer ce produit dans ma routine quotidienne ?",
-    answer: "Appliquez le produit chaque matin après votre crème hydratante pour une protection solaire optimale et un teint éclatant.",
+    question: "Puis-je l’utiliser pendant la grossesse ?",
+    answer: "Oui, la formule est douce et sans ingrédients controversés. En cas de doute, consultez votre médecin.",
   },
 ];
 
