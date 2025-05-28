@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import FeatureProductComponent from '../FeatureProductComponent';
-import ModalComponent from './ModalComponent';
+import ModalComponent from '../modal/ModalComponent';
 import ProductFormComponent from './ProductFormComponent';
 import ProductImageComponent from './ProductImageComponent';
 

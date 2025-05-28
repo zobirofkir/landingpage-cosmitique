@@ -7,7 +7,7 @@ import { HiOutlineChat, HiOutlineStar } from 'react-icons/hi'
 import { motion } from 'framer-motion'
 import BrandComponent from '@/components/BannerComponent'
 import BannerComponent from '@/components/BannerComponent'
-import ContactComponent from '@/components/ContactComponent'
+import ContactComponent from '@/components/contact/ContactComponent'
 import TestimenialComponent from '@/components/TestimenialComponent'
 import CtaComponent from '@/components/CtaComponent'
 
