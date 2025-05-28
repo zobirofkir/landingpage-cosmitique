@@ -17,7 +17,7 @@ const BannerComponent = () => {
             ease: 'linear',
           }}
         >
-          {[...Array(10)].map((_, i) => (
+          {[...Array(500)].map((_, i) => (
             <div
               key={i}
               className="flex items-center gap-6 text-sm sm:text-base text-orange-700 dark:text-orange-300"

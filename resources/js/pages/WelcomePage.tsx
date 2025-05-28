@@ -13,20 +13,13 @@ const WelcomePage = () => {
     <section className="relative">
       <SliderComponent />
 
+      <BannerComponent />
+      
       <AboutComponent />
 
       <ProductComponent />
 
       <FaqComponent />
-
-      {
-          /**
-           * Create Banner 
-           */
-      }
-      <div className="mt-[80px] ">
-          <BannerComponent />
-      </div>
 
       {/* Social Media Icons */}
       <motion.div
