@@ -1,42 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { HiUser, HiMail, HiPhone, HiShoppingCart } from 'react-icons/hi';
 
 const ProductComponent = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  // Update dark mode on mount
-  useEffect(() => {
-    const dark = document.documentElement.classList.contains('dark');
-    setIsDarkMode(dark);
-  }, []);
-
-  // Toggle dark mode dynamically
-  const toggleDarkMode = () => {
-    setIsDarkMode((prev) => !prev);
-    document.documentElement.classList.toggle('dark', !isDarkMode);
-    localStorage.setItem('theme', !isDarkMode ? 'dark' : 'light');
-  };
-
   return (
     <section
       id="product"
-      className={`py-16 px-4 md:px-8 transition-colors duration-500 ${
-        isDarkMode ? 'bg-zinc-900 text-white' : 'bg-white text-gray-800'
-      } mt-10`}
+      className="py-16 px-4 md:px-8 transition-colors duration-500 bg-white text-gray-800 dark:bg-zinc-900 dark:text-white mt-10"
     >
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-
-        {/* Dark Mode Toggle */}
-        <div className="absolute top-4 right-4">
-          <button
-            onClick={toggleDarkMode}
-            className="py-2 px-4 rounded-lg text-sm font-medium bg-orange-600 text-white hover:bg-orange-700 transition"
-          >
-            {isDarkMode ? 'Light Mode' : 'Dark Mode'}
-          </button>
-        </div>
-
+        
         {/* Left: Form */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -79,11 +52,7 @@ const ProductComponent = () => {
                 <input
                   type={field.type}
                   placeholder={field.placeholder}
-                  className={`w-full pl-10 pr-4 py-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-orange-500 transition ${
-                    isDarkMode
-                      ? 'bg-zinc-800 text-white border-zinc-700'
-                      : 'bg-zinc-100 text-gray-900 border-zinc-300'
-                  }`}
+                  className="w-full pl-10 pr-4 py-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-orange-500 transition bg-zinc-100 text-gray-900 border-zinc-300 dark:bg-zinc-800 dark:text-white dark:border-zinc-700"
                 />
               </div>
             ))}
