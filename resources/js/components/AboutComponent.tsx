@@ -81,6 +81,46 @@ const AboutComponent: React.FC<AboutProps> = ({ className }) => {
             <p className="text-gray-600 dark:text-gray-300">
               Intégrez le "Extreme Glow Fluid SPF50+" dans votre routine quotidienne pour une peau visiblement protégée, unifiée et éclatante. Une protection solaire d’exception qui prend soin de votre peau aujourd’hui et la préserve pour demain.
             </p>
+
+            <div className="mt-8 space-y-6">
+              {[
+                {
+                  title: "1. Liderm Extreme Glow Fluid SPF50+",
+                  description: "Une protection solaire avancée contre les rayons UVA, UVB et la lumière bleue, avec une texture légère et invisible.",
+                },
+                {
+                  title: "2. Liderm Hydratant Intense",
+                  description: "Enrichi en acide hyaluronique, ce soin hydrate profondément et restaure l'élasticité de la peau.",
+                },
+                {
+                  title: "3. Liderm Sérum Anti-Taches",
+                  description: "Réduit visiblement les taches pigmentaires et unifie le teint grâce à des actifs dermatologiques puissants.",
+                },
+                {
+                  title: "4. Liderm Crème Réparatrice Nuit",
+                  description: "Une formule riche qui régénère la peau pendant la nuit pour un teint éclatant au réveil.",
+                },
+                {
+                  title: "5. Liderm Gel Nettoyant Purifiant",
+                  description: "Nettoie en profondeur tout en respectant l'équilibre naturel de la peau, idéal pour les peaux sensibles.",
+                },
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                >
+                  <h4 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">
+                    {item.title}
+                  </h4>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    {item.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </div>
