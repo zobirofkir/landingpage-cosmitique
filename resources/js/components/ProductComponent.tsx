@@ -108,7 +108,7 @@ const ProductComponent = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="mt-16 max-w-6xl mx-auto text-center space-y-8"
+        className="mt-16 container md:px-0 px-5 mx-auto text-center space-y-8"
       >
         <h3 className="text-4xl font-extrabold leading-snug tracking-tight">
           Pourquoi choisir Liderm ?
