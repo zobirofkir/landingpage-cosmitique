@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 interface ContactFormProps {
@@ -9,9 +9,17 @@ interface ContactFormProps {
 }
 
 const ContactForm: React.FC<ContactFormProps> = ({ formData, handleChange, handleSubmit, errors }) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const onSubmit = (e: React.FormEvent) => {
+    setIsSubmitting(true);
+    handleSubmit(e);
+    setTimeout(() => setIsSubmitting(false), 2000); 
+  };
+
   return (
     <motion.form
-      onSubmit={handleSubmit}
+      onSubmit={onSubmit}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -73,9 +81,12 @@ const ContactForm: React.FC<ContactFormProps> = ({ formData, handleChange, handl
         <motion.button
           type="submit"
           whileHover={{ scale: 1.05 }}
-          className="px-6 py-2 bg-orange-600 text-white rounded-md shadow-md hover:bg-orange-700 transition font-medium"
+          disabled={isSubmitting}
+          className={`px-6 py-2 rounded-md shadow-md transition font-medium ${
+            isSubmitting ? 'bg-gray-400 text-gray-800' : 'bg-orange-600 text-white hover:bg-orange-700'
+          }`}
         >
-          Envoyer le message
+          {isSubmitting ? 'انتظر...' : 'Envoyer le message'}
         </motion.button>
       </div>
     </motion.form>
