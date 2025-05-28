@@ -19,31 +19,8 @@ const ProductComponent = () => {
       } mt-10`}
     >
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        {/* Left: Image */}
-        <motion.div
-          initial={{ opacity: 0, x: -60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.9 }}
-          className="relative"
-        >
-          <div className="aspect-square overflow-hidden rounded-3xl shadow-2xl bg-orange-100 dark:bg-orange-900/20">
-            <img
-              src="https://blueviolet-curlew-711794.hostingersite.com/wp-content/uploads/elementor/thumbs/Liderm-Sticker-1-Mockup-r6fipu2513yigajsooyns09v8v087zz0qf9v19cae4.jpg"
-              alt="Liderm Extreme Glow Fluid SPF50+"
-              className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-105"
-            />
-            <motion.div
-              initial={{ width: '100%' }}
-              whileInView={{ width: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.2, delay: 0.5 }}
-              className="absolute inset-0 bg-orange-600 z-10"
-            />
-          </div>
-        </motion.div>
 
-        {/* Right: Form */}
+        {/* Left: Form */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -113,6 +90,31 @@ const ProductComponent = () => {
             </motion.button>
           </form>
         </motion.div>
+
+      {/* Right: Image */}
+      <motion.div
+          initial={{ opacity: 0, x: -60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9 }}
+          className="relative"
+        >
+          <div className="aspect-square overflow-hidden rounded-3xl shadow-2xl bg-orange-100 dark:bg-orange-900/20">
+            <img
+              src="https://blueviolet-curlew-711794.hostingersite.com/wp-content/uploads/elementor/thumbs/Liderm-Sticker-1-Mockup-r6fipu2513yigajsooyns09v8v087zz0qf9v19cae4.jpg"
+              alt="Liderm Extreme Glow Fluid SPF50+"
+              className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-105"
+            />
+            <motion.div
+              initial={{ width: '100%' }}
+              whileInView={{ width: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, delay: 0.5 }}
+              className="absolute inset-0 bg-orange-600 z-10"
+            />
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );
