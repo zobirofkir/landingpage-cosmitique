@@ -8,7 +8,7 @@ const ProductComponent = () => {
       id="products"
       className="py-16 px-4 md:px-8 transition-colors duration-500 bg-white text-gray-800 dark:bg-zinc-900 dark:text-white mt-10"
     >
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div className="container md:px-0 px-5 mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Left: Form */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

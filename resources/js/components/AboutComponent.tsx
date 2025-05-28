@@ -16,7 +16,7 @@ const AboutComponent: React.FC<AboutProps> = ({ className }) => {
       )}
       id='abouts'
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="container md:px-0 px-5 mx-auto">
         {/* Titre de section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
