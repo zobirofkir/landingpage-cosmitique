@@ -26,6 +26,18 @@ const testimonials = [
 			'Depuis que j\'utilise Liderm, ma peau est éclatante et hydratée. Je ne peux plus m\'en passer.',
 		image: 'https://via.placeholder.com/150',
 	},
+	{
+		name: 'Fatima K.',
+		feedback:
+			'Liderm Extreme Glow Fluid SPF50+ est devenu un incontournable dans ma routine. Ma peau est radieuse et protégée.',
+		image: 'https://via.placeholder.com/150',
+	},
+	{
+		name: 'Leila D.',
+		feedback:
+			'Je recommande vivement Liderm ! Ce produit a apporté une transformation incroyable à ma peau.',
+		image: 'https://via.placeholder.com/150',
+	},
 ];
 
 const TesimenialComponent = () => {
