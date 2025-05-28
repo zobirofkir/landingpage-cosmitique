@@ -22,10 +22,10 @@ const SliderComponent = () => {
         </video>
         <div className="content relative z-10 text-center">
           <h1 className="title text-4xl md:text-6xl font-bold text-white dark:text-gray-200">
-            Welcome to Cosmitique
+            Bienvenue chez Cosmitique
           </h1>
           <p className="description mt-4 text-lg md:text-xl text-gray-300 dark:text-gray-400">
-            Experience the best in beauty and style.
+            Découvrez le meilleur de la beauté et du style.
           </p>
         </div>
       </motion.div>
