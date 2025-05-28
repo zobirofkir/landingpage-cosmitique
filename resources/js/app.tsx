@@ -8,6 +8,14 @@ import FooterComponent from './components/FooterComponent';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
+/**
+ * Apply saved theme mode from localStorage
+ */
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+    document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+}
+
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name) => resolvePageComponent(`./pages/${name}.tsx`, import.meta.glob('./pages/**/*.tsx')),
