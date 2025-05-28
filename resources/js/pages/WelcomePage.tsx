@@ -1,6 +1,6 @@
 import AboutComponent from '@/components/AboutComponent'
 import FaqComponent from '@/components/FaqComponent'
-import ProductComponent from '@/components/ProductComponent'
+import ProductComponent from '@/components/product/ProductComponent'
 import SliderComponent from '@/components/SliderComponent'
 import React from 'react'
 import { HiOutlineChat, HiOutlineStar } from 'react-icons/hi'
