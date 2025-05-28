@@ -43,11 +43,22 @@ const FaqComponent: React.FC = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
             Foire aux Questions
           </h2>
-          <div className="w-24 h-1 bg-orange-600 mx-auto mt-2"></div>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="w-24 h-1 bg-orange-600 mx-auto mt-2"
+          ></motion.div>
         </div>
         <div className="space-y-6">
           {faqData.map((item, index) => (
-            <div key={index} className="border-b border-gray-300 pb-4">
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              className="border-b border-gray-300 pb-4"
+            >
               <button
                 onClick={() => toggleExpand(index)}
                 className="w-full text-left flex justify-between items-center text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-100"
@@ -68,12 +79,12 @@ const FaqComponent: React.FC = () => {
                   height: expandedIndex === index ? 'auto' : 0,
                   opacity: expandedIndex === index ? 1 : 0,
                 }}
-                transition={{ duration: 0.4, ease: 'easeInOut' }}
+                transition={{ duration: 0.5, ease: 'easeInOut' }}
                 className="overflow-hidden text-gray-600 dark:text-gray-300 mt-2"
               >
                 <p>{item.answer}</p>
               </motion.div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
