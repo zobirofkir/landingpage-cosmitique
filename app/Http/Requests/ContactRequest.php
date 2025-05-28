@@ -27,4 +27,24 @@ class ContactRequest extends FormRequest
             "message" => "required|string|max:1000",
         ];
     }
+
+    /**
+     * Get the validation messages that apply to the request.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            "name.required" => "Le nom est requis.",
+            "name.string" => "Le nom doit être une chaîne de caractères.",
+            "name.max" => "Le nom ne doit pas dépasser 255 caractères.",
+            "email.required" => "L'adresse e-mail est requise.",
+            "email.email" => "L'adresse e-mail doit être valide.",
+            "email.max" => "L'adresse e-mail ne doit pas dépasser 255 caractères.",
+            "message.required" => "Le message est requis.",
+            "message.string" => "Le message doit être une chaîne de caractères.",
+            "message.max" => "Le message ne doit pas dépasser 1000 caractères.",
+        ];
+    }
 }
