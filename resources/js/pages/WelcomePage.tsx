@@ -54,6 +54,11 @@ const WelcomePage = () => {
           whileHover={{ scale: 1.05 }}
           animate={{
             y: [0, -4, 0],
+            boxShadow: [
+              '0 0 0px rgba(255, 165, 0, 0.5)',
+              '0 0 10px rgba(255, 165, 0, 0.8)',
+              '0 0 0px rgba(255, 165, 0, 0.5)',
+            ],
           }}
           transition={{
             repeat: Infinity,
@@ -68,7 +73,7 @@ const WelcomePage = () => {
             <span className="line-through text-xs text-gray-300 sm:text-xs">200 DH</span>
             <span className="text-base font-bold sm:text-sm">170 DH</span>
           </div>
-          <span className="sm:text-xs">إرسال</span>
+          <span className="sm:text-xs">إرسال | Envoyer</span>
         </motion.button>
       </motion.div>
     </section>
