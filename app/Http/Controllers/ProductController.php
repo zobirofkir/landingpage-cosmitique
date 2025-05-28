@@ -11,6 +11,6 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         Product::create($request->validated());
-        return redirect()->route('home')->with('success', 'Merci beaucoup, nous vous contacterons bientôt.');
+        return response()->json(['message' => 'Merci beaucoup, nous vous contacterons bientôt.']);
     }
 }

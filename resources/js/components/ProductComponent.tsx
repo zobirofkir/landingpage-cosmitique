@@ -15,6 +15,7 @@ const ProductComponent = () => {
   });
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState('');
+  const [showModal, setShowModal] = useState(false); // Modal state
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -29,6 +30,7 @@ const ProductComponent = () => {
       const response = await axios.post('/products', formData);
       setSuccessMessage(response.data.message);
       setFormData({ name: '', email: '', quantity: '', phone: '', address: '' });
+      setShowModal(true); // Show modal on success
     } catch (error) {
       if (error.response && error.response.status === 422) {
         setErrors(error.response.data.errors);
@@ -41,6 +43,29 @@ const ProductComponent = () => {
       id="products"
       className="py-16 px-4 md:px-8 transition-colors duration-500 bg-white text-gray-800 dark:bg-zinc-900 dark:text-white mt-10"
     >
+      {/* Modal */}
+      {showModal && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.3 }}
+          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+        >
+          <div className="bg-white dark:bg-zinc-900 text-gray-800 dark:text-white rounded-lg shadow-lg p-6 max-w-md w-full">
+            <h3 className="text-xl font-bold mb-4 text-center text-orange-600">
+              Succès / نجاح
+            </h3>
+            <p className="text-center mb-6">{successMessage}</p>
+            <button
+              onClick={() => setShowModal(false)}
+              className="w-full py-3 text-lg font-bold bg-gradient-to-r from-orange-500 to-orange-600 dark:from-orange-700 dark:to-orange-800 text-white rounded-xl shadow-lg hover:shadow-xl transition"
+            >
+              Fermer / إغلاق
+            </button>
+          </div>
+        </motion.div>
+      )}
+
       <div className="container md:px-0 px-5 mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Left: Form */}
         <motion.div
@@ -133,11 +158,6 @@ const ProductComponent = () => {
               Commander / إرسال
             </motion.button>
           </form>
-          {successMessage && (
-            <div className="mt-4 p-4 bg-green-100 text-green-800 rounded-lg shadow-md">
-              {successMessage}
-            </div>
-          )}
         </motion.div>
 
         {/* Right: Image */}
