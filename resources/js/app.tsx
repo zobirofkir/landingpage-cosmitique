@@ -5,6 +5,7 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createRoot } from 'react-dom/client';
 import HeaderComponent from './components/HeaderComponent';
 import FooterComponent from './components/FooterComponent';
+import BannerComponent from './components/BannerComponent';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -30,7 +31,7 @@ createInertiaApp({
                      */
                 }
                 <HeaderComponent />
-
+                
                 {
                     /**
                      * Logic

@@ -6,19 +6,27 @@ import React from 'react'
 import { HiOutlineChat, HiOutlineStar } from 'react-icons/hi'
 import { motion } from 'framer-motion'
 import BrandComponent from '@/components/BannerComponent'
+import BannerComponent from '@/components/BannerComponent'
 
 const WelcomePage = () => {
   return (
     <section className="relative">
       <SliderComponent />
 
-      <BrandComponent />
-
       <AboutComponent />
 
       <ProductComponent />
 
       <FaqComponent />
+
+      {
+          /**
+           * Create Banner 
+           */
+      }
+      <div className="mt-[80px] ">
+          <BannerComponent />
+      </div>
 
       {/* Social Media Icons */}
       <motion.div
