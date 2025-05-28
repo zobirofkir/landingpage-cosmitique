@@ -28,18 +28,48 @@ const WelcomePage = () => {
           href="https://wa.me/your-number"
           target="_blank"
           rel="noopener noreferrer"
-          className="p-3 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition"
+          className="p-4 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition flex items-center justify-center"
         >
-          <HiOutlineChat size={24} />
+          <HiOutlineChat size={28} className="animate-pulse" />
         </a>
         <a
           href="https://instagram.com/your-profile"
           target="_blank"
           rel="noopener noreferrer"
-          className="p-3 bg-pink-500 text-white rounded-full shadow-lg hover:bg-pink-600 transition"
+          className="p-4 bg-pink-500 text-white rounded-full shadow-lg hover:bg-pink-600 transition flex items-center justify-center"
         >
-          <HiOutlineStar size={24} />
+          <HiOutlineStar size={28} className="animate-spin-slow" />
         </a>
+      </motion.div>
+
+      {/* Submit Button with Bounce Animation */}
+      <motion.div
+        className="fixed bottom-4 left-1/2 transform -translate-x-1/2 w-full max-w-md px-4"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <motion.button
+          type="button"
+          whileHover={{ scale: 1.05 }}
+          animate={{
+            y: [0, -4, 0],
+          }}
+          transition={{
+            repeat: Infinity,
+            repeatType: 'loop',
+            duration: 2,
+            ease: 'easeInOut',
+          }}
+          className="w-full py-4 text-lg font-bold bg-orange-600 text-white rounded-xl shadow-md hover:bg-orange-700 transition flex items-center justify-center gap-4"
+        >
+          <HiOutlineStar size={28} className="text-yellow-400" />
+          <div className="flex flex-col items-center">
+            <span className="line-through text-sm text-gray-300">200 DH</span>
+            <span className="text-xl font-bold">170 DH</span>
+          </div>
+          <span>إرسال</span>
+        </motion.button>
       </motion.div>
     </section>
   )
