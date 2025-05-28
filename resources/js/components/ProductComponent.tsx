@@ -161,40 +161,6 @@ const ProductComponent = () => {
           ))}
         </div>
       </motion.div>
-
-      {/* Customer Testimonials Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="mt-16 max-w-6xl mx-auto text-center space-y-8"
-      >
-        <h3 className="text-4xl font-extrabold leading-snug tracking-tight">
-          Témoignages de nos clients
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {[
-            {
-              name: 'Sarah L.',
-              feedback: 'Un produit incroyable qui a transformé ma peau !',
-            },
-            {
-              name: 'Ahmed K.',
-              feedback: 'Je recommande vivement Liderm à tous mes amis.',
-            },
-          ].map((testimonial, idx) => (
-            <motion.div
-              key={idx}
-              whileHover={{ scale: 1.05 }}
-              className="p-6 rounded-xl shadow-lg bg-zinc-100 dark:bg-zinc-800"
-            >
-              <p className="text-gray-700 dark:text-gray-300 italic">"{testimonial.feedback}"</p>
-              <h4 className="text-lg font-bold mt-4">{testimonial.name}</h4>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
     </section>
   );
 };
