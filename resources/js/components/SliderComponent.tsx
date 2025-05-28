@@ -22,7 +22,7 @@ const SliderComponent = () => {
         </video>
         <div className="content relative z-10 text-center">
           <h1 className="title text-4xl md:text-6xl font-bold text-950 dark:text-gray-200">
-            Bienvenue chez Cosmitique
+            🛍️ Découvrez Liderm | Votre allié beauté et soin
           </h1>
           <p className="description mt-4 text-lg md:text-xl text-gray-900 dark:text-gray-400">
             Découvrez le meilleur de la beauté et du style.
