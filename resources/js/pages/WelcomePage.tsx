@@ -9,23 +9,27 @@ import BrandComponent from '@/components/BannerComponent'
 import BannerComponent from '@/components/BannerComponent'
 import ContactComponent from '@/components/ContactComponent'
 import TesimenialComponent from '@/components/TesimenialComponent'
+import CtaComponent from '@/components/CtaComponent'
 
 const WelcomePage = () => {
   return (
     <section className="relative">
       <SliderComponent />
-
+      
       <BannerComponent />
       
       <AboutComponent />
 
+      <CtaComponent />
+
       <ProductComponent />
+
+      <TesimenialComponent />
 
       <FaqComponent />
 
       <ContactComponent />
 
-      <TesimenialComponent />
 
       {/* Social Media Icons */}
       <motion.div
