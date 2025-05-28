@@ -5,9 +5,10 @@ interface ContactFormProps {
   formData: { name: string; email: string; message: string };
   handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   handleSubmit: (e: React.FormEvent) => void;
+  errors: { name?: string; email?: string; message?: string };
 }
 
-const ContactForm: React.FC<ContactFormProps> = ({ formData, handleChange, handleSubmit }) => {
+const ContactForm: React.FC<ContactFormProps> = ({ formData, handleChange, handleSubmit, errors }) => {
   return (
     <motion.form
       onSubmit={handleSubmit}
@@ -32,6 +33,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ formData, handleChange, handl
           className="w-full px-4 py-2 border border-gray-300 rounded-md bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-600"
           placeholder="Entrez votre nom"
         />
+        {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
       </div>
       <div>
         <label
@@ -48,6 +50,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ formData, handleChange, handl
           className="w-full px-4 py-2 border border-gray-300 rounded-md bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-600"
           placeholder="Entrez votre e-mail"
         />
+        {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
       </div>
       <div className="md:col-span-2">
         <label
@@ -64,6 +67,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ formData, handleChange, handl
           className="w-full px-4 py-2 border border-gray-300 rounded-md bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-600"
           placeholder="Entrez votre message"
         ></textarea>
+        {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
       </div>
       <div className="md:col-span-2 text-center">
         <motion.button

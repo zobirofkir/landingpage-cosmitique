@@ -6,6 +6,7 @@ import ContactForm from './ContactFormComponent';
 
 const ContactComponent = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [errors, setErrors] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState('');
   const [showModal, setShowModal] = useState(false);
 
@@ -15,6 +16,17 @@ const ContactComponent = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const newErrors = { name: '', email: '', message: '' };
+
+    if (!formData.name) newErrors.name = 'Le nom est requis.';
+    if (!formData.email) newErrors.email = "L'adresse e-mail est requise.";
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = "L'adresse e-mail doit être valide.";
+    if (!formData.message) newErrors.message = 'Le message est requis.';
+
+    setErrors(newErrors);
+
+    if (Object.values(newErrors).some((error) => error)) return;
+
     try {
       const response = await axios.post('/contacts', formData);
       if (response.data.success) {
@@ -52,6 +64,7 @@ const ContactComponent = () => {
           formData={formData}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
+          errors={errors}
         />
         {status && <p className="text-center mt-4 text-orange-600">{status}</p>}
 
