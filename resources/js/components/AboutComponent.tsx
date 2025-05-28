@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '../lib/utils';
+import LidermPost from '@/asstes/images/liderm-post.jpg'
 
 interface AboutProps {
   className?: string;
@@ -48,7 +49,7 @@ const AboutComponent: React.FC<AboutProps> = ({ className }) => {
           >
             <div className="aspect-square overflow-hidden rounded-2xl bg-orange-100 dark:bg-orange-900/20">
               <img
-                src="https://blueviolet-curlew-711794.hostingersite.com/wp-content/uploads/elementor/thumbs/Liderm-Sticker-1-Mockup-r6fipu2513yigajsooyns09v8v087zz0qf9v19cae4.jpg"
+                src={LidermPost}
                 alt="Liderm Extreme Glow Fluid SPF50+"
                 className="w-full h-full object-cover"
               />
