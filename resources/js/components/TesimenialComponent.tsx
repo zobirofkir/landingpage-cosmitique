@@ -1,42 +1,48 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import ClientOne from '@/asstes/images/clients/client-1.jpeg'
+import ClientTwo from '@/asstes/images/clients/client-2.jpeg'
+import ClientThree from '@/asstes/images/clients/client-3.jpg'
+import ClientFour from '@/asstes/images/clients/client-4.jpg'
+import ClientFive from '@/asstes/images/clients/client-5.jpg'
+import ClientSix from '@/asstes/images/clients/client-6.jpeg'
 
 const testimonials = [
 	{
 		name: 'Sarah B.',
 		feedback:
 			'Liderm Extreme Glow Fluid SPF50+ est incroyable ! Ma peau est protégée et éclatante toute la journée.',
-		image: 'https://via.placeholder.com/150',
+		image: ClientOne,
 	},
 	{
 		name: 'Amina L.',
 		feedback:
 			'Je suis ravie de Liderm Extreme Glow Fluid SPF50+. Ma peau est douce et protégée toute la journée.',
-		image: 'https://via.placeholder.com/150',
+		image: ClientTwo,
 	},
 	{
 		name: 'Samira M.',
 		feedback:
 			'Un produit exceptionnel ! Liderm a transformé ma routine de soin en un plaisir quotidien.',
-		image: 'https://via.placeholder.com/150',
+		image: ClientThree,
 	},
 	{
 		name: 'Nadia R.',
 		feedback:
 			'Depuis que j\'utilise Liderm, ma peau est éclatante et hydratée. Je ne peux plus m\'en passer.',
-		image: 'https://via.placeholder.com/150',
+		image: ClientFour,
 	},
 	{
 		name: 'Fatima K.',
 		feedback:
 			'Liderm Extreme Glow Fluid SPF50+ est devenu un incontournable dans ma routine. Ma peau est radieuse et protégée.',
-		image: 'https://via.placeholder.com/150',
+		image: ClientFive,
 	},
 	{
 		name: 'Leila D.',
 		feedback:
 			'Je recommande vivement Liderm ! Ce produit a apporté une transformation incroyable à ma peau.',
-		image: 'https://via.placeholder.com/150',
+		image: ClientSix,
 	},
 ];
 
