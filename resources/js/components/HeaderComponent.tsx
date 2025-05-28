@@ -30,16 +30,16 @@ const HeaderComponent = () => {
           BrandName
         </motion.div>
         <div className="hidden md:flex space-x-6">
-          <motion.a whileHover={{ scale: 1.1 }} href="#" className="cursor-pointer flex items-center">
+          <motion.a whileHover={{ scale: 1.1 }} href="/#" className="cursor-pointer flex items-center">
             <span>Accueil</span>
           </motion.a>
-          <motion.a whileHover={{ scale: 1.1 }} href="#" className="cursor-pointer flex items-center">
+          <motion.a whileHover={{ scale: 1.1 }} href="/#abouts" className="cursor-pointer flex items-center">
             <span>À propos</span>
           </motion.a>
-          <motion.a whileHover={{ scale: 1.1 }} href="#" className="cursor-pointer flex items-center">
+          <motion.a whileHover={{ scale: 1.1 }} href="/#faq" className="cursor-pointer flex items-center">
             <span>FAQ</span>
           </motion.a>
-          <motion.a whileHover={{ scale: 1.1 }} href="#" className="cursor-pointer flex items-center">
+          <motion.a whileHover={{ scale: 1.1 }} href="/#contacts" className="cursor-pointer flex items-center">
             <span>Contact</span>
           </motion.a>
         </div>
@@ -96,16 +96,16 @@ const HeaderComponent = () => {
             </div>
             <ul className="flex flex-col space-y-6 p-6">
               <li>
-                <a href="#" className="cursor-pointer">Accueil</a>
+                <a href="/#" className="cursor-pointer">Accueil</a>
               </li>
               <li>
-                <a href="#" className="cursor-pointer">À propos</a>
+                <a href="/#abouts" className="cursor-pointer">À propos</a>
               </li>
               <li>
-                <a href="#" className="cursor-pointer">FAQ</a>
+                <a href="/#faq" className="cursor-pointer">FAQ</a>
               </li>
               <li>
-                <a href="#" className="cursor-pointer">Contact</a>
+                <a href="/#contacts" className="cursor-pointer">Contact</a>
               </li>
             </ul>
           </motion.div>
