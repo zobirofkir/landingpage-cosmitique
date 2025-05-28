@@ -50,7 +50,7 @@ const TesimenialComponent = () => {
 				</motion.div>
 
 				{/* Testimonial Cards */}
-				<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+				<div className="flex overflow-x-auto space-x-8 px-4">
 					{testimonials.map((testimonial, index) => (
 						<motion.div
 							key={index}
@@ -58,7 +58,7 @@ const TesimenialComponent = () => {
 							whileInView={{ opacity: 1, y: 0 }}
 							viewport={{ once: true }}
 							transition={{ duration: 0.6, delay: index * 0.2 }}
-							className="p-6 rounded-2xl shadow-lg bg-white dark:bg-gray-900 border border-orange-200 dark:border-gray-700"
+							className="flex-shrink-0 w-80 p-6 rounded-2xl shadow-lg bg-white dark:bg-gray-900 border border-orange-200 dark:border-gray-700"
 						>
 							<div className="flex flex-col items-center">
 								<img
