@@ -37,7 +37,7 @@ const HeaderComponent = () => {
             <span>À propos</span>
           </motion.a>
           <motion.a whileHover={{ scale: 1.1 }} href="#" className="cursor-pointer flex items-center">
-            <span>Services</span>
+            <span>FAQ</span>
           </motion.a>
           <motion.a whileHover={{ scale: 1.1 }} href="#" className="cursor-pointer flex items-center">
             <span>Contact</span>
@@ -102,7 +102,7 @@ const HeaderComponent = () => {
                 <a href="#" className="cursor-pointer">À propos</a>
               </li>
               <li>
-                <a href="#" className="cursor-pointer">Services</a>
+                <a href="#" className="cursor-pointer">FAQ</a>
               </li>
               <li>
                 <a href="#" className="cursor-pointer">Contact</a>
