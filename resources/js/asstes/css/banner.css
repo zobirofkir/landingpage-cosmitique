@@ -8,6 +8,6 @@
   }
   
   .animate-infinite-scroll {
-    animation: infinite-scroll 25s linear infinite;
+    animation: infinite-scroll 5s linear infinite;
     display: flex;
   }
