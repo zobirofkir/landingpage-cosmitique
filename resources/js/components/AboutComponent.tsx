@@ -8,7 +8,14 @@ interface AboutProps {
 
 const AboutComponent: React.FC<AboutProps> = ({ className }) => {
   return (
-    <section className={cn("py-16 px-4 md:px-8 bg-white dark:bg-black transition-colors mt-10", className)} id='abouts'>
+    <section
+      className={cn(
+        "py-16 px-4 md:px-8 transition-colors mt-10",
+        "bg-orange-50 dark:bg-gray-950", 
+        className
+      )}
+      id='abouts'
+    >
       <div className="max-w-6xl mx-auto">
         {/* Titre de section */}
         <motion.div
@@ -120,6 +127,16 @@ const AboutComponent: React.FC<AboutProps> = ({ className }) => {
                   </p>
                 </motion.div>
               ))}
+            </div>
+
+            <div className="mt-12 text-center">
+              <p className="text-gray-600 dark:text-gray-300 text-lg mb-2">
+                <span className="line-through text-gray-400">200 MAD</span>
+                <span className="text-orange-600 font-bold text-xl ml-2">170 MAD</span>
+              </p>
+              <p className="text-gray-500 dark:text-gray-400 text-sm">
+                Profitez de cette offre exceptionnelle dès maintenant !
+              </p>
             </div>
           </motion.div>
         </div>
