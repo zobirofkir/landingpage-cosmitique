@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenu, HiX, HiSun, HiMoon } from 'react-icons/hi';
+import Logo from '@/asstes/images/logo/logo.png';
 
 const HeaderComponent = () => {
   const [isDarkMode, setIsDarkMode] = useState(document.documentElement.classList.contains('dark'));
@@ -48,9 +49,9 @@ const HeaderComponent = () => {
       >
         <motion.div
           whileHover={{ scale: 1.1 }}
-          className="text-xl font-bold cursor-pointer"
+          className="cursor-pointer"
         >
-          Liderm
+          <img src={Logo} alt="Logo" className="md:h-20 md:w-20 h-[55px] " />
         </motion.div>
         <div className="hidden md:flex space-x-6">
           <motion.a whileHover={{ scale: 1.1 }} href="/#" className="cursor-pointer flex items-center font-bold">
