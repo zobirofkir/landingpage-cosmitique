@@ -10,10 +10,13 @@ import BannerComponent from '@/components/BannerComponent'
 import ContactComponent from '@/components/contact/ContactComponent'
 import TestimenialComponent from '@/components/TestimenialComponent'
 import CtaComponent from '@/components/CtaComponent'
+import { Head } from '@inertiajs/react'
 
 const WelcomePage = () => {
   return (
     <section className="relative">
+      <Head title='Accueil'/>
+      
       <SliderComponent />
       
       <BannerComponent />
