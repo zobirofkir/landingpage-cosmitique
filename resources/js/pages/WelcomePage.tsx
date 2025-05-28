@@ -61,14 +61,14 @@ const WelcomePage = () => {
             duration: 2,
             ease: 'easeInOut',
           }}
-          className="w-full py-4 text-lg font-bold bg-orange-600 text-white rounded-xl shadow-md hover:bg-orange-700 transition flex items-center justify-center gap-4"
+          className="w-full py-2 text-sm font-medium bg-orange-600 text-white rounded-md shadow-md hover:bg-orange-700 transition flex items-center justify-center gap-2 sm:py-1 sm:text-xs sm:gap-1"
         >
-          <HiOutlineStar size={28} className="text-yellow-400" />
+          <HiOutlineStar size={20} className="text-yellow-400 sm:size-10" />
           <div className="flex flex-col items-center">
-            <span className="line-through text-sm text-gray-300">200 DH</span>
-            <span className="text-xl font-bold">170 DH</span>
+            <span className="line-through text-xs text-gray-300 sm:text-xs">200 DH</span>
+            <span className="text-base font-bold sm:text-sm">170 DH</span>
           </div>
-          <span>إرسال</span>
+          <span className="sm:text-xs">إرسال</span>
         </motion.button>
       </motion.div>
     </section>
