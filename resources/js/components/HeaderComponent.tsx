@@ -27,7 +27,7 @@ const HeaderComponent = () => {
           whileHover={{ scale: 1.1 }}
           className="text-xl font-bold cursor-pointer"
         >
-          BrandName
+          Liderm
         </motion.div>
         <div className="hidden md:flex space-x-6">
           <motion.a whileHover={{ scale: 1.1 }} href="/#" className="cursor-pointer flex items-center">
