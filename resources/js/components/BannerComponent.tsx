@@ -17,7 +17,7 @@ const BannerComponent = () => {
               key={i}
               className="flex items-center gap-6 text-sm sm:text-base text-orange-700 dark:text-orange-300"
             >
-              <div className="flex flex-col items-center">
+              <div className="flex flex-row gap-2 items-center">
                 <span className="line-through text-gray-500 dark:text-gray-400 text-xs sm:text-sm">
                   {item.originalPrice}
                 </span>
@@ -31,7 +31,7 @@ const BannerComponent = () => {
               key={`duplicate-${i}`}
               className="flex items-center gap-6 text-sm sm:text-base text-orange-700 dark:text-orange-300"
             >
-              <div className="flex flex-row  gap-2 items-center">
+              <div className="flex flex-row gap-2 items-center">
                 <span className="line-through text-gray-500 dark:text-gray-400 text-xs sm:text-sm">
                   {item.originalPrice}
                 </span>
