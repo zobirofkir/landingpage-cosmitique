@@ -8,6 +8,7 @@ import { motion } from 'framer-motion'
 import BrandComponent from '@/components/BannerComponent'
 import BannerComponent from '@/components/BannerComponent'
 import ContactComponent from '@/components/ContactComponent'
+import TesimenialComponent from '@/components/TesimenialComponent'
 
 const WelcomePage = () => {
   return (
@@ -23,6 +24,8 @@ const WelcomePage = () => {
       <FaqComponent />
 
       <ContactComponent />
+
+      <TesimenialComponent />
 
       {/* Social Media Icons */}
       <motion.div
