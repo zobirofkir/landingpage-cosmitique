@@ -37,6 +37,7 @@ const WelcomePage = () => {
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
+        style={{ zIndex: 999 }} // Added zIndex
       >
         <a
           href="https://wa.me/your-number"
