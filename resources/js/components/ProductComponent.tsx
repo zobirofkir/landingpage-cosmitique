@@ -103,6 +103,11 @@ const ProductComponent = () => {
         </motion.div>
       </div>
       
+      {
+        /**
+         * Featured Product
+         */
+      }
       <FeatureProductComponent />
 
     </section>
