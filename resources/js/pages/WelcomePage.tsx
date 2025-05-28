@@ -7,6 +7,7 @@ import { HiOutlineChat, HiOutlineStar } from 'react-icons/hi'
 import { motion } from 'framer-motion'
 import BrandComponent from '@/components/BannerComponent'
 import BannerComponent from '@/components/BannerComponent'
+import ContactComponent from '@/components/ContactComponent'
 
 const WelcomePage = () => {
   return (
@@ -20,6 +21,8 @@ const WelcomePage = () => {
       <ProductComponent />
 
       <FaqComponent />
+
+      <ContactComponent />
 
       {/* Social Media Icons */}
       <motion.div
