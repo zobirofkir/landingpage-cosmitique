@@ -93,7 +93,7 @@ const TesimenialComponent = () => {
 									<img
 										src={testimonial.image}
 										alt={testimonial.name}
-										className="w-24 h-24 rounded-full mb-4 shadow-md"
+										className="w-24 h-24 rounded-full mb-4 shadow-md object-cover"
 									/>
 									<h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">
 										{testimonial.name}
