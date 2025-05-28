@@ -1,10 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenu, HiX, HiSun, HiMoon } from 'react-icons/hi';
 
 const HeaderComponent = () => {
   const [isDarkMode, setIsDarkMode] = useState(document.documentElement.classList.contains('dark'));
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        setIsHeaderVisible(false);
+      } else {
+        setIsHeaderVisible(true);
+      }
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   const toggleDarkMode = () => {
     const newMode = !isDarkMode;
@@ -18,7 +35,11 @@ const HeaderComponent = () => {
   };
 
   return (
-    <header className={`fixed top-0 w-full z-50 ${isDarkMode ? 'bg-black text-white' : 'bg-white text-gray-800'} shadow-md`}>
+    <header
+      className={`fixed top-0 w-full z-50 transition-transform duration-300 ${
+        isHeaderVisible ? 'translate-y-0' : '-translate-y-full'
+      } ${isDarkMode ? 'bg-black text-white' : 'bg-white text-gray-800'} shadow-md`}
+    >
       <motion.nav
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
