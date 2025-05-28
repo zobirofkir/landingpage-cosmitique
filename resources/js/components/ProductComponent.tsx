@@ -45,6 +45,11 @@ const ProductComponent = () => {
                 placeholder: 'Numéro de téléphone / رقم الهاتف',
                 type: 'tel',
               },
+              {
+                icon: <HiUser className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
+                placeholder: 'Adresse / العنوان',
+                type: 'text',
+              },
             ].map((field, idx) => (
               <motion.div
                 key={idx}
