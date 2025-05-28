@@ -66,6 +66,9 @@ const HeaderComponent = () => {
           <motion.a whileHover={{ scale: 1.1 }} href="/#faq" className="cursor-pointer flex items-center font-bold">
             <span>FAQ</span>
           </motion.a>
+          <motion.a whileHover={{ scale: 1.1 }} href="/#contacts" className="cursor-pointer flex items-center font-bold">
+            <span>Contact</span>
+          </motion.a>
         </div>
         <div className="flex items-center space-x-4">
           <motion.button
@@ -121,6 +124,9 @@ const HeaderComponent = () => {
                   </li>
                   <li>
                     <a href="/#faq" className="cursor-pointer font-bold">FAQ</a>
+                  </li>
+                  <li>
+                    <a href="/#contacts" className="cursor-pointer font-bold">Contact</a>
                   </li>
                 </ul>
               </motion.div>

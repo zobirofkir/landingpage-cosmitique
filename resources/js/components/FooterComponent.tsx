@@ -37,6 +37,11 @@ const FooterComponent = () => {
                   FAQ
                 </a>
               </li>
+              <li>
+                <a href="/#contacts" className="text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400">
+                  Contact
+                </a>
+              </li>
             </ul>
           </div>
 
