@@ -50,7 +50,7 @@ const ActifComponent: React.FC = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-            Nos <span className="text-orange-600">Actifs</span>
+          Avant Et <span className="text-orange-600">Apres</span>
           </h2>
           <div className="w-24 h-1 bg-orange-600 mx-auto"></div>
         </motion.div>
