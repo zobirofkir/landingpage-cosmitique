@@ -83,19 +83,10 @@ const AboutComponent: React.FC<AboutProps> = ({ className }) => {
               <strong>Contenance :</strong> 50 ml
             </p>
             <p className="text-gray-600 dark:text-gray-300 mb-4">
-              L'écran solaire Liderm "Extreme Glow Fluid" est une innovation dermo-cosmétique qui transforme votre routine de soins solaires. Sa formule avancée offre une protection optimale contre les rayons UVA, UVB, ainsi que la lumière bleue et infrarouge, responsables du vieillissement prématuré de la peau. Grâce à une texture fluide, légère et non grasse, il s’applique facilement et laisse un fini invisible sans traces blanches.
-            </p>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
-              Ce soin est enrichi en puissants actifs dermatologiques, tels que la niacinamide, l’acide hyaluronique et des antioxydants naturels, qui agissent en synergie pour protéger, hydrater et réparer la barrière cutanée. Il unifie le teint, diminue l'apparence des taches pigmentaires et apporte un éclat naturel à la peau dès les premières applications.
-            </p>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
-              Testé sous contrôle dermatologique, le produit convient à tous les types de peau, y compris les peaux sensibles et réactives. Il est résistant à l’eau et à la transpiration, ce qui en fait un allié idéal pour une protection efficace tout au long de la journée, en ville comme à la plage.
-            </p>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
-              Conçu dans le respect de la peau et de l’environnement, il ne contient ni parabènes, ni silicones, ni filtres solaires controversés. Son packaging recyclable reflète l'engagement de Liderm pour une beauté plus responsable et durable.
+              L'écran solaire Liderm "Extreme Glow Fluid" est un soin dermo-cosmétique nouvelle génération qui allie photoprotection avancée, prévention du vieillissement cutané, et correction des taches pigmentaires. Conçu pour tous les types de peau, même les plus sensibles, ce fluide léger et invisible offre une très haute protection SPF50+ contre les UVA, UVB, la lumière visible et les radicaux libres.
             </p>
             <p className="text-gray-600 dark:text-gray-300">
-              Intégrez le "Extreme Glow Fluid SPF50+" dans votre routine quotidienne pour une peau visiblement protégée, unifiée et éclatante. Une protection solaire d’exception qui prend soin de votre peau aujourd’hui et la préserve pour demain.
+              Il est enrichi en actifs dermatologiques puissants qui hydratent, réparent, unifient et protègent la peau au quotidien.
             </p>
 
             <div className="mt-8 space-y-6">
