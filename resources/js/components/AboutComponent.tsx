@@ -128,7 +128,7 @@ const AboutComponent: React.FC<AboutProps> = ({ className }) => {
                     transition={{ duration: 0.4, ease: 'easeInOut' }}
                     className="overflow-hidden text-gray-600 dark:text-gray-300"
                   >
-                    <ul className="list-disc pl-5">
+                    <ul className="list-disc pl-5 font-semibold">
                       {item.description.map((advantage, i) => (
                         <li key={i}>{advantage}</li>
                       ))}
