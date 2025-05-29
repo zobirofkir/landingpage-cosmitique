@@ -1,37 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '../lib/utils';
-import ActifImage from '@/asstes/images/liderm-banner.jpg'; 
+import ActifImage from '@/asstes/images/liderm-banner.jpg';
+import useCards from '../hooks/useCards';
+import useToggleExpand from '../hooks/useToggleExpand';
 
 const ActifComponent: React.FC = () => {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
-
-  const toggleExpand = (index: number) => {
-    setExpandedIndex(expandedIndex === index ? null : index);
-  };
-
-  const cards = [
-    {
-      title: "Niacinamide (Vitamine B3)",
-      description: "Réduit les taches, renforce et lisse la peau.",
-    },
-    {
-      title: "Acide Hyaluronique",
-      description: "Hydratation profonde et effet repulpant.",
-    },
-    {
-      title: "Vitamine E",
-      description: "Antioxydant, protège du vieillissement cutané.",
-    },
-    {
-      title: "Extrait de Réglisse",
-      description: "Éclaircit et apaise.",
-    },
-    {
-      title: "Thé Vert",
-      description: "Protège, calme et détoxifie.",
-    },
-  ];
+  const cards = useCards();
+  const { expandedIndex, toggleExpand } = useToggleExpand();
 
   return (
     <section
@@ -51,7 +27,7 @@ const ActifComponent: React.FC = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-             Une formule pour  <span className="text-orange-600">protéger, hydrater et corriger</span>
+            Une formule pour <span className="text-orange-600">protéger, hydrater et corriger</span>
           </h2>
           <div className="w-24 h-1 bg-orange-600 mx-auto"></div>
         </motion.div>
@@ -66,7 +42,7 @@ const ActifComponent: React.FC = () => {
             className="space-y-6"
           >
             <div>
-              <h4 className='text-center dark:text-white text-black md:text-xl text-md font-bold text-orange-600'>
+              <h4 className="text-center dark:text-white text-black md:text-xl text-md font-bold text-orange-600">
                 Des Actifs Puissants pour une Peau Éclatante
               </h4>
             </div>
