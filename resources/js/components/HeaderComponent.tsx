@@ -47,12 +47,14 @@ const HeaderComponent = () => {
         transition={{ duration: 0.5 }}
         className="container mx-auto flex items-center justify-between py-4 px-6"
       >
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          className="cursor-pointer"
-        >
-          <img src={Logo} alt="Logo" className="md:h-15 md:w-15 h-[40px] " />
-        </motion.div>
+        <a href="/#">
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            className="cursor-pointer"
+          >
+            <img src={Logo} alt="Logo" className="md:h-15 md:w-15 h-[40px] " />
+          </motion.div>
+        </a>
         <div className="hidden md:flex space-x-6">
           <motion.a whileHover={{ scale: 1.1 }} href="/#" className="cursor-pointer flex items-center font-bold">
             <span>Accueil</span>
