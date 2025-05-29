@@ -5,6 +5,7 @@ import Logo from '@/asstes/images/logo/icon.png';
 import useDarkMode from '@/hooks/useDarkMode';
 import useHeaderVisibility from '@/hooks/useHeaderVisibility';
 import useSidebar from '@/hooks/useSidebar';
+import OfferBarComponent from './OfferBarComponent';
 
 const HeaderComponent = () => {
   const { isDarkMode, toggleDarkMode } = useDarkMode();
@@ -17,10 +18,7 @@ const HeaderComponent = () => {
 
   return (
     <>
-      {/* Offer Banner */}
-      <div className="bg-orange-500 text-white text-center py-2 font-bold">
-         Offre : -30 % sur le produit Liderm ! Offre limitée dans le temps.
-      </div>
+    <OfferBarComponent />
       <header
         className={`sticky top-0 w-full z-50 transition-transform duration-300 ${
           isHeaderVisible ? 'translate-y-0' : '-translate-y-full'
