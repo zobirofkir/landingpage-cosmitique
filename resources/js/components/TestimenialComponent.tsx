@@ -10,36 +10,42 @@ import ClientSix from '@/asstes/images/clients/client-6.jpeg'
 const testimonials = [
 	{
 		name: 'Sarah B.',
+		age: 28,
 		feedback:
 			'Liderm Extreme Glow Fluid SPF50+ est incroyable ! Ma peau est protégée et éclatante toute la journée.',
 		image: ClientOne,
 	},
 	{
 		name: 'Amina L.',
+		age: 34,
 		feedback:
 			'Je suis ravie de Liderm Extreme Glow Fluid SPF50+. Ma peau est douce et protégée toute la journée.',
 		image: ClientTwo,
 	},
 	{
 		name: 'Samira M.',
+		age: 29,
 		feedback:
 			'Un produit exceptionnel ! Liderm a transformé ma routine de soin en un plaisir quotidien.',
 		image: ClientThree,
 	},
 	{
 		name: 'Nadia R.',
+		age: 40,
 		feedback:
 			'Depuis que j\'utilise Liderm, ma peau est éclatante et hydratée. Je ne peux plus m\'en passer.',
 		image: ClientFour,
 	},
 	{
 		name: 'Fatima K.',
+		age: 35,
 		feedback:
 			'Liderm Extreme Glow Fluid SPF50+ est devenu un incontournable dans ma routine. Ma peau est radieuse et protégée.',
 		image: ClientFive,
 	},
 	{
 		name: 'Leila D.',
+		age: 32,
 		feedback:
 			'Je recommande vivement Liderm ! Ce produit a apporté une transformation incroyable à ma peau.',
 		image: ClientSix,
@@ -112,6 +118,9 @@ const TestimenialComponent = () => {
 									<h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">
 										{testimonial.name}
 									</h3>
+									<p className="text-gray-600 dark:text-gray-300 text-sm mb-2">
+										Âge : {testimonial.age} ans
+									</p>
 									<p className="text-gray-600 dark:text-gray-300 text-sm">
 										{testimonial.feedback}
 									</p>
