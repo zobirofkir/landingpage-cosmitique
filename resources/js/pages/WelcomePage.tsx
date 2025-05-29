@@ -91,11 +91,11 @@ const WelcomePage = () => {
               className="w-full py-2 text-sm font-medium bg-orange-600 text-white rounded-md shadow-md hover:bg-orange-700 transition flex items-center justify-center gap-2 sm:py-1 sm:text-xs sm:gap-1"
             >
               <HiOutlineStar size={20} className="text-yellow-400 sm:size-10" />
-              <div className="flex flex-col items-center">
+              {/* <div className="flex flex-col items-center">
                 <span className="line-through text-xs text-gray-300 sm:text-xs">200 DH</span>
                 <span className="text-base font-bold sm:text-sm">170 DH</span>
-              </div>
-              <span className="sm:text-xs">إرسال | Envoyer</span>
+              </div> */}
+              <span className="sm:text-[15px] font-bold">أطلب الآن | Envoyer</span>
             </motion.button>
           </motion.div>
       </a>
