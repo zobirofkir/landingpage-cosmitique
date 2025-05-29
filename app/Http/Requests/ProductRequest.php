@@ -23,7 +23,7 @@ class ProductRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
+            'email' => 'nullable|email|max:255',
             'quantity' => 'required|integer|min:1',
             'phone' => 'required|string|max:15',
             'address' => 'required|string|max:500',
