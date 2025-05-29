@@ -105,7 +105,7 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
           ) : (
             <>
               <HiShoppingCart className="w-5 h-5" />
-              Commander / إرسال
+              Commander / أطلب الآن
             </>
           )}
         </motion.button>

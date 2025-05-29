@@ -95,7 +95,7 @@ const WelcomePage = () => {
                 <span className="line-through text-xs text-gray-300 sm:text-xs">200 DH</span>
                 <span className="text-base font-bold sm:text-sm">170 DH</span>
               </div> */}
-              <span className="sm:text-[15px] font-bold">أطلب الآن | Envoyer</span>
+              <span className="sm:text-[15px] font-bold">أطلب الآن | Commander</span>
             </motion.button>
           </motion.div>
       </a>
