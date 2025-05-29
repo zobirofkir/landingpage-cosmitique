@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenu, HiX, HiSun, HiMoon } from 'react-icons/hi';
-import Logo from '@/asstes/images/logo/logo.png';
+import Logo from '@/asstes/images/logo/icon.png';
 
 const HeaderComponent = () => {
   const [isDarkMode, setIsDarkMode] = useState(document.documentElement.classList.contains('dark'));
