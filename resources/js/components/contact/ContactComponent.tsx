@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import ModalComponent from '../modal/ModalComponent';
-import ContactForm from './ContactFormComponent';
-import useContactForm from '../../hooks/useContactForm';
-import useModal from '../../hooks/useModal';
+import ModalComponent from '@/components/modal/ModalComponent';
+import ContactForm from '@/components/contact/ContactFormComponent';
+import useContactForm from '@/hooks/useContactForm';
+import useModal from '@/hooks/useModal';
 
 const ContactComponent = () => {
   const { formData, errors, status, handleChange, handleSubmit } = useContactForm();

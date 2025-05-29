@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import useFormSubmission from '../../hooks/useFormSubmission';
+import useFormSubmission from '@/hooks/useFormSubmission';
 
 interface ContactFormProps {
   formData: { name: string; email: string; message: string };
