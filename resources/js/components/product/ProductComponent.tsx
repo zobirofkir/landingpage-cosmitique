@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import FeatureProductComponent from '../FeatureProductComponent';
 import ModalComponent from '../modal/ModalComponent';
@@ -16,6 +16,19 @@ const ProductComponent = () => {
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState('');
   const [showModal, setShowModal] = useState(false);
+  const [emoji, setEmoji] = useState('☀️');
+
+  const summerEmojis = ['☀️', '🌴', '🍹', '🏖️', '🌊']; // List of summer-themed emojis
+  let emojiIndex = 0;
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      emojiIndex = (emojiIndex + 1) % summerEmojis.length;
+      setEmoji(summerEmojis[emojiIndex]);
+    }, 2000); 
+
+    return () => clearInterval(interval);
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -59,9 +72,10 @@ const ProductComponent = () => {
 
       {/* Price Section */}
       <div className="text-center mt-8">
-        <p className="text-lg md:text-xl font-medium text-gray-700 dark:text-gray-300">
-          <span className="line-through text-gray-400 ml-2">200 MAD</span>
-          <span className="text-orange-600 font-bold text-xl md:text-2xl ml-2">170 MAD</span>
+        <p className="text-lg md:text-xl font-medium text-gray-700 dark:text-gray-300 flex justify-center gap-4">
+          <span className="line-through text-gray-400">200 MAD</span>
+          <span className="text-orange-600 font-bold text-xl md:text-2xl">170 MAD</span>
+          <p className="text-4xl animate-bounce">{emoji}</p> 
         </p>
       </div>
 
