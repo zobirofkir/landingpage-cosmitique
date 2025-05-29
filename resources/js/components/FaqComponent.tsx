@@ -1,40 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-
-interface FaqItem {
-  question: string;
-  answer: string;
-}
-
-const faqData: FaqItem[] = [
-  {
-    question: "À qui s’adresse cet écran solaire ?",
-    answer: "À tous les types de peau, même sensibles. Parfait pour les adultes cherchant une protection quotidienne anti-âge et anti-taches.",
-  },
-  {
-    question: "Peut-on l’utiliser si l’on a des taches pigmentaires ?",
-    answer: "Oui, grâce à la niacinamide et l’extrait de réglisse, il aide à prévenir et réduire les taches brunes.",
-  },
-  {
-    question: "Ce produit résiste-t-il à l’eau ?",
-    answer: "Oui, il est résistant à l’eau et à la transpiration. Réappliquez après la baignade ou l’essuyage.",
-  },
-  {
-    question: "L’écran solaire Liderm est-il parfumé ?",
-    answer: "Non, il est sans parfum, idéal pour les peaux sensibles ou allergiques.",
-  },
-  {
-    question: "Puis-je l’utiliser pendant la grossesse ?",
-    answer: "Oui, la formule est douce et sans ingrédients controversés. En cas de doute, consultez votre médecin.",
-  },
-];
+import useFaqState from '../hooks/useFaqState';
+import useFaqAnimations from '@/hooks/useFaqAnimations';
+import faqData, { FaqItem } from '../data/faqData';
 
 const FaqComponent: React.FC = () => {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
-
-  const toggleExpand = (index: number) => {
-    setExpandedIndex(expandedIndex === index ? null : index);
-  };
+  const { expandedIndex, toggleExpand } = useFaqState();
+  const { containerAnimation, questionAnimation, answerAnimation, arrowAnimation } = useFaqAnimations(expandedIndex);
 
   return (
     <section className="py-16 px-4 md:px-8 bg-orange-50 dark:bg-gray-950" id="faq">
@@ -44,9 +16,7 @@ const FaqComponent: React.FC = () => {
             Foire aux Questions
           </h2>
           <motion.div
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 0.5, ease: 'easeOut' }}
+            {...containerAnimation}
             className="w-24 h-1 bg-orange-600 mx-auto mt-2"
           ></motion.div>
         </div>
@@ -54,9 +24,7 @@ const FaqComponent: React.FC = () => {
           {faqData.map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
+              {...questionAnimation(index)}
               className="border-b border-gray-300 pb-4"
             >
               <button
@@ -65,21 +33,14 @@ const FaqComponent: React.FC = () => {
               >
                 {item.question}
                 <motion.span
-                  initial={{ rotate: 0 }}
-                  animate={{ rotate: expandedIndex === index ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
+                  {...arrowAnimation(index)}
                   className="text-orange-600"
                 >
                   ▼
                 </motion.span>
               </button>
               <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{
-                  height: expandedIndex === index ? 'auto' : 0,
-                  opacity: expandedIndex === index ? 1 : 0,
-                }}
-                transition={{ duration: 0.5, ease: 'easeInOut' }}
+                {...answerAnimation(index)}
                 className="overflow-hidden text-gray-600 dark:text-gray-300 mt-2"
               >
                 <p>{item.answer}</p>
