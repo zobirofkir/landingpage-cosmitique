@@ -47,7 +47,7 @@ const ProductComponent = () => {
         <ModalComponent setShowModal={setShowModal} />
       )}
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-      <ProductImageComponent />
+        <ProductImageComponent />
 
         <ProductFormComponent
           formData={formData}
@@ -55,6 +55,15 @@ const ProductComponent = () => {
           handleChange={handleChange}
           handleSubmit={handleSubmit}
         />
+      </div>
+
+      {/* Price Section */}
+      <div className="text-center mt-8">
+        <p className="text-lg md:text-xl font-medium text-gray-700 dark:text-gray-300">
+          Price:
+          <span className="line-through text-gray-400 ml-2">200 MAD</span>
+          <span className="text-orange-600 font-bold text-xl md:text-2xl ml-2">170 MAD</span>
+        </p>
       </div>
 
       <div className='bg-orange-50 dark:bg-gray-950 mt-16 py-8'>
