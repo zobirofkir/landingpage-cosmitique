@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '../lib/utils';
-import LidermPost from '@/asstes/images/liderm-post.jpg'
+import LidermPost from '@/asstes/images/liderm-post.jpg';
+import useExpandedState from '../hooks/useExpandedState';
+import useAnimationConfig from '../hooks/useAnimationConfig';
 
 interface AboutProps {
   className?: string;
 }
 
 const AboutComponent: React.FC<AboutProps> = ({ className }) => {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
-
-  const toggleExpand = (index: number) => {
-    setExpandedIndex(expandedIndex === index ? null : index);
-  };
+  const { expandedIndex, toggleExpand } = useExpandedState();
+  const { sectionAnimation, imageAnimation, textAnimation } = useAnimationConfig();
 
   return (
     <section
@@ -25,13 +24,7 @@ const AboutComponent: React.FC<AboutProps> = ({ className }) => {
     >
       <div className="container md:px-0 px-5 mx-auto">
         {/* Titre de section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-12 text-center"
-        >
+        <motion.div {...sectionAnimation} className="mb-12 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
             À propos de <span className="text-orange-600">Liderm</span>
           </h2>
@@ -40,21 +33,15 @@ const AboutComponent: React.FC<AboutProps> = ({ className }) => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
           {/* Colonne gauche : Image Sticky */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative md:sticky top-20"
-          >
+          <motion.div {...imageAnimation} className="relative md:sticky top-20">
             <div className="aspect-square overflow-hidden rounded-2xl bg-orange-100 dark:bg-orange-900/20">
-            <div className='max-w-[100%] '>
-              <img
+              <div className='max-w-[100%] '>
+                <img
                   src={LidermPost}
                   alt="Liderm Extreme Glow Fluid SPF50+"
                   className="w-full h-full object-cover"
                 />
-            </div>
+              </div>
               <motion.div
                 initial={{ width: '100%' }}
                 whileInView={{ width: '0%' }}
@@ -67,12 +54,7 @@ const AboutComponent: React.FC<AboutProps> = ({ className }) => {
           </motion.div>
 
           {/* Colonne droite : Longue description */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
+          <motion.div {...textAnimation}>
             <h3 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">
               Écran solaire Liderm – Extreme Glow Fluid SPF50+
             </h3>
