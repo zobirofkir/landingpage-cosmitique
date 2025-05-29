@@ -11,6 +11,7 @@ import ContactComponent from '@/components/contact/ContactComponent'
 import TestimenialComponent from '@/components/TestimenialComponent'
 import CtaComponent from '@/components/CtaComponent'
 import { Head } from '@inertiajs/react'
+import ActifComponent from '@/components/ActifComponent'
 
 const WelcomePage = () => {
   return (
@@ -24,6 +25,8 @@ const WelcomePage = () => {
       <AboutComponent />
 
       <CtaComponent />
+
+      <ActifComponent />
 
       <ProductComponent />
 
