@@ -24,7 +24,7 @@ const AboutComponent: React.FC<AboutProps> = ({ className }) => {
     >
       <div className="container md:px-0 px-5 mx-auto">
         {/* Titre de section */}
-        <motion.div {...sectionAnimation} className="mb-12 text-center">
+        <motion.div {...sectionAnimation} className="lg:mb-12 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
             À propos de <span className="text-orange-600">Liderm</span>
           </h2>
@@ -55,7 +55,7 @@ const AboutComponent: React.FC<AboutProps> = ({ className }) => {
 
           {/* Colonne droite : Longue description */}
           <motion.div {...textAnimation}>
-            <h3 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">
+            <h3 className="text-2xl md:mt-0 mt-20 font-bold mb-4 text-gray-800 dark:text-gray-100">
               Écran solaire Liderm – Extreme Glow Fluid SPF50+
             </h3>
             <p className="text-orange-600 font-medium mb-4">
