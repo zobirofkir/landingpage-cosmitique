@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
+import useFormSubmission from '../../hooks/useFormSubmission';
 
 interface ContactFormProps {
   formData: { name: string; email: string; message: string };
@@ -9,13 +10,7 @@ interface ContactFormProps {
 }
 
 const ContactForm: React.FC<ContactFormProps> = ({ formData, handleChange, handleSubmit, errors }) => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const onSubmit = (e: React.FormEvent) => {
-    setIsSubmitting(true);
-    handleSubmit(e);
-    setTimeout(() => setIsSubmitting(false), 2000); 
-  };
+  const { isSubmitting, onSubmit } = useFormSubmission(handleSubmit);
 
   return (
     <motion.form

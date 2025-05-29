@@ -1,43 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import axios from 'axios';
 import ModalComponent from '../modal/ModalComponent';
-import ContactForm from './ContactFormComponent'; 
+import ContactForm from './ContactFormComponent';
+import useContactForm from '../../hooks/useContactForm';
+import useModal from '../../hooks/useModal';
 
 const ContactComponent = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [errors, setErrors] = useState({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState('');
-  const [showModal, setShowModal] = useState(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const newErrors = { name: '', email: '', message: '' };
-
-    if (!formData.name) newErrors.name = 'Le nom est requis.';
-    if (!formData.email) newErrors.email = "L'adresse e-mail est requise.";
-    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = "L'adresse e-mail doit être valide.";
-    if (!formData.message) newErrors.message = 'Le message est requis.';
-
-    setErrors(newErrors);
-
-    if (Object.values(newErrors).some((error) => error)) return;
-
-    try {
-      const response = await axios.post('/contacts', formData);
-      if (response.data.success) {
-        setShowModal(true);
-      } else {
-        setStatus('Une erreur est survenue. Veuillez réessayer.');
-      }
-    } catch (error) {
-      setStatus('Une erreur est survenue. Veuillez réessayer.');
-    }
-  };
+  const { formData, errors, status, handleChange, handleSubmit } = useContactForm();
+  const { showModal, setShowModal } = useModal();
 
   return (
     <section

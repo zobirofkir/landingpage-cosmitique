@@ -54,10 +54,9 @@ const WelcomePage = () => {
           <HiOutlineChat size={28} className="animate-pulse" />
         </a>
         <a
-          href="#"
-          target="_blank"
+          href="/#contacts"
           rel="noopener noreferrer"
-          className="p-4 bg-pink-500 text-white rounded-full shadow-lg hover:bg-pink-600 transition flex items-center justify-center"
+          className="p-4 bg-red-500 text-white rounded-full shadow-lg hover:bg-red-600 transition flex items-center justify-center"
         >
           <HiOutlineStar size={28} className="animate-spin-slow" />
         </a>
