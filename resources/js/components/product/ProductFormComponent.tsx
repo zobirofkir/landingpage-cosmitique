@@ -29,6 +29,12 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
       >
         {[
           {
+            name: 'quantity',
+            icon: <HiShoppingCart className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
+            placeholder: 'Quantité / الكمية',
+            type: 'number',
+          },
+          {
             name: 'name',
             icon: <HiUser className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
             placeholder: 'Nom / الاسم',
@@ -39,12 +45,6 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
             icon: <HiMail className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
             placeholder: 'Email / البريد الإلكتروني',
             type: 'email',
-          },
-          {
-            name: 'quantity',
-            icon: <HiShoppingCart className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
-            placeholder: 'Quantité / الكمية',
-            type: 'number',
           },
           {
             name: 'phone',
