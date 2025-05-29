@@ -44,7 +44,7 @@ const ContactComponent = () => {
       className="py-16 px-4 md:px-8 transition-colors bg-white dark:bg-gray-950"
       id="contacts"
     >
-      <div className="container md:px-0 px-5 mx-auto">
+      <div className="container mx-auto">
         {/* Section Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
