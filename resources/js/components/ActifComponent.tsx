@@ -1,34 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '../lib/utils';
-import { HiSparkles, HiOutlineBeaker, HiShieldCheck, HiLightBulb, HiOutlineGlobe } from 'react-icons/hi';
+import ActifImage from '@/asstes/images/liderm-post.jpg'; 
 
 const ActifComponent: React.FC = () => {
-  const actifs = [
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+  const toggleExpand = (index: number) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
+
+  const cards = [
     {
       title: "Niacinamide (Vitamine B3)",
       description: "Réduit les taches, renforce et lisse la peau.",
-      Icon: HiSparkles,
     },
     {
       title: "Acide Hyaluronique",
       description: "Hydratation profonde et effet repulpant.",
-      Icon: HiOutlineBeaker,
     },
     {
       title: "Vitamine E",
       description: "Antioxydant, protège du vieillissement cutané.",
-      Icon: HiShieldCheck,
     },
     {
       title: "Extrait de Réglisse",
       description: "Éclaircit et apaise.",
-      Icon: HiLightBulb,
     },
     {
       title: "Thé Vert",
       description: "Protège, calme et détoxifie.",
-      Icon: HiOutlineGlobe,
     },
   ];
 
@@ -50,33 +51,75 @@ const ActifComponent: React.FC = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-          Avant Et <span className="text-orange-600">Apres</span>
+            Avant Et <span className="text-orange-600">Apres</span>
           </h2>
           <div className="w-24 h-1 bg-orange-600 mx-auto"></div>
         </motion.div>
 
-        {/* Actif Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {actifs.map((actif, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="p-6 rounded-lg shadow-lg bg-orange-100 dark:bg-orange-900/20"
-            >
-              <div className="flex justify-center mb-4">
-                <actif.Icon className="w-12 h-12 text-orange-600 dark:text-orange-400" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          {/* Left Column: Cards */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="space-y-6"
+          >
+            {cards.map((card, index) => (
+              <div key={index} className="border-b border-gray-300 pb-4">
+                <button
+                  onClick={() => toggleExpand(index)}
+                  className="w-full text-left flex justify-between items-center text-lg font-bold text-gray-800 dark:text-gray-100 mb-2"
+                >
+                  {card.title}
+                  <motion.span
+                    initial={{ rotate: 0 }}
+                    animate={{ rotate: expandedIndex === index ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="text-orange-600"
+                  >
+                    ▼
+                  </motion.span>
+                </button>
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{
+                    height: expandedIndex === index ? 'auto' : 0,
+                    opacity: expandedIndex === index ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.4, ease: 'easeInOut' }}
+                  className="overflow-hidden text-gray-600 dark:text-gray-300"
+                >
+                  <p>{card.description}</p>
+                </motion.div>
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2 text-center">
-                {actif.title}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 text-center">
-                {actif.description}
-              </p>
-            </motion.div>
-          ))}
+            ))}
+          </motion.div>
+
+          {/* Right Column: Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative md:sticky top-20"
+          >
+            <div className="aspect-square overflow-hidden rounded-2xl bg-orange-100 dark:bg-orange-900/20">
+              <img
+                src={ActifImage}
+                alt="Actif Image"
+                className="w-full h-full object-cover"
+              />
+              <motion.div
+                initial={{ width: '100%' }}
+                whileInView={{ width: '0%' }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, delay: 0.5 }}
+                className="absolute inset-0 bg-orange-600 z-10"
+              />
+            </div>
+            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-orange-600 rounded-full hidden md:block" />
+          </motion.div>
         </div>
       </div>
     </section>
