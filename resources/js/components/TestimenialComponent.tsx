@@ -62,7 +62,7 @@ const TestimenialComponent = () => {
 	return (
 		<section
 			id="testimonials"
-			className="py-16 px-4 md:px-8 transition-colors bg-white dark:bg-gray-950"
+			className="py-16 px-4 md:px-8 transition-colors bg-white dark:bg-black"
 		>
 			<div className="container mx-auto text-center">
 				{/* Section Title */}

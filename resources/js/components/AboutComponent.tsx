@@ -17,7 +17,7 @@ const AboutComponent: React.FC<AboutProps> = ({ className }) => {
     <section
       className={cn(
         "py-16 px-4 md:px-8 transition-colors",
-        "bg-orange-50 dark:bg-gray-950", 
+        "bg-orange-50 dark:bg-black", 
         className
       )}
       id='abouts'

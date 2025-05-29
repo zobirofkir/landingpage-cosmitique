@@ -15,7 +15,7 @@ const ProductComponent = () => {
   return (
     <section
       id="products"
-      className="py-16 transition-colors duration-500 bg-white text-gray-800 dark:bg-zinc-900 dark:text-white mt-10"
+      className="py-16 transition-colors duration-500 bg-white text-gray-800 dark:bg-black dark:text-white mt-10"
     >
       {showModal && <ModalComponent setShowModal={setShowModal} />}
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">

@@ -11,7 +11,7 @@ const ContactComponent = () => {
 
   return (
     <section
-      className="py-16 px-4 md:px-8 transition-colors bg-white dark:bg-gray-950"
+      className="py-16 px-4 md:px-8 transition-colors bg-white dark:bg-black"
       id="contacts"
     >
       <div className="container mx-auto">
