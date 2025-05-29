@@ -99,87 +99,53 @@ const AboutComponent: React.FC<AboutProps> = ({ className }) => {
             </p>
 
             <div className="mt-8 space-y-6">
-                {[
-                  {
-                    title: "1. Liderm Crème Solaire SPF50+",
-                    description:
-                      "Protection très haute contre les UVA/UVB, lumière visible et radicaux libres. Texture fluide, invisible, pour tous types de peau.",
-                  },
-                  {
-                    title: "2. Liderm Solaire Teintée SPF50",
-                    description:
-                      "Crème solaire teintée qui unifie le teint tout en offrant une protection solaire maximale. Idéale pour un effet bonne mine immédiat.",
-                  },
-                  {
-                    title: "3. Liderm Fluide Matifiant SPF50+",
-                    description:
-                      "Protection solaire à effet matifiant pour peaux mixtes à grasses. Lutte contre la brillance tout en hydratant.",
-                  },
-                  {
-                    title: "4. Liderm Crème Enfants SPF50",
-                    description:
-                      "Formule douce et sans parfum, conçue pour protéger efficacement la peau fragile des enfants contre les agressions solaires.",
-                  },
-                  {
-                    title: "5. Liderm Spray Transparent SPF30",
-                    description:
-                      "Spray solaire pratique à texture transparente, résistant à l'eau et adapté aux activités extérieures.",
-                  },
-                  {
-                    title: "6. Liderm Solaire Anti-âge SPF50",
-                    description:
-                      "Protège et réduit les signes de l’âge grâce à des antioxydants puissants. Parfait pour les peaux matures.",
-                  },
-                  {
-                    title: "7. Liderm Solaire Hydratant Intense SPF50",
-                    description:
-                      "Crème solaire enrichie en acide hyaluronique pour une hydratation longue durée tout en protégeant la peau.",
-                  },
-                  {
-                    title: "8. Liderm Crème Sport SPF50+",
-                    description:
-                      "Haute protection résistante à la transpiration. Idéale pour les sportifs et les activités prolongées au soleil.",
-                  },
-                  {
-                    title: "9. Liderm Solaire Peaux Sensibles SPF50",
-                    description:
-                      "Formule hypoallergénique sans parfum ni alcool, spécialement conçue pour les peaux réactives.",
-                  },
-                  {
-                    title: "10. Liderm Stick Solaire Zones Sensibles SPF50+",
-                    description:
-                      "Stick protecteur pour les lèvres, le nez et les cicatrices. Format pratique à emporter partout.",
-                  },
-                ].map((item, index) => (
-                  <div key={index} className="border-b border-gray-300 pb-4">
-                    <button
-                      onClick={() => toggleExpand(index)}
-                      className="w-full text-left flex justify-between items-center text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2"
+              {[
+                {
+                  title: "Les avantages de l'écran solaire Liderm",
+                  description: [
+                    "Très haute protection SPF50+ UVA/UVB/lumière visible",
+                    "Texture ultra-légère, invisible, au fini mat",
+                    "Non-comédogène, non gras, sans parfum",
+                    "Anti-taches, anti-âge, enrichi en actifs dermatologiques",
+                    "Convient à toutes les peaux, même sensibles",
+                    "Résistant à l’eau et à la transpiration",
+                    "Sans effet blanc, sans irritation oculaire",
+                  ],
+                },
+              ].map((item, index) => (
+                <div key={index} className="border-b border-gray-300 pb-4">
+                  <button
+                    onClick={() => toggleExpand(index)}
+                    className="w-full text-left flex justify-between items-center text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2"
+                  >
+                    {item.title}
+                    <motion.span
+                      initial={{ rotate: 0 }}
+                      animate={{ rotate: expandedIndex === index ? 180 : 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="text-orange-600"
                     >
-                      {item.title}
-                      <motion.span
-                        initial={{ rotate: 0 }}
-                        animate={{ rotate: expandedIndex === index ? 180 : 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="text-orange-600"
-                      >
-                        ▼
-                      </motion.span>
-                    </button>
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{
-                        height: expandedIndex === index ? 'auto' : 0,
-                        opacity: expandedIndex === index ? 1 : 0,
-                      }}
-                      transition={{ duration: 0.4, ease: 'easeInOut' }}
-                      className="overflow-hidden text-gray-600 dark:text-gray-300"
-                    >
-                      <p>{item.description}</p>
-                    </motion.div>
-                  </div>
-                ))}
-              </div>
+                      {expandedIndex === index ? "▲" : "▼"}
+                    </motion.span>
+                  </button>
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{
+                      height: expandedIndex === index ? 'auto' : 0,
+                      opacity: expandedIndex === index ? 1 : 0,
+                    }}
+                    transition={{ duration: 0.4, ease: 'easeInOut' }}
+                    className="overflow-hidden text-gray-600 dark:text-gray-300"
+                  >
+                    <ul className="list-disc pl-5">
+                      {item.description.map((advantage, i) => (
+                        <li key={i}>{advantage}</li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                </div>
+              ))}
+            </div>
 
             <div className="mt-12 text-center">
               <p className="text-gray-600 dark:text-gray-300 text-lg mb-2">

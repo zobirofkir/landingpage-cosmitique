@@ -51,7 +51,7 @@ const ActifComponent: React.FC = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-          Des Actifs Puissants pour une <span className="text-orange-600">Peau Éclatante</span>
+             Une formule pour  <span className="text-orange-600">protéger, hydrater et corriger</span>
           </h2>
           <div className="w-24 h-1 bg-orange-600 mx-auto"></div>
         </motion.div>
@@ -66,8 +66,8 @@ const ActifComponent: React.FC = () => {
             className="space-y-6"
           >
             <div>
-              <h4 className='text-center dark:text-white text-black md:text-xl text-md font-bold'>
-                 Une formule complète pour protéger, hydrater et corriger.
+              <h4 className='text-center dark:text-white text-black md:text-xl text-md font-bold text-orange-600'>
+                Des Actifs Puissants pour une Peau Éclatante
               </h4>
             </div>
             {cards.map((card, index) => (
