@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { HiUser, HiMail, HiPhone, HiShoppingCart } from 'react-icons/hi';
-import useFormHandler from './hooks/useFormHandler';
+import useFormHandler from '../../hooks/useFormHandler';
 
 const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) => {
   const { isSubmitting, handleFormSubmit } = useFormHandler(handleSubmit);

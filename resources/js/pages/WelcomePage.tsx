@@ -1,145 +1,36 @@
-import AboutComponent from '@/components/AboutComponent'
-import FaqComponent from '@/components/FaqComponent'
-import ProductComponent from '@/components/product/ProductComponent'
-import SliderComponent from '@/components/SliderComponent'
 import React from 'react'
-import { HiOutlineChat, HiOutlineStar } from 'react-icons/hi'
-import { motion } from 'framer-motion'
-import BrandComponent from '@/components/BannerComponent'
-import BannerComponent from '@/components/BannerComponent'
-import ContactComponent from '@/components/contact/ContactComponent'
-import TestimenialComponent from '@/components/TestimenialComponent'
-import CtaComponent from '@/components/CtaComponent'
 import { Head } from '@inertiajs/react'
+import { motion } from 'framer-motion'
+
+import SliderComponent from '@/components/SliderComponentComponent'
+import BannerComponent from '@/components/BannerComponent'
+import AboutComponent from '@/components/AboutComponent'
+import CtaComponent from '@/components/CtaComponent'
 import ActifComponent from '@/components/ActifComponent'
+import ProductComponent from '@/components/product/ProductComponent'
+import TestimenialComponent from '@/components/TestimenialComponent'
+import FaqComponent from '@/components/FaqComponent'
+import ContactComponent from '@/components/contact/ContactComponent'
+import RandomStars from '@/components/RandomStarsComponent'
+import SocialMediaIcons from '@/components/SocialMediaIconsComponent'
+import SubmitButton from '@/components/SubmitButtonComponent'
 
 const WelcomePage = () => {
   return (
     <section className="relative">
-      {/* Random Stars */}
-      <div className="absolute inset-0 pointer-events-none z-[9999]">
-        {Array.from({ length: 50 }).map((_, index) => (
-          <motion.svg
-            key={index}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="absolute text-gray-400 dark:text-white"
-            style={{
-              width: `${Math.random() * 10 + 5}px`,
-              height: `${Math.random() * 10 + 5}px`,
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, Math.random() * 10 - 5, 0],
-              x: [0, Math.random() * 10 - 5, 0],
-            }}
-            transition={{
-              repeat: Infinity,
-              repeatType: 'loop',
-              duration: Math.random() * 3 + 2,
-              ease: 'easeInOut',
-            }}
-          >
-            <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.782 1.4 8.158L12 18.896l-7.334 3.854 1.4-8.158L.132 9.21l8.2-1.192L12 .587z" />
-          </motion.svg>
-        ))}
-      </div>
-
-      {/* Dark Mode Support */}
-      <style>
-        {`
-          @media (prefers-color-scheme: dark) {
-            .absolute {
-              color: #ff9700;
-            }
-          }
-        `}
-      </style>
-
-      <Head title='Accueil'/>
-      
+      <RandomStars />
+      <Head title="Accueil" />
       <SliderComponent />
-      
       <BannerComponent />
-      
       <AboutComponent />
-
       <CtaComponent />
-
       <ActifComponent />
-
       <ProductComponent />
-
       <TestimenialComponent />
-
       <FaqComponent />
-
       <ContactComponent />
-
-
-      {/* Social Media Icons */}
-      <motion.div
-        className="fixed right-4 top-1/2 transform -translate-y-1/2 flex flex-col gap-4"
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5 }}
-        style={{ zIndex: 800 }}
-      >
-        <a
-          href="https://wa.me/your-number"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-4 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition flex items-center justify-center"
-        >
-          <HiOutlineChat size={28} className="animate-pulse" />
-        </a>
-        <a
-          href="/#contacts"
-          rel="noopener noreferrer"
-          className="p-4 bg-red-500 text-white rounded-full shadow-lg hover:bg-red-600 transition flex items-center justify-center"
-        >
-          <HiOutlineStar size={28} className="animate-spin-slow" />
-        </a>
-      </motion.div>
-
-      <a href="/#products">
-           {/* Submit Button with Bounce Animation */}
-          <motion.div
-            className="fixed md:bottom-4 bottom-6 left-1/2 transform -translate-x-1/2 w-full max-w-md px-4"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <motion.button
-              type="button"
-              whileHover={{ scale: 1.05 }}
-              animate={{
-                y: [0, -4, 0],
-                boxShadow: [
-                  '0 0 0px rgba(255, 165, 0, 0.5)',
-                  '0 0 10px rgba(255, 165, 0, 0.8)',
-                  '0 0 0px rgba(255, 165, 0, 0.5)',
-                ],
-              }}
-              transition={{
-                repeat: Infinity,
-                repeatType: 'loop',
-                duration: 2,
-                ease: 'easeInOut',
-              }}
-              className="w-full py-2 text-sm font-medium bg-orange-600 text-white rounded-md shadow-md hover:bg-orange-700 transition flex items-center justify-center gap-2 sm:py-1 sm:text-xs sm:gap-1"
-            >
-              <HiOutlineStar size={20} className="text-yellow-400 sm:size-10" />
-              {/* <div className="flex flex-col items-center">
-                <span className="line-through text-xs text-gray-300 sm:text-xs">200 DH</span>
-                <span className="text-base font-bold sm:text-sm">170 DH</span>
-              </div> */}
-              <span className="sm:text-[15px] font-bold">أطلب الآن | Commander</span>
-            </motion.button>
-          </motion.div>
-      </a>
+      <SocialMediaIcons />
+      <SubmitButton />
     </section>
   )
 }
