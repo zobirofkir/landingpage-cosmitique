@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '../lib/utils';
-import ActifImage from '@/asstes/images/liderm-post.jpg'; 
+import ActifImage from '@/asstes/images/liderm-banner.jpg'; 
 
 const ActifComponent: React.FC = () => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
