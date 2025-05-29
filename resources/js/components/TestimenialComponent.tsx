@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import ClientOne from '@/asstes/images/clients/client-1.jpeg'
 import ClientTwo from '@/asstes/images/clients/client-2.jpeg'
@@ -47,12 +47,18 @@ const testimonials = [
 ];
 
 const TestimenialComponent = () => {
+	const [isPlaying, setIsPlaying] = useState(true);
+
+	const togglePlay = () => {
+		setIsPlaying(!isPlaying);
+	};
+
 	return (
 		<section
 			id="testimonials"
 			className="py-16 px-4 md:px-8 transition-colors bg-orange-50 dark:bg-gray-950"
 		>
-			<div className="container  mx-auto text-center">
+			<div className="container mx-auto text-center">
 				{/* Section Title */}
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
@@ -70,15 +76,23 @@ const TestimenialComponent = () => {
 				{/* Testimonial Cards */}
 				<div className="overflow-hidden">
 					<motion.div
-						className="flex space-x-8 px-4"
+						className="flex space-x-8 px-4 cursor-grab"
 						initial={{ x: 0 }}
-						animate={{ x: -2000 }}
-						transition={{
-							repeat: Infinity,
-							repeatType: 'loop',
-							duration: 20,
-							ease: 'linear',
-						}}
+						animate={isPlaying ? { x: -2000 } : { x: 0 }}
+						drag="x"
+						dragConstraints={{ left: -2000, right: 0 }}
+						whileDrag={{ cursor: "grabbing" }}
+						transition={
+							isPlaying
+								? {
+										repeat: Infinity,
+										repeatType: 'loop',
+										duration: 20,
+										ease: 'linear',
+								  }
+								: {}
+						}
+						onClick={togglePlay}
 					>
 						{testimonials.map((testimonial, index) => (
 							<motion.div
