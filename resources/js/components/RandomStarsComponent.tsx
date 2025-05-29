@@ -1,7 +1,20 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-const RandomStars = () => {
+const RandomStars = ({ size = 'md' }) => {
+  const getSize = () => {
+    switch (size) {
+      case 'sm':
+        return Math.random() * 5 + 2 
+      case 'md':
+        return Math.random() * 10 + 5 
+      case 'lg':
+        return Math.random() * 15 + 10 
+      default:
+        return Math.random() * 10 + 5 
+    }
+  }
+
   return (
     <div className="absolute inset-0 pointer-events-none z-[9999]">
       {Array.from({ length: 50 }).map((_, index) => (
@@ -12,8 +25,8 @@ const RandomStars = () => {
           fill="currentColor"
           className="absolute text-gray-400 dark:text-white"
           style={{
-            width: `${Math.random() * 10 + 5}px`,
-            height: `${Math.random() * 10 + 5}px`,
+            width: `${getSize()}px`,
+            height: `${getSize()}px`,
             top: `${Math.random() * 100}%`,
             left: `${Math.random() * 100}%`,
           }}
