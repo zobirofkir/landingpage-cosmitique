@@ -47,13 +47,14 @@ const ProductComponent = () => {
         <ModalComponent setShowModal={setShowModal} />
       )}
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <ProductImageComponent />
+
         <ProductFormComponent
           formData={formData}
           errors={errors}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
         />
-        <ProductImageComponent />
       </div>
       <FeatureProductComponent />
     </section>
