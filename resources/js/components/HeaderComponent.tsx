@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenu, HiX, HiSun, HiMoon } from 'react-icons/hi';
 import Logo from '@/asstes/images/logo/icon.png';
@@ -10,6 +10,10 @@ const HeaderComponent = () => {
   const { isDarkMode, toggleDarkMode } = useDarkMode();
   const { isHeaderVisible } = useHeaderVisibility();
   const { isSidebarOpen, toggleSidebar } = useSidebar();
+
+  useEffect(() => {
+    document.body.style.backgroundColor = isDarkMode ? 'black' : 'white';
+  }, [isDarkMode]);
 
   return (
     <>
