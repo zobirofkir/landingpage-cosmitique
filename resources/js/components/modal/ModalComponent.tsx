@@ -7,6 +7,7 @@ const ModalComponent = ({ setShowModal }) => (
     animate={{ opacity: 1, scale: 1 }}
     transition={{ duration: 0.3 }}
     className="fixed inset-0 flex items-center justify-center bg-opacity-50 z-50"
+    style={{ zIndex: 999 }}
   >
     <div className="bg-white dark:bg-zinc-900 text-gray-800 dark:text-white rounded-lg shadow-lg p-6 max-w-md w-full">
       <h3 className="text-xl font-bold mb-4 text-center text-orange-600">
