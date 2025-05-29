@@ -1,72 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import FeatureProductComponent from '../FeatureProductComponent';
 import ModalComponent from '../modal/ModalComponent';
 import ProductFormComponent from './ProductFormComponent';
 import ProductImageComponent from './ProductImageComponent';
+import useForm from '../../hooks/useForm';
+import useModal from '../../hooks/useModal';
+import useEmojiRotation from '../../hooks/useEmojiRotation';
 
 const ProductComponent = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    quantity: '',
-    phone: '',
-    address: '',
-  });
-  const [errors, setErrors] = useState({});
-  const [successMessage, setSuccessMessage] = useState('');
-  const [showModal, setShowModal] = useState(false);
-  const [emoji, setEmoji] = useState('☀️');
-
-  const summerEmojis = ['☀️', '🌴', '🍹', '🏖️', '🌊']; // List of summer-themed emojis
-  let emojiIndex = 0;
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      emojiIndex = (emojiIndex + 1) % summerEmojis.length;
-      setEmoji(summerEmojis[emojiIndex]);
-    }, 2000); 
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setErrors({});
-    setSuccessMessage('');
-
-    try {
-      const response = await axios.post('/products', formData);
-      setSuccessMessage(response.data.message);
-      setFormData({ name: '', email: '', quantity: '', phone: '', address: '' });
-      setShowModal(true);
-    } catch (error) {
-      if (error.response && error.response.status === 422) {
-        setErrors(error.response.data.errors);
-      }
-    }
-  };
+  const { formData, errors, successMessage, handleChange, handleSubmit, resetForm } = useForm();
+  const { showModal, setShowModal } = useModal();
+  const emoji = useEmojiRotation(['☀️', '🌴', '🍹', '🏖️', '🌊'], 2000);
 
   return (
     <section
       id="products"
       className="py-16 transition-colors duration-500 bg-white text-gray-800 dark:bg-zinc-900 dark:text-white mt-10"
     >
-      {showModal && (
-        <ModalComponent setShowModal={setShowModal} />
-      )}
+      {showModal && <ModalComponent setShowModal={setShowModal} />}
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <ProductImageComponent />
-
         <ProductFormComponent
           formData={formData}
           errors={errors}
           handleChange={handleChange}
-          handleSubmit={handleSubmit}
+          handleSubmit={(e) => handleSubmit(e, resetForm, setShowModal)}
         />
       </div>
 
@@ -75,14 +33,13 @@ const ProductComponent = () => {
         <p className="text-lg md:text-xl font-medium text-gray-700 dark:text-gray-300 flex justify-center gap-4">
           <span className="line-through text-gray-400">200 MAD</span>
           <span className="text-orange-600 font-bold text-xl md:text-2xl">170 MAD</span>
-          <p className="text-4xl animate-bounce">{emoji}</p> 
+          <p className="text-4xl animate-bounce">{emoji}</p>
         </p>
       </div>
 
-      <div className='bg-orange-50 dark:bg-gray-950 mt-16 py-8'>
+      <div className="bg-orange-50 dark:bg-gray-950 mt-16 py-8">
         <FeatureProductComponent />
       </div>
-      
     </section>
   );
 };

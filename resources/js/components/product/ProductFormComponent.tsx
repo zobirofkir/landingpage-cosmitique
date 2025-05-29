@@ -1,16 +1,43 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { HiUser, HiMail, HiPhone, HiShoppingCart } from 'react-icons/hi';
+import useFormHandler from './hooks/useFormHandler';
 
 const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { isSubmitting, handleFormSubmit } = useFormHandler(handleSubmit);
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    setIsSubmitting(true);
-    await handleSubmit(event);
-    setIsSubmitting(false);
-  };
+  const formFields = [
+    {
+      name: 'quantity',
+      icon: <HiShoppingCart className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
+      placeholder: 'Quantité / الكمية',
+      type: 'number',
+    },
+    {
+      name: 'name',
+      icon: <HiUser className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
+      placeholder: 'Nom / الاسم',
+      type: 'text',
+    },
+    {
+      name: 'email',
+      icon: <HiMail className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
+      placeholder: 'Email / البريد الإلكتروني',
+      type: 'email',
+    },
+    {
+      name: 'phone',
+      icon: <HiPhone className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
+      placeholder: 'Numéro de téléphone / رقم الهاتف',
+      type: 'tel',
+    },
+    {
+      name: 'address',
+      icon: <HiUser className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
+      placeholder: 'Adresse / العنوان',
+      type: 'text',
+    },
+  ];
 
   return (
     <motion.div
@@ -27,38 +54,7 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
         onSubmit={handleFormSubmit}
         className="space-y-5 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-zinc-800 dark:to-zinc-900 p-6 rounded-2xl shadow-lg border border-orange-300 dark:border-zinc-700"
       >
-        {[
-          {
-            name: 'quantity',
-            icon: <HiShoppingCart className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
-            placeholder: 'Quantité / الكمية',
-            type: 'number',
-          },
-          {
-            name: 'name',
-            icon: <HiUser className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
-            placeholder: 'Nom / الاسم',
-            type: 'text',
-          },
-          {
-            name: 'email',
-            icon: <HiMail className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
-            placeholder: 'Email / البريد الإلكتروني',
-            type: 'email',
-          },
-          {
-            name: 'phone',
-            icon: <HiPhone className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
-            placeholder: 'Numéro de téléphone / رقم الهاتف',
-            type: 'tel',
-          },
-          {
-            name: 'address',
-            icon: <HiUser className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
-            placeholder: 'Adresse / العنوان',
-            type: 'text',
-          },
-        ].map((field, idx) => (
+        {formFields.map((field, idx) => (
           <motion.div
             key={idx}
             initial={{ opacity: 0, y: 20 }}
