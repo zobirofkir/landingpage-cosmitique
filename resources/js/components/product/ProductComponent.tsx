@@ -41,7 +41,7 @@ const ProductComponent = () => {
   return (
     <section
       id="products"
-      className="py-16 px-4 md:px-8 transition-colors duration-500 bg-white text-gray-800 dark:bg-zinc-900 dark:text-white mt-10"
+      className="py-16 transition-colors duration-500 bg-white text-gray-800 dark:bg-zinc-900 dark:text-white mt-10"
     >
       {showModal && (
         <ModalComponent setShowModal={setShowModal} />
@@ -56,7 +56,11 @@ const ProductComponent = () => {
           handleSubmit={handleSubmit}
         />
       </div>
-      <FeatureProductComponent />
+
+      <div className='bg-orange-50 dark:bg-gray-950 mt-16 py-8'>
+        <FeatureProductComponent />
+      </div>
+      
     </section>
   );
 };
