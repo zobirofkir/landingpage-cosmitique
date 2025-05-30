@@ -122,7 +122,7 @@ const AboutComponent: React.FC<AboutProps> = ({ className }) => {
 
             <div className="mt-12 text-center">
               <p className="text-gray-600 dark:text-gray-300 text-lg mb-2">
-                <span className="line-through text-gray-400">200 MAD</span>
+                <span className="line-through text-gray-400">220 MAD</span>
                 <span className="text-orange-600 font-bold text-xl ml-2">170 MAD</span>
               </p>
               <p className="text-gray-500 dark:text-gray-400 text-sm">

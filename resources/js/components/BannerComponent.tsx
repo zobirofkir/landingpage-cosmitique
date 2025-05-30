@@ -3,7 +3,7 @@ import '@/asstes/css/banner.css';
 
 const BannerComponent = () => {
   const items = Array.from({ length: 10 }, (_, i) => ({
-    originalPrice: '200 MAD',
+    originalPrice: '220 MAD',
     discountedPrice: '170 MAD',
   }));
 
