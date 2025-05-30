@@ -31,7 +31,7 @@ const ProductComponent = () => {
       {/* Price Section */}
       <div className="text-center mt-8">
         <p className="text-lg md:text-xl font-medium text-gray-700 dark:text-gray-300 flex justify-center gap-4">
-          <span className="line-through text-gray-400">200 MAD</span>
+          <span className="line-through text-gray-400">220 MAD</span>
           <span className="text-orange-600 font-bold text-xl md:text-2xl">170 MAD</span>
           <p className="text-4xl animate-bounce">{emoji}</p>
         </p>

@@ -10,7 +10,7 @@ const ProductImageComponent = () => (
     transition={{ duration: 0.9 }}
     className="relative"
   >
-    <div className="aspect-square overflow-hidden rounded-3xl shadow-2xl">
+    <div className="aspect-square overflow-hidden rounded-3xl">
       <img
         src={LidermSticker}
         alt="Liderm Extreme Glow Fluid SPF50+"
