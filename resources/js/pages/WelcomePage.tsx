@@ -18,7 +18,7 @@ import SubmitButton from '@/components/SubmitButtonComponent'
 const WelcomePage = () => {
   return (
     <section className="relative overflow-hidden">
-      <RandomStars />
+      {/* <RandomStars /> */}
       <Head title="Accueil" />
       <SliderComponent />
       <BannerComponent />
