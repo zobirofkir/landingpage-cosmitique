@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import video from '@/asstes/videos/slider/slider.mp4';
+import sliderPcImage from '@/asstes/images/slider/slider-pc.jpg'; 
 
 const SliderComponent = () => {
   return (
@@ -11,23 +11,11 @@ const SliderComponent = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <video
-          className="background-video absolute inset-0 w-full h-full object-cover pointer-events-none"
-          autoPlay
-          loop
-          muted
-          playsInline
-        >
-          <source src={video} type="video/mp4" />
-        </video>
-        <div className="content relative z-10 text-center">
-          <h1 className="title text-4xl md:text-6xl font-bold text-950 dark:text-gray-200">
-            🛍️ Liderm | Beauté & Soin
-          </h1>
-          <p className="description mt-4 text-lg md:text-xl text-gray-900 dark:text-gray-400">
-            Le meilleur de la beauté.
-          </p>
-        </div>
+        <img
+          src={sliderPcImage}
+          alt="slider"
+          className="background-image absolute inset-0 w-full h-full object-cover pointer-events-none"
+        />
       </motion.div>
       <div className="overlay absolute inset-0 pointer-events-none bg-black opacity-0 dark:opacity-70 transition-opacity"></div>
     </div>
