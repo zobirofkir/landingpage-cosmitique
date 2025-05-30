@@ -34,7 +34,7 @@ const FeatureProductComponent = () => {
               icon: "M13 10V3L4 14h7v7l9-11h-7z",
               title: "Formule Anti-âge",
               description: "Réduit les signes de vieillissement et améliore l’éclat.",
-              arabicTitle: "صيغة مضادة للشيخوخة",
+              arabicTitle: "صيغة مضادة للتجاعيد",
               arabicDescription: "يقلل من علامات الشيخوخة ويحسن الإشراق.",
             },
             {
