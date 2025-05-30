@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import LidermSticker from '@/asstes/images/liderm-sticker.jpg';
+import LidermSticker from '@/asstes/images/product/product-image.png';
 
 const ProductImageComponent = () => (
   <motion.div
@@ -10,7 +10,7 @@ const ProductImageComponent = () => (
     transition={{ duration: 0.9 }}
     className="relative"
   >
-    <div className="aspect-square overflow-hidden rounded-3xl shadow-2xl bg-orange-100 dark:bg-orange-900/20">
+    <div className="aspect-square overflow-hidden rounded-3xl shadow-2xl">
       <img
         src={LidermSticker}
         alt="Liderm Extreme Glow Fluid SPF50+"
