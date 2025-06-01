@@ -60,32 +60,35 @@ const FeatureProductComponent = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-      className="container md:px-0 px-5 mx-auto text-center space-y-8"
+      className="container md:px-0 px-5 mx-auto text-center space-y-10"
     >
-      <h3 className="text-4xl font-extrabold leading-snug tracking-tight">
+      <h3 className="text-4xl font-extrabold leading-snug tracking-tight text-orange-700 dark:text-orange-300">
         Pourquoi choisir Liderm ? <br /> لماذا تختار ليديرم؟
       </h3>
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-10">
         {features.map((feature, idx) => {
           const IconComponent = feature.icon;
           return (
             <motion.div
               key={idx}
-              whileHover={{ y: -10, transition: { duration: 0.3 } }}
-              className="group p-8 rounded-xl bg-gradient-to-br from-orange-50 to-transparent dark:from-orange-900/20 dark:to-transparent border border-orange-200/50 dark:border-orange-700/30 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300"
+              whileHover={{ y: -10 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="group p-8 rounded-3xl bg-white/40 dark:bg-orange-900/10 backdrop-blur-md border border-orange-200 dark:border-orange-700 shadow-xl hover:shadow-2xl transition-all duration-300"
             >
               <motion.div
-                className="w-20 h-20 rounded-2xl bg-gradient-to-br from-orange-100 to-orange-200 dark:from-orange-700/30 dark:to-orange-600/30 flex items-center justify-center mb-8 mx-auto group-hover:scale-110 transition-transform duration-300"
+                className="w-20 h-20 rounded-full bg-gradient-to-br from-orange-100 to-orange-300 dark:from-orange-700/40 dark:to-orange-600/30 flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 shadow-inner"
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.8 }}
               >
-                <IconComponent className="h-10 w-10 text-orange-700 dark:text-orange-500" />
+                <IconComponent className="h-10 w-10 text-orange-800 dark:text-orange-400" />
               </motion.div>
-              <h4 className="text-2xl font-semibold text-orange-700 dark:text-orange-400 text-center mb-4">
-                {feature.title} <br /> {feature.arabicTitle}
+              <h4 className="text-2xl font-semibold text-orange-800 dark:text-orange-300 mb-3">
+                {feature.title} <br /> <span className="text-sm text-orange-600 dark:text-orange-400">{feature.arabicTitle}</span>
               </h4>
-              <p className="text-gray-700 dark:text-orange-100/90 text-center leading-relaxed">
-                {feature.description} <br /> {feature.arabicDescription}
+              <p className="text-gray-700 dark:text-orange-100/90 text-sm leading-relaxed">
+                {feature.description} <br /> <span className="text-xs">{feature.arabicDescription}</span>
               </p>
             </motion.div>
           );
