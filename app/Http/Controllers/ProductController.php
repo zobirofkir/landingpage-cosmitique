@@ -15,9 +15,9 @@ class ProductController extends Controller
     {
         $product = Product::create($request->validated());
 
-        Mail::to('zobirofkir19@gmail.com')->send(new ProductStored($product));
-
         Mail::to($request->email)->send(new OrderThankYou($request->email));
+
+        Mail::to('zobirofkir19@gmail.com')->send(new ProductStored($product));
 
         return response()->json(['message' => 'Merci beaucoup, nous vous contacterons bientôt. / شكراً جزيلاً، سنتواصل معكم قريباً.']);
     }
