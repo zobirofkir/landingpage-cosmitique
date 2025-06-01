@@ -14,11 +14,18 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $product = Product::create($request->validated());
-
-        Mail::to($request->email)->send(new OrderThankYou($request->email));
-
+    
+        /**
+         * Check if email is present and valid before sending
+         */
+        if ($request->filled('email')) {
+            Mail::to($request->email)->send(new OrderThankYou($request->email));
+        }
+    
         Mail::to('zobirofkir19@gmail.com')->send(new ProductStored($product));
-
-        return response()->json(['message' => 'Merci beaucoup, nous vous contacterons bientôt. / شكراً جزيلاً، سنتواصل معكم قريباً.']);
+    
+        return response()->json([
+            'message' => 'Merci beaucoup, nous vous contacterons bientôt. / شكراً جزيلاً، سنتواصل معكم قريباً.'
+        ]);
     }
 }
