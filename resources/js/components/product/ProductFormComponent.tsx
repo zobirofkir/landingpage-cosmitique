@@ -6,8 +6,12 @@ import useFormHandler from '../../hooks/useFormHandler';
 const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) => {
   const { isSubmitting, handleFormSubmit } = useFormHandler(handleSubmit);
 
+  const basePrice = 170;
+  const quantity = Math.max(1, parseInt(formData.quantity || 1));
+  const finalPrice = quantity * basePrice;
+
   const handleQuantityChange = (delta) => {
-    const newQuantity = Math.max(1, parseInt(formData.quantity || 1) + delta);
+    const newQuantity = Math.max(1, quantity + delta);
     handleChange({ target: { name: 'quantity', value: newQuantity } });
   };
 
@@ -64,8 +68,15 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
           <input
             type="number"
             name="quantity"
-            value={formData.quantity || 1}
-            onChange={handleChange}
+            value={quantity}
+            onChange={(e) =>
+              handleChange({
+                target: {
+                  name: 'quantity',
+                  value: Math.max(1, parseInt(e.target.value || 1)),
+                },
+              })
+            }
             className="w-16 text-center text-lg border border-orange-300 dark:border-orange-500 rounded-lg py-2 bg-white dark:bg-zinc-800 text-gray-900 dark:text-white"
             min="1"
           />
@@ -113,9 +124,7 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
         <motion.button
           type="submit"
           whileHover={{ scale: 1.1, rotate: 2 }}
-          animate={{
-            y: [0, -6, 0],
-          }}
+          animate={{ y: [0, -6, 0] }}
           transition={{
             repeat: Infinity,
             repeatType: 'loop',
@@ -132,7 +141,7 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
           ) : (
             <>
               <HiShoppingCart className="w-5 h-5" />
-              ACHETEZ - {parseInt(formData.quantity || 1) * 200} dh - اشتري الآن
+              ACHETEZ - {finalPrice} dh - اشتري الآن
             </>
           )}
         </motion.button>
