@@ -1,40 +1,39 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { HiUser, HiMail, HiPhone, HiShoppingCart } from 'react-icons/hi';
+import { HiUser, HiMail, HiPhone, HiShoppingCart, HiLocationMarker } from 'react-icons/hi';
 import useFormHandler from '../../hooks/useFormHandler';
 
 const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) => {
   const { isSubmitting, handleFormSubmit } = useFormHandler(handleSubmit);
 
+  const handleQuantityChange = (delta) => {
+    const newQuantity = Math.max(1, parseInt(formData.quantity || 1) + delta);
+    handleChange({ target: { name: 'quantity', value: newQuantity } });
+  };
+
   const formFields = [
-    {
-      name: 'quantity',
-      icon: <HiShoppingCart className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
-      placeholder: 'Quantité / الكمية',
-      type: 'number',
-    },
     {
       name: 'name',
       icon: <HiUser className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
-      placeholder: 'Nom / الاسم',
+      placeholder: 'Nom & Prénom / الاسم الكامل',
       type: 'text',
     },
     {
       name: 'email',
       icon: <HiMail className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
-      placeholder: 'Email / البريد الإلكتروني',
+      placeholder: 'Email (facultatif)',
       type: 'email',
-    },
+    },    
     {
       name: 'phone',
       icon: <HiPhone className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
-      placeholder: 'Numéro de téléphone / رقم الهاتف',
+      placeholder: 'Téléphone / رقم الهاتف',
       type: 'tel',
     },
     {
       name: 'address',
-      icon: <HiUser className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
-      placeholder: 'Adresse / العنوان',
+      icon: <HiLocationMarker className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
+      placeholder: 'Adresse ou Ville / العنوان',
       type: 'text',
     },
   ];
@@ -50,6 +49,37 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
       <h3 className="text-4xl font-extrabold leading-snug tracking-tight mb-4 text-center">
         Commandez votre produit
       </h3>
+
+      {/* Quantité Section */}
+      <div className="text-center">
+        <p className="font-semibold text-lg mb-2">Quantité</p>
+        <div className="flex justify-center items-center gap-3">
+          <button
+            type="button"
+            onClick={() => handleQuantityChange(-1)}
+            className="w-10 h-10 text-xl bg-orange-100 dark:bg-orange-900 text-orange-600 rounded-lg shadow hover:scale-105 transition"
+          >
+            −
+          </button>
+          <input
+            type="number"
+            name="quantity"
+            value={formData.quantity || 1}
+            onChange={handleChange}
+            className="w-16 text-center text-lg border border-orange-300 dark:border-orange-500 rounded-lg py-2 bg-white dark:bg-zinc-800 text-gray-900 dark:text-white"
+            min="1"
+          />
+          <button
+            type="button"
+            onClick={() => handleQuantityChange(1)}
+            className="w-10 h-10 text-xl bg-orange-100 dark:bg-orange-900 text-orange-600 rounded-lg shadow hover:scale-105 transition"
+          >
+            +
+          </button>
+        </div>
+      </div>
+
+      {/* Formulaire */}
       <form
         onSubmit={handleFormSubmit}
         className="space-y-5 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-zinc-800 dark:to-zinc-900 p-6 rounded-2xl shadow-lg border border-orange-300 dark:border-zinc-700"
@@ -79,6 +109,7 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
             )}
           </motion.div>
         ))}
+
         <motion.button
           type="submit"
           whileHover={{ scale: 1.1, rotate: 2 }}
@@ -101,7 +132,7 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
           ) : (
             <>
               <HiShoppingCart className="w-5 h-5" />
-              Commander / أطلب الآن
+              ACHETEZ - {parseInt(formData.quantity || 1) * 200} dh - اشتري الآن
             </>
           )}
         </motion.button>

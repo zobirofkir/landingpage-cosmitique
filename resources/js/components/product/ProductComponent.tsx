@@ -19,8 +19,9 @@ const ProductComponent = () => {
     >
       {showModal && <ModalComponent setShowModal={setShowModal} />}
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <ProductImageComponent />
         
+        <ProductImageComponent />
+
         <ProductFormComponent
           formData={formData}
           errors={errors}
