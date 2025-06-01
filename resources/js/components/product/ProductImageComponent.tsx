@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import LidermSticker from '@/asstes/images/product/product-image.png';
+import LidermSticker from '@/asstes/images/liderm-sticker.jpg';
 
 const ProductImageComponent = () => (
   <motion.div
