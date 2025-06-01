@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
+use App\Mail\OrderThankYou;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -15,6 +16,8 @@ class ProductController extends Controller
         $product = Product::create($request->validated());
 
         Mail::to('zobirofkir19@gmail.com')->send(new ProductStored($product));
+
+        Mail::to($request->email)->send(new OrderThankYou($request->email));
 
         return response()->json(['message' => 'Merci beaucoup, nous vous contacterons bientôt. / شكراً جزيلاً، سنتواصل معكم قريباً.']);
     }
