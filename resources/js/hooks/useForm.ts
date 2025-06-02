@@ -5,7 +5,7 @@ const useForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    quantity: '',
+    quantity: 1,
     phone: '',
     address: '',
   });
@@ -34,7 +34,7 @@ const useForm = () => {
   };
 
   const resetForm = () => {
-    setFormData({ name: '', email: '', quantity: '', phone: '', address: '' });
+    setFormData({ name: '', email: '', quantity: 1, phone: '', address: '' });
   };
 
   return { formData, errors, successMessage, handleChange, handleSubmit, resetForm };
