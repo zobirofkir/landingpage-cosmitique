@@ -7,7 +7,7 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
   const { isSubmitting, handleFormSubmit } = useFormHandler(handleSubmit);
 
   const basePrice = 170;
-  const quantity = Math.max(0, parseInt(formData.quantity || 0));
+  const quantity = Math.max(1, parseInt(formData.quantity || 1));
   const finalPrice = quantity * basePrice;
 
   const handleQuantityChange = (delta) => {
