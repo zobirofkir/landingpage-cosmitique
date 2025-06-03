@@ -1,52 +1,52 @@
 import { motion } from 'framer-motion';
 import {
-  ShieldCheck,
-  Globe,
-  Flashlight,
-  Ruler,
-  UploadCloud,
-  CircleDot
+  Sun,             
+  Droplet,         
+  Hourglass,       
+  Feather,         
+  Umbrella,         
+  UserCircle      
 } from 'lucide-react';
 
 const FeatureProductComponent = () => {
   const features = [
     {
-      icon: ShieldCheck,
+      icon: Sun,
       title: "Protection SPF50+",
       description: "Offre une protection solaire optimale pour votre peau.",
       arabicTitle: "حماية SPF50+",
       arabicDescription: "يوفر حماية مثالية لبشرتك من أشعة الشمس.",
     },
     {
-      icon: Globe,
+      icon: Droplet,
       title: "Hydratation Intense",
       description: "Garde votre peau douce et hydratée toute la journée.",
       arabicTitle: "ترطيب مكثف",
       arabicDescription: "يحافظ على بشرتك ناعمة ورطبة طوال اليوم.",
     },
     {
-      icon: Flashlight,
+      icon: Hourglass,
       title: "Formule Anti-âge",
       description: "Réduit les signes de vieillissement et améliore l’éclat.",
       arabicTitle: "صيغة مضادة للتجاعيد",
       arabicDescription: "يقلل من علامات الشيخوخة ويحسن الإشراق.",
     },
     {
-      icon: Ruler,
+      icon: Feather,
       title: "Texture Légère",
       description: "S'absorbe rapidement sans laisser de résidu gras.",
       arabicTitle: "ملمس خفيف",
       arabicDescription: "يمتص بسرعة دون ترك أي بقايا دهنية.",
     },
     {
-      icon: UploadCloud,
+      icon: Umbrella,
       title: "Résistance à l'eau",
       description: "Idéal pour les activités en extérieur et les baignades.",
       arabicTitle: "مقاومة للماء",
       arabicDescription: "مثالي للأنشطة الخارجية والسباحة.",
     },
     {
-      icon: CircleDot,
+      icon: UserCircle,
       title: "Convient à tous types de peau",
       description: "Formulé pour être doux et efficace sur toutes les peaux.",
       arabicTitle: "مناسب لجميع أنواع البشرة",
