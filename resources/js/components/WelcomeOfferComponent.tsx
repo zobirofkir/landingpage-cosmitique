@@ -5,13 +5,10 @@ const WelcomeOfferComponent = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Check if user has visited before
     const hasVisited = localStorage.getItem('hasVisitedBefore');
     
     if (!hasVisited) {
-      // Show welcome offer for first-time visitors
       setIsVisible(true);
-      // Set flag in localStorage
       localStorage.setItem('hasVisitedBefore', 'true');
     }
   }, []);
@@ -21,12 +18,10 @@ const WelcomeOfferComponent = () => {
   };
 
   const handleClaim = () => {
-    // Copy promo code to clipboard
     navigator.clipboard.writeText('BIENVENUE20').catch(err => {
       console.error('Failed to copy code: ', err);
     });
     
-    // Close the offer
     closeOffer();
   };
 
@@ -36,7 +31,7 @@ const WelcomeOfferComponent = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.div 
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-70"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -106,8 +101,8 @@ const WelcomeOfferComponent = () => {
               >
                 <p className="mb-3">Pour célébrer votre première visite:</p>
                 <div className="bg-white bg-opacity-20 rounded-lg p-4 mb-4">
-                  <p className="text-2xl font-bold text-white">-20% sur votre première commande</p>
-                  <p className="text-lg mt-2">Code: <span className="font-mono bg-white bg-opacity-30 px-2 py-1 rounded text-white">BIENVENUE20</span></p>
+                  <p className="text-2xl font-bold text-black">-20% sur votre première commande</p>
+                  <p className="text-lg mt-2 text-orange-400">Code: <span className="font-mono bg-white bg-opacity-30 px-2 py-1 rounded text-orange-400">BIENVENUE20</span></p>
                 </div>
                 <p className="text-sm">Offre valable pour toute commande supérieure à 50 MAD</p>
               </motion.div>
