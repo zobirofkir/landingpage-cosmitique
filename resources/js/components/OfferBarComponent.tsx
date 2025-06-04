@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const OfferBarComponent = () => {
-  const offerText = "🎉 Offre : -25% sur le produit Liderm ! 🚚 Livraison gratuite - Offre limitée ⏰";
+  const offerText = "🎉 -33% + 20%  Jusqu’à -47% OFF Prix initial : 268,50 DH → 179 DH → 143,20 DH ! 🚚 Livraison gratuite - Offre limitée ⏰";
 
   return (
     <div className="relative overflow-hidden bg-gradient-to-r from-orange-500 to-red-500 text-white py-2 shadow-lg">
