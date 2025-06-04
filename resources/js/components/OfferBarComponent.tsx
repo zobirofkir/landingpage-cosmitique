@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const OfferBarComponent = () => {
-  const offerText = "🎉 Jusqu’à -47% OFF : 268,50 DH → 143,20 DH ! 🚚 Livraison gratuite ⏰ Offre limitée";
+  const offerText = "Offre De Lancement 🎉 Livraison gratuite ⏰ Offre limitée";
 
   return (
     <div className="relative overflow-hidden bg-gradient-to-r from-orange-500 to-red-500 text-white py-2 shadow-lg">

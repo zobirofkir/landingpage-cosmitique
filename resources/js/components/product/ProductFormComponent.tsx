@@ -6,7 +6,7 @@ import useFormHandler from '../../hooks/useFormHandler';
 const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) => {
   const { isSubmitting, handleFormSubmit } = useFormHandler(handleSubmit);
 
-  const basePrice = 170;
+  const basePrice = 143.20;
   const quantity = Math.max(1, parseInt(formData.quantity || 1));
   const finalPrice = quantity * basePrice;
 
