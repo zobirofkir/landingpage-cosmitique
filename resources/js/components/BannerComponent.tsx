@@ -18,10 +18,10 @@ const BannerComponent = () => {
               className="flex items-center gap-6 text-sm sm:text-base text-orange-700 dark:text-orange-300"
             >
               <div className="flex flex-row gap-2 items-center">
-                <span className="line-through text-gray-500 dark:text-gray-400 text-xs sm:text-sm">
+                <span className="line-through text-orange-500 dark:text-orange-400 text-xs sm:text-sm">
                   {item.originalPrice}
                 </span>
-                <span className="font-bold text-lg sm:text-xl">{item.discountedPrice}</span>
+                <span className="font-bold text-lg sm:text-xl text-red-600 dark:text-red-400">{item.discountedPrice}</span>
               </div>
             </div>
           ))}
@@ -32,10 +32,10 @@ const BannerComponent = () => {
               className="flex items-center gap-6 text-sm sm:text-base text-orange-700 dark:text-orange-300"
             >
               <div className="flex flex-row gap-2 items-center">
-                <span className="line-through text-gray-500 dark:text-gray-400 text-xs sm:text-sm">
+                <span className="line-through text-orange-500 dark:text-orange-400 text-xs sm:text-sm">
                   {item.originalPrice}
                 </span>
-                <span className="font-bold text-lg sm:text-xl">{item.discountedPrice}</span>
+                <span className="font-bold text-lg sm:text-xl text-red-600 dark:text-red-400">{item.discountedPrice}</span>
               </div>
             </div>
           ))}

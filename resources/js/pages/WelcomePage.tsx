@@ -21,7 +21,7 @@ const WelcomePage = () => {
     <section className="relative overflow-hidden">
       {/* <RandomStars /> */}
       <Head title="Accueil" />
-      <WelcomeOfferComponent />
+      {/* <WelcomeOfferComponent /> */}
       <SliderComponent />
       <BannerComponent />
       <AboutComponent />
