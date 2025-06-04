@@ -12,7 +12,7 @@ const SocialMediaIcons = () => {
       style={{ zIndex: 800 }}
     >
       <a
-        href="https://wa.me/your-number"
+        href="https://wa.me/+212660316858"
         target="_blank"
         rel="noopener noreferrer"
         className="p-4 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition flex items-center justify-center"
