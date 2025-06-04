@@ -20,6 +20,16 @@ const WelcomeOfferComponent = () => {
     setIsVisible(false);
   };
 
+  const handleClaim = () => {
+    // Copy promo code to clipboard
+    navigator.clipboard.writeText('BIENVENUE20').catch(err => {
+      console.error('Failed to copy code: ', err);
+    });
+    
+    // Close the offer
+    closeOffer();
+  };
+
   const emojis = ['✨', '🎁', '💫', '🌟', '💝', '🎉', '💎', '🔥', '⭐', '🌈'];
 
   return (
@@ -32,7 +42,7 @@ const WelcomeOfferComponent = () => {
           exit={{ opacity: 0 }}
         >
           <motion.div 
-            className="relative max-w-md w-full mx-4 bg-gradient-to-br from-purple-600 to-pink-500 rounded-xl shadow-2xl overflow-hidden"
+            className="relative max-w-md w-full mx-4 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl shadow-2xl overflow-hidden"
             initial={{ scale: 0.8, y: 50 }}
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.8, opacity: 0 }}
@@ -99,12 +109,12 @@ const WelcomeOfferComponent = () => {
                   <p className="text-2xl font-bold text-white">-20% sur votre première commande</p>
                   <p className="text-lg mt-2">Code: <span className="font-mono bg-white bg-opacity-30 px-2 py-1 rounded text-white">BIENVENUE20</span></p>
                 </div>
-                <p className="text-sm">Offre valable pour toute commande supérieure à 50€</p>
+                <p className="text-sm">Offre valable pour toute commande supérieure à 50 MAD</p>
               </motion.div>
               
               <motion.button
-                className="w-full py-3 px-6 bg-white text-purple-600 font-bold rounded-lg shadow-lg hover:bg-opacity-90 transition-all"
-                onClick={closeOffer}
+                className="w-full py-3 px-6 bg-white text-orange-600 font-bold rounded-lg shadow-lg hover:bg-opacity-90 transition-all"
+                onClick={handleClaim}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
                 initial={{ y: 20, opacity: 0 }}
@@ -117,6 +127,7 @@ const WelcomeOfferComponent = () => {
               <button 
                 onClick={closeOffer}
                 className="absolute top-4 right-4 text-white text-opacity-80 hover:text-opacity-100"
+                aria-label="Fermer"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
