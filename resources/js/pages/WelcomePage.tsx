@@ -14,12 +14,14 @@ import ContactComponent from '@/components/contact/ContactComponent'
 import RandomStars from '@/components/RandomStarsComponent'
 import SocialMediaIcons from '@/components/SocialMediaIconsComponent'
 import SubmitButton from '@/components/SubmitButtonComponent'
+import WelcomeOfferComponent from '@/components/WelcomeOfferComponent'
 
 const WelcomePage = () => {
   return (
     <section className="relative overflow-hidden">
       {/* <RandomStars /> */}
       <Head title="Accueil" />
+      <WelcomeOfferComponent />
       <SliderComponent />
       <BannerComponent />
       <AboutComponent />
