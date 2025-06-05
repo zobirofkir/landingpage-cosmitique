@@ -50,7 +50,7 @@ const ContactComponent = () => {
             <span className="font-bold text-orange-600">Email:</span> contact@lidermcosmetique.com
           </p>
           <p className="text-gray-600 dark:text-gray-300 text-lg">
-            <span className="font-bold text-orange-600">Téléphone:</span> +212 6 00 00 00 00
+            <span className="font-bold text-orange-600">Téléphone:</span> +212 6 60 31 68 58
           </p>
         </motion.div>
       </div>
