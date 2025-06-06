@@ -24,7 +24,7 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
     }
   };
 
-  const discountedPrice = basePrice * 0.53; // 47% discount
+  const discountedPrice = basePrice * 0.53;
   const finalPrice = quantity * (discountApplied ? discountedPrice : basePrice);
 
   const formFields = [
