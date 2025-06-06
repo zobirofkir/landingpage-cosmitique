@@ -71,9 +71,12 @@ const FooterComponent = () => {
         {/* Copyright Section */}
         <div className="mt-8 text-center border-t border-gray-300 dark:border-gray-700 pt-4">
           <p className="text-gray-600 dark:text-gray-300">
-            &copy; {new Date().getFullYear()} Liderm. Tous droits réservés.
+            &copy; {new Date().getFullYear()} Liderm. Tous droits réservés. <br />
+            Par NL DIGITAL AGENCY
           </p>
         </div>
+
+
       </div>
     </footer>
   );
