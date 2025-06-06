@@ -1,15 +1,27 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { HiUser, HiMail, HiPhone, HiShoppingCart, HiLocationMarker } from 'react-icons/hi';
+import {
+  HiUser,
+  HiMail,
+  HiPhone,
+  HiShoppingCart,
+  HiLocationMarker,
+  HiCheckCircle,
+} from 'react-icons/hi';
 import useFormHandler from '../../hooks/useFormHandler';
 
 const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) => {
   const { isSubmitting, handleFormSubmit } = useFormHandler(handleSubmit);
 
-  const basePrice = 143.20;
-  const quantity = Math.max(1, parseInt(formData.quantity || 1));
+  const BASE_PRICE = 143.2;
+  const DISCOUNT_RATE = 0.47;
+  const VALID_PROMO = 'LIDERMCOSMETIQUE20';
+
   const [promoCode, setPromoCode] = useState('');
   const [discountApplied, setDiscountApplied] = useState(false);
+  const [promoError, setPromoError] = useState('');
+
+  const quantity = Math.max(1, parseInt(formData.quantity || 1));
 
   const handleQuantityChange = (delta) => {
     const newQuantity = Math.max(1, quantity + delta);
@@ -17,15 +29,21 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
   };
 
   const applyPromoCode = () => {
-    if (promoCode.trim().toLowerCase() === 'LIDERMCOSMETIQUE20') {
+    const code = promoCode.trim().toUpperCase();
+    if (code === VALID_PROMO) {
       setDiscountApplied(true);
+      setPromoError('');
     } else {
-      alert('Code promo invalide');
+      setDiscountApplied(false);
+      setPromoError('❌ Code promo invalide');
     }
   };
 
-  const discountedPrice = basePrice * 0.53;
-  const finalPrice = quantity * (discountApplied ? discountedPrice : basePrice);
+  const finalUnitPrice = discountApplied
+    ? BASE_PRICE * (1 - DISCOUNT_RATE)
+    : BASE_PRICE;
+
+  const finalPrice = (finalUnitPrice * quantity).toFixed(2);
 
   const formFields = [
     {
@@ -66,7 +84,7 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
         Commandez votre produit
       </h3>
 
-      {/* Quantité Section */}
+      {/* Quantité */}
       <div className="text-center">
         <p className="font-semibold text-lg mb-2">Quantité</p>
         <div className="flex justify-center items-center gap-3">
@@ -102,7 +120,7 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
         </div>
       </div>
 
-      {/* Promo Code Section */}
+      {/* Promo Code */}
       <div className="text-center space-y-2">
         <p className="font-semibold text-lg">Code Promo</p>
         <div className="flex justify-center gap-2">
@@ -122,8 +140,12 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
           </button>
         </div>
         {discountApplied && (
-          <p className="text-green-600 font-medium">✅ Code promo appliqué: -47%</p>
+          <p className="text-green-600 font-medium flex items-center justify-center gap-1">
+            <HiCheckCircle className="text-green-500 w-5 h-5" />
+            Code promo appliqué: -47%
+          </p>
         )}
+        {promoError && <p className="text-red-500 font-medium">{promoError}</p>}
       </div>
 
       {/* Formulaire */}
@@ -159,12 +181,12 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
 
         <motion.button
           type="submit"
-          whileHover={{ scale: 1.1, rotate: 2 }}
-          animate={{ y: [0, -6, 0] }}
+          whileHover={{ scale: 1.05 }}
+          animate={{ y: [0, -3, 0] }}
           transition={{
             repeat: Infinity,
             repeatType: 'loop',
-            duration: 2,
+            duration: 2.5,
             ease: 'easeInOut',
           }}
           disabled={isSubmitting}
@@ -177,7 +199,7 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
           ) : (
             <>
               <HiShoppingCart className="w-5 h-5" />
-              ACHETEZ - {finalPrice.toFixed(2)} dh - اشتري الآن
+              ACHETEZ - {finalPrice} dh - اشتري الآن
             </>
           )}
         </motion.button>
