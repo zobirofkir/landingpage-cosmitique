@@ -17,7 +17,7 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
   };
 
   const applyPromoCode = () => {
-    if (promoCode.trim().toLowerCase() === 'lidermcosmetique20') {
+    if (promoCode.trim().toLowerCase() === 'LIDERMCOSMETIQUE20') {
       setDiscountApplied(true);
     } else {
       alert('Code promo invalide');
