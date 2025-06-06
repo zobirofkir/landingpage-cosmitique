@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { HiUser, HiMail, HiPhone, HiShoppingCart, HiLocationMarker } from 'react-icons/hi';
 import useFormHandler from '../../hooks/useFormHandler';
@@ -8,12 +8,24 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
 
   const basePrice = 143.20;
   const quantity = Math.max(1, parseInt(formData.quantity || 1));
-  const finalPrice = quantity * basePrice;
+  const [promoCode, setPromoCode] = useState('');
+  const [discountApplied, setDiscountApplied] = useState(false);
 
   const handleQuantityChange = (delta) => {
-    const newQuantity = Math.max(0, quantity + delta);
+    const newQuantity = Math.max(1, quantity + delta);
     handleChange({ target: { name: 'quantity', value: newQuantity } });
   };
+
+  const applyPromoCode = () => {
+    if (promoCode.trim().toLowerCase() === 'lidermcosmetique20') {
+      setDiscountApplied(true);
+    } else {
+      alert('Code promo invalide');
+    }
+  };
+
+  const discountedPrice = basePrice * 0.53; // 47% discount
+  const finalPrice = quantity * (discountApplied ? discountedPrice : basePrice);
 
   const formFields = [
     {
@@ -27,7 +39,7 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
       icon: <HiMail className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
       placeholder: 'Email (facultatif)',
       type: 'email',
-    },    
+    },
     {
       name: 'phone',
       icon: <HiPhone className="w-5 h-5 text-orange-600 dark:text-orange-400" />,
@@ -90,6 +102,30 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
         </div>
       </div>
 
+      {/* Promo Code Section */}
+      <div className="text-center space-y-2">
+        <p className="font-semibold text-lg">Code Promo</p>
+        <div className="flex justify-center gap-2">
+          <input
+            type="text"
+            value={promoCode}
+            onChange={(e) => setPromoCode(e.target.value)}
+            placeholder="Entrez le code promo"
+            className="w-52 px-4 py-2 rounded-lg border border-orange-300 dark:border-orange-500 bg-white dark:bg-zinc-800 text-gray-900 dark:text-white"
+          />
+          <button
+            type="button"
+            onClick={applyPromoCode}
+            className="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-semibold transition"
+          >
+            Appliquer
+          </button>
+        </div>
+        {discountApplied && (
+          <p className="text-green-600 font-medium">✅ Code promo appliqué: -47%</p>
+        )}
+      </div>
+
       {/* Formulaire */}
       <form
         onSubmit={handleFormSubmit}
@@ -141,7 +177,7 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
           ) : (
             <>
               <HiShoppingCart className="w-5 h-5" />
-              ACHETEZ - {finalPrice} dh - اشتري الآن
+              ACHETEZ - {finalPrice.toFixed(2)} dh - اشتري الآن
             </>
           )}
         </motion.button>
