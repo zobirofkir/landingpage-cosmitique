@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('quantity');
             $table->string('phone');
             $table->longText('address');
+            $table->string('promo_code')->nullable();
             $table->timestamps();
         });
     }

@@ -27,6 +27,7 @@ class ProductRequest extends FormRequest
             'quantity' => 'required|integer|min:1',
             'phone' => 'required|string|max:15',
             'address' => 'required|string|max:500',
+            'promo_code' => 'nullable|string|max:255',
         ];
     }
 
