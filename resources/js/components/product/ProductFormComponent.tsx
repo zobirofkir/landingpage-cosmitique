@@ -13,8 +13,8 @@ import useFormHandler from '../../hooks/useFormHandler';
 const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) => {
   const { isSubmitting, handleFormSubmit } = useFormHandler(handleSubmit);
 
-  const BASE_PRICE = 268.50;
-  const DISCOUNT_RATE = 0.35;
+  const BASE_PRICE = 179.89;
+  const DISCOUNT_RATE = 0.20;
   const VALID_PROMO = 'LIDERM20';
 
   const [promoCode, setPromoCode] = useState('');
