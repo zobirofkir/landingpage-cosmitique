@@ -42,7 +42,7 @@
         <p><strong>Téléphone :</strong> {{ $product->phone }}</p>
         <p><strong>Adresse :</strong> {{ $product->address }}</p>
         <p><strong>Promo Code :</strong> {{ $product->promo_code }}</p>        
-        <p><strong>Prix Total :</strong> {{ $product->price }}</p>        
+        <p><strong>Prix Total :</strong> {{ $product->price }} DH</p>        
     </div>
 </body>
 </html>
