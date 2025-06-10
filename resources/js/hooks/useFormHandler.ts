@@ -6,8 +6,13 @@ const useFormHandler = (handleSubmit) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     setIsSubmitting(true);
-    await handleSubmit(event);
-    setIsSubmitting(false);
+    try {
+      await handleSubmit(event);
+    } catch (error) {
+      console.error("Form submission error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return { isSubmitting, handleFormSubmit };
