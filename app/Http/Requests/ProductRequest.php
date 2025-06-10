@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Validation\ValidationException;
 
 class ProductRequest extends FormRequest
 {
@@ -32,6 +34,21 @@ class ProductRequest extends FormRequest
     }
 
     /**
+     * Add Only LIDERMCOSMETIQUE20 promo code
+     */
+    public function prepareForValidation()
+    {
+        $promo = $this->input('promo_code');
+        $validPromo = 'LIDERMCOSMETIQUE20';
+
+        if ($promo && strtoupper($promo) !== $validPromo) {
+            $this->merge([
+                'promo_code' => null,
+            ]);
+        }
+    }
+
+    /**
      * Get the validation messages that apply to the request.
      *
      * @return array<string, string>
@@ -57,6 +74,9 @@ class ProductRequest extends FormRequest
             'address.required' => 'L\'adresse est obligatoire.',
             'address.string' => 'L\'adresse doit être une chaîne de caractères.',
             'address.max' => 'L\'adresse ne doit pas dépasser 500 caractères.',
+            'promo_code.string' => 'Le code promo doit être une chaîne de caractères.',
+            'promo_code.max' => 'Le code promo ne doit pas dépasser 255 caractères.',
+
 
             /**
              * Arabic messages
