@@ -34,7 +34,7 @@ const ProductComponent = () => {
       <div className="text-center mt-8">
         <p className="text-lg md:text-xl font-medium text-gray-700 dark:text-gray-300 flex justify-center gap-4">
           <span className="line-through text-gray-400">268,50</span>
-          <span className="text-orange-600 font-bold text-xl md:text-2xl">174 DH</span>
+          <span className="text-orange-600 font-bold text-xl md:text-2xl">179.89 DH</span>
           <p className="text-4xl animate-bounce">{emoji}</p>
         </p>
       </div>

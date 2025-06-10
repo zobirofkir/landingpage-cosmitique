@@ -123,7 +123,7 @@ const AboutComponent: React.FC<AboutProps> = ({ className }) => {
             <div className="mt-12 text-center">
               <p className="text-gray-600 dark:text-gray-300 text-lg mb-2">
                 <span className="line-through text-gray-400">268,50</span>
-                <span className="text-orange-600 font-bold text-xl ml-2">174 DH</span>
+                <span className="text-orange-600 font-bold text-xl ml-2">179.89 DH</span>
               </p>
               <p className="text-gray-500 dark:text-gray-400 text-sm">
                 Profitez de cette offre exceptionnelle dès maintenant !
