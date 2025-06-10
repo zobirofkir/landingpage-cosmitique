@@ -8,6 +8,7 @@ const useForm = () => {
     quantity: 1,
     phone: '',
     address: '',
+    price: ''
   });
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState('');

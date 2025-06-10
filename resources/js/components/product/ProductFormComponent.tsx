@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   HiUser,
@@ -72,6 +72,15 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
     },
   ];
 
+  useEffect(() => {
+    handleChange({
+      target: {
+        name: 'price',
+        value: finalPrice,
+      },
+    });
+  }, [finalPrice]);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -125,6 +134,14 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
         onSubmit={handleFormSubmit}
         className="space-y-5 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-zinc-800 dark:to-zinc-900 p-6 rounded-2xl shadow-lg border border-orange-300 dark:border-zinc-700"
       >
+
+      {
+        /**
+         * Final Price
+         */
+      }
+      <input type="hidden" name="price" value={formData.price} />
+
         {/* Promo Code */}
         <div className="text-center space-y-2">
           <div className="flex justify-center gap-2">
