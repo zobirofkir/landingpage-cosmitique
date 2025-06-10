@@ -167,7 +167,7 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
           {discountApplied && (
             <p className="text-green-600 font-medium flex items-center justify-center gap-1">
               <HiCheckCircle className="text-green-500 w-5 h-5" />
-              Code promo appliqué: -33%
+              Code promo appliqué: -20%
             </p>
           )}
           {promoError && <p className="text-red-500 font-medium">{promoError}</p>}
