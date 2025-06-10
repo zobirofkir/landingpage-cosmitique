@@ -13,9 +13,9 @@ import useFormHandler from '../../hooks/useFormHandler';
 const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) => {
   const { isSubmitting, handleFormSubmit } = useFormHandler(handleSubmit);
 
-  const BASE_PRICE = 143.2;
-  const DISCOUNT_RATE = 0.47;
-  const VALID_PROMO = 'LIDERMCOSMETIQUE20';
+  const BASE_PRICE = 268.50;
+  const DISCOUNT_RATE = 0.35;
+  const VALID_PROMO = 'LIDERM20';
 
   const [promoCode, setPromoCode] = useState('');
   const [discountApplied, setDiscountApplied] = useState(false);
@@ -134,29 +134,27 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
         onSubmit={handleFormSubmit}
         className="space-y-5 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-zinc-800 dark:to-zinc-900 p-6 rounded-2xl shadow-lg border border-orange-300 dark:border-zinc-700"
       >
-
-      {
-        /**
-         * Final Price
-         */
-      }
-      <input type="hidden" name="price" value={formData.price} />
+        {
+          /**
+           * Final Price
+           */
+        }
+        <input type="hidden" name="price" value={formData.price} />
 
         {/* Promo Code */}
         <div className="text-center space-y-2">
           <div className="flex justify-center gap-2">
-
-          <input
-            type="text"
-            name="promo_code"
-            value={formData.promo_code || ''}
-            onChange={(e) => {
-              handleChange(e);
-              setPromoCode(e.target.value);
-            }}
-            placeholder="Entrez le code promo"
-            className="w-52 px-4 py-2 rounded-lg border border-orange-300 dark:border-orange-500 bg-white dark:bg-zinc-800 text-gray-900 dark:text-white"
-          />
+            <input
+              type="text"
+              name="promo_code"
+              value={formData.promo_code || ''}
+              onChange={(e) => {
+                handleChange(e);
+                setPromoCode(e.target.value);
+              }}
+              placeholder="Entrez le code promo"
+              className="w-52 px-4 py-2 rounded-lg border border-orange-300 dark:border-orange-500 bg-white dark:bg-zinc-800 text-gray-900 dark:text-white"
+            />
 
             <button
               type="button"
@@ -169,7 +167,7 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
           {discountApplied && (
             <p className="text-green-600 font-medium flex items-center justify-center gap-1">
               <HiCheckCircle className="text-green-500 w-5 h-5" />
-              Code promo appliqué: -47%
+              Code promo appliqué: -33%
             </p>
           )}
           {promoError && <p className="text-red-500 font-medium">{promoError}</p>}

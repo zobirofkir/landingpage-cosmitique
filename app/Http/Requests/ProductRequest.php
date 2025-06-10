@@ -40,7 +40,7 @@ class ProductRequest extends FormRequest
     public function prepareForValidation()
     {
         $promo = $this->input('promo_code');
-        $validPromo = 'LIDERMCOSMETIQUE20';
+        $validPromo = 'LIDERM20';
 
         if ($promo && strtoupper($promo) !== $validPromo) {
             $this->merge([
