@@ -30,6 +30,7 @@ class ProductRequest extends FormRequest
             'phone' => 'required|string|max:15',
             'address' => 'required|string|max:500',
             'promo_code' => 'nullable|string|max:255',
+            'price' => 'required|numeric|min:0',
         ];
     }
 
