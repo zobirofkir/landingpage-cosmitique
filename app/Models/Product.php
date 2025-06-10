@@ -12,6 +12,7 @@ class Product extends Model
         'quantity', 
         'phone', 
         'address',
-        'promo_code'
+        'promo_code',
+        'price'
     ];
 }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->integer('quantity');
             $table->string('phone');
+            $table->string('price');
             $table->longText('address');
             $table->string('promo_code')->nullable();
             $table->timestamps();
