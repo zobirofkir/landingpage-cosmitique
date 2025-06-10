@@ -41,6 +41,7 @@
         <p><strong>Quantité :</strong> {{ $product->quantity }}</p>
         <p><strong>Téléphone :</strong> {{ $product->phone }}</p>
         <p><strong>Adresse :</strong> {{ $product->address }}</p>
+        <p><strong>Promo Code :</strong> {{ $product->promo_code }}</p>        
     </div>
 </body>
 </html>
