@@ -16,7 +16,7 @@ class ContactController extends Controller
          * Send email
          */
         Mail::raw("Name: {$contact->name}\nEmail: {$contact->email}\nMessage: {$contact->message}", function ($message) {
-            $message->to('zobirofkir19@gmail.com')
+            $message->to('contact@lidermcosmetique.com')
                     ->subject('Nouvelle soumission de contact');
         });
 
