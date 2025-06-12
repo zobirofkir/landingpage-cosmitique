@@ -15,7 +15,8 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
 
   const BASE_PRICE = 179.89;
   const DISCOUNT_RATE = 0.20;
-  const VALID_PROMO = 'LIDERM20';
+
+  const VALID_PROMOS = ['liderm20', 'jihad20', 'soukaina20', 'nouhaila20'];
 
   const [promoCode, setPromoCode] = useState('');
   const [discountApplied, setDiscountApplied] = useState(false);
@@ -29,8 +30,8 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
   };
 
   const applyPromoCode = () => {
-    const code = promoCode.trim().toUpperCase();
-    if (code === VALID_PROMO) {
+    const code = promoCode.trim().toLowerCase(); 
+    if (VALID_PROMOS.includes(code)) {
       setDiscountApplied(true);
       setPromoError('');
     } else {
@@ -134,11 +135,6 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
         onSubmit={handleFormSubmit}
         className="space-y-5 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-zinc-800 dark:to-zinc-900 p-6 rounded-2xl shadow-lg border border-orange-300 dark:border-zinc-700"
       >
-        {
-          /**
-           * Final Price
-           */
-        }
         <input type="hidden" name="price" value={formData.price} />
 
         {/* Promo Code */}
