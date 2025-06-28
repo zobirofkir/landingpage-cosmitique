@@ -63,7 +63,7 @@ class ProductResource extends Resource
                         TextInput::make('price')
                             ->label('Prix')
                             ->numeric()
-                            ->prefix('€')
+                            ->prefix('MAD')
                             ->required(),
                         TextInput::make('promo_code')
                             ->label('Code promo')
