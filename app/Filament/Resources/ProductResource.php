@@ -18,6 +18,7 @@ use Filament\Tables\Filters\Filter;
 use Filament\Infolists\Infolist;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Components\Grid as InfoGrid;
+use Filament\Infolists\Components\Section;
 use Illuminate\Database\Eloquent\Builder;
 
 class ProductResource extends Resource
@@ -149,28 +150,57 @@ class ProductResource extends Resource
     {
         return $infolist
             ->schema([
-                InfoGrid::make(2)
+                Section::make('Informations du client')
                     ->schema([
-                        TextEntry::make('name')
-                            ->label('Nom du produit'),
-                        TextEntry::make('email')
-                            ->label('Email du client'),
-                        TextEntry::make('phone')
-                            ->label('Téléphone'),
-                        TextEntry::make('address')
-                            ->label('Adresse')
-                            ->columnSpan(2),
-                        TextEntry::make('quantity')
-                            ->label('Quantité'),
-                        TextEntry::make('price')
-                            ->label('Prix')
-                            ->money('eur', true),
-                        TextEntry::make('promo_code')
-                            ->label('Code promo'),
-                        TextEntry::make('created_at')
-                            ->label('Créé le')
-                            ->dateTime('d M Y H:i'),
-                    ]),
+                        InfoGrid::make(2)
+                            ->schema([
+                                TextEntry::make('email')
+                                    ->label('Email du client')
+                                    ->columnSpan(1)
+                                    ->weight('bold')
+                                    ->color('primary'),
+                                TextEntry::make('phone')
+                                    ->label('Téléphone')
+                                    ->columnSpan(1),
+                                TextEntry::make('address')
+                                    ->label('Adresse')
+                                    ->columnSpan(2)
+                                    ->icon('heroicon-o-map-pin'),
+                            ]),
+                    ])
+                    ->columns(1)
+                    ->collapsible(),
+
+                Section::make('Informations de la commande')
+                    ->schema([
+                        InfoGrid::make(2)
+                            ->schema([
+                                TextEntry::make('name')
+                                    ->label('Nom du produit')
+                                    ->columnSpan(2)
+                                    ->weight('bold')
+                                    ->color('success'),
+                                TextEntry::make('quantity')
+                                    ->label('Quantité')
+                                    ->columnSpan(1),
+                                TextEntry::make('price')
+                                    ->label('Prix')
+                                    ->money('eur', true)
+                                    ->columnSpan(1)
+                                    ->color('warning'),
+                                TextEntry::make('promo_code')
+                                    ->label('Code promo')
+                                    ->columnSpan(2)
+                                    ->color('info'),
+                                TextEntry::make('created_at')
+                                    ->label('Créé le')
+                                    ->dateTime('d M Y H:i')
+                                    ->columnSpan(2)
+                                    ->color('gray'),
+                            ]),
+                    ])
+                    ->columns(1)
+                    ->collapsible(),
             ]);
     }
 
