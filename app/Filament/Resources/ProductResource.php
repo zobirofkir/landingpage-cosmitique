@@ -15,6 +15,9 @@ use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Filters\Filter;
+use Filament\Infolists\Infolist;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Components\Grid as InfoGrid;
 use Illuminate\Database\Eloquent\Builder;
 
 class ProductResource extends Resource
@@ -142,6 +145,35 @@ class ProductResource extends Resource
             ->defaultSort('created_at', 'desc');
     }
 
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                InfoGrid::make(2)
+                    ->schema([
+                        TextEntry::make('name')
+                            ->label('Nom du produit'),
+                        TextEntry::make('email')
+                            ->label('Email du client'),
+                        TextEntry::make('phone')
+                            ->label('Téléphone'),
+                        TextEntry::make('address')
+                            ->label('Adresse')
+                            ->columnSpan(2),
+                        TextEntry::make('quantity')
+                            ->label('Quantité'),
+                        TextEntry::make('price')
+                            ->label('Prix')
+                            ->money('eur', true),
+                        TextEntry::make('promo_code')
+                            ->label('Code promo'),
+                        TextEntry::make('created_at')
+                            ->label('Créé le')
+                            ->dateTime('d M Y H:i'),
+                    ]),
+            ]);
+    }
+
     public static function getRelations(): array
     {
         return [
@@ -153,8 +185,7 @@ class ProductResource extends Resource
     {
         return [
             'index' => Pages\ListProducts::route('/'),
-            'create' => Pages\CreateProduct::route('/create'),
-            'edit' => Pages\EditProduct::route('/{record}/edit'),
+            'create' => Pages\CreateProduct::route('/create')
         ];
     }
 }
