@@ -22,10 +22,10 @@ class ProductResource extends Resource
     protected static ?string $model = Product::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationLabel = 'Products';
-    protected static ?string $navigationGroup = 'Shop';
-    protected static ?string $modelLabel = 'Product';
-    protected static ?string $pluralModelLabel = 'Products';
+    protected static ?string $navigationLabel = 'Produits';
+    protected static ?string $navigationGroup = 'Boutique';
+    protected static ?string $modelLabel = 'Produit';
+    protected static ?string $pluralModelLabel = 'Produits';
 
     public static function form(Form $form): Form
     {
@@ -34,36 +34,36 @@ class ProductResource extends Resource
                 Grid::make(2)
                     ->schema([
                         TextInput::make('name')
-                            ->label('Product Name')
+                            ->label('Nom du produit')
                             ->required()
                             ->maxLength(255)
                             ->columnSpan(2),
                         TextInput::make('email')
-                            ->label('Customer Email')
+                            ->label('Email du client')
                             ->email()
                             ->required()
                             ->maxLength(255),
                         TextInput::make('phone')
-                            ->label('Phone')
+                            ->label('Téléphone')
                             ->tel()
                             ->maxLength(20),
                         TextInput::make('address')
-                            ->label('Address')
+                            ->label('Adresse')
                             ->maxLength(255)
                             ->columnSpan(2),
                         TextInput::make('quantity')
-                            ->label('Quantity')
+                            ->label('Quantité')
                             ->numeric()
                             ->minValue(1)
                             ->default(1)
                             ->required(),
                         TextInput::make('price')
-                            ->label('Price')
+                            ->label('Prix')
                             ->numeric()
                             ->prefix('€')
                             ->required(),
                         TextInput::make('promo_code')
-                            ->label('Promo Code')
+                            ->label('Code promo')
                             ->maxLength(50),
                     ]),
             ]);
@@ -74,51 +74,69 @@ class ProductResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id')
+                    ->label('ID')
                     ->sortable()
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('name')
-                    ->label('Product Name')
+                    ->label('Nom du produit')
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('email')
-                    ->label('Customer Email')
+                    ->label('Email du client')
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('phone')
-                    ->label('Phone')
+                    ->label('Téléphone')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('address')
-                    ->label('Address')
+                    ->label('Adresse')
                     ->limit(30)
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('quantity')
+                    ->label('Quantité')
                     ->sortable(),
                 TextColumn::make('price')
+                    ->label('Prix')
                     ->money('eur', true)
                     ->sortable(),
                 BadgeColumn::make('promo_code')
-                    ->label('Promo Code')
+                    ->label('Code promo')
                     ->colors(['primary']),
                 TextColumn::make('created_at')
-                    ->label('Created')
+                    ->label('Créé le')
                     ->dateTime('d M Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 Filter::make('promo_code')
+                    ->label('Avec code promo')
                     ->query(fn (Builder $query): Builder => $query->whereNotNull('promo_code')),
+                Filter::make('promo_code_value')
+                    ->label('Filtrer par code promo')
+                    ->form([
+                        TextInput::make('promo_code')
+                            ->label('Code promo'),
+                    ])
+                    ->query(function (Builder $query, array $data): Builder {
+                        if (!empty($data['promo_code'])) {
+                            return $query->where('promo_code', $data['promo_code']);
+                        }
+                        return $query;
+                    }),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ViewAction::make()
+                    ->label('Voir'),
+                Tables\Actions\DeleteAction::make()
+                    ->label('Supprimer'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()
+                        ->label('Supprimer la sélection'),
                 ]),
             ])
             ->defaultSort('created_at', 'desc');
