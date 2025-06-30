@@ -18,8 +18,8 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
 
   const VALID_PROMOS = ['liderm20', 'jihad20', 'soukaina20', 'nouhaila20'];
 
-  const [promoCode, setPromoCode] = useState('');
-  const [discountApplied, setDiscountApplied] = useState(false);
+  const [promoCode, setPromoCode] = useState('liderm20');
+  const [discountApplied, setDiscountApplied] = useState(true);
   const [promoError, setPromoError] = useState('');
 
   const quantity = Math.max(1, parseInt(formData.quantity || 1));
@@ -143,7 +143,7 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
             <input
               type="text"
               name="promo_code"
-              value={formData.promo_code || ''}
+              value={formData.promo_code || 'liderm20'}
               onChange={(e) => {
                 handleChange(e);
                 setPromoCode(e.target.value);
