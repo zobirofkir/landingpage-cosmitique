@@ -47,7 +47,7 @@ class TableWidget extends BaseWidget
                     ->sortable(),
                 TextColumn::make('price')
                     ->label('Prix')
-                    ->money('eur', true)
+                    ->money('mad', true)
                     ->sortable(),
                 BadgeColumn::make('promo_code')
                     ->label('Code promo')
