@@ -103,7 +103,7 @@ class ProductResource extends Resource
                     ->sortable(),
                 TextColumn::make('price')
                     ->label('Prix')
-                    ->money('eur', true)
+                    ->money('mad', true)
                     ->sortable(),
                 BadgeColumn::make('promo_code')
                     ->label('Code promo')
@@ -185,7 +185,7 @@ class ProductResource extends Resource
                                     ->columnSpan(1),
                                 TextEntry::make('price')
                                     ->label('Prix')
-                                    ->money('eur', true)
+                                    ->money('mad', true)
                                     ->columnSpan(1)
                                     ->color('warning'),
                                 TextEntry::make('promo_code')
