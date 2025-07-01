@@ -16,7 +16,7 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
   const BASE_PRICE = 179.89;
   const DISCOUNT_RATE = 0.20;
 
-  const VALID_PROMOS = ['liderm20', 'jihad20', 'soukaina20', 'nouhaila20'];
+  const VALID_PROMOS = ['liderm20', 'jihad20', 'soukaina20', 'nouhaila20', 'nada20', 'halima20'];
 
   const [promoCode, setPromoCode] = useState('liderm20');
   const [discountApplied, setDiscountApplied] = useState(true);
