@@ -40,7 +40,7 @@ class ProductRequest extends FormRequest
     public function prepareForValidation()
     {
         $promo = $this->input('promo_code');
-        $validPromos = ['liderm20', 'jihad20', 'soukaina20', 'nouhaila20', 'nada20', 'halima20', 'nariman20', 'sarah20', 'yasmina20', 'ahlam20', 'sabah20', 'nohaila20', 'narimane20'];
+        $validPromos = ['liderm20', 'jihad20', 'soukaina20', 'nouhaila20', 'nada20', 'halima20', 'nariman20', 'sarah20', 'yasmina20', 'ahlam20', 'sabah20', 'nohaila20', 'narimane20', 'hajar20'];
 
         if ($promo && !in_array($promo, $validPromos)) {
             $this->merge([
