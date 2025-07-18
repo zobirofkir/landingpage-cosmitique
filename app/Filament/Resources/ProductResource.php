@@ -157,7 +157,7 @@ class ProductResource extends Resource
                 Tables\Actions\DeleteAction::make()
                     ->label('Supprimer'),
                 Action::make('changeStatus')
-                    ->label('Change Status')
+                    ->label('Order Status')
                     ->form([
                         Select::make('status')
                             ->label('Statut')
