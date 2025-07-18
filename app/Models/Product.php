@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Enums\ProductStatus;
 
 class Product extends Model
 {
@@ -14,6 +15,10 @@ class Product extends Model
         'address',
         'promo_code',
         'price',
-        'status'
+        'status',
+    ];
+
+    protected $casts = [
+        'status' => ProductStatus::class,
     ];
 }

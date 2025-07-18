@@ -9,6 +9,8 @@ use Filament\Forms\Form;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Select;
+use App\Enums\ProductStatus;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -20,6 +22,7 @@ use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Components\Grid as InfoGrid;
 use Filament\Infolists\Components\Section;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Tables\Actions\Action;
 
 class ProductResource extends Resource
 {
@@ -69,6 +72,16 @@ class ProductResource extends Resource
                         TextInput::make('promo_code')
                             ->label('Code promo')
                             ->maxLength(50),
+                        Select::make('status')
+                            ->label('Statut')
+                            ->options([
+                                ProductStatus::PENDING->value => 'Pending',
+                                ProductStatus::DELIVERED->value => 'Delivered',
+                                ProductStatus::CANCELLED->value => 'Cancelled',
+                                ProductStatus::PROCESSING->value => 'Processing',
+                            ])
+                            ->required()
+                            ->default(ProductStatus::PENDING->value),
                     ]),
             ]);
     }
@@ -108,6 +121,10 @@ class ProductResource extends Resource
                 BadgeColumn::make('promo_code')
                     ->label('Code promo')
                     ->colors(['primary']),
+                TextColumn::make('status')
+                    ->label('Statut')
+                    ->sortable()
+                    ->searchable(),
                 TextColumn::make('created_at')
                     ->label('Créé le')
                     ->dateTime('d M Y H:i')
@@ -136,6 +153,22 @@ class ProductResource extends Resource
                     ->label('Voir'),
                 Tables\Actions\DeleteAction::make()
                     ->label('Supprimer'),
+                Action::make('changeStatus')
+                    ->label('Change Status')
+                    ->form([
+                        Select::make('status')
+                            ->label('Statut')
+                            ->options([
+                                ProductStatus::PENDING->value => 'Pending',
+                                ProductStatus::DELIVERED->value => 'Delivered',
+                                ProductStatus::CANCELLED->value => 'Cancelled',
+                                ProductStatus::PROCESSING->value => 'Processing',
+                            ])
+                            ->required(),
+                    ])
+                    ->action(function (Product $record, array $data): void {
+                        $record->update(['status' => $data['status']]);
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
