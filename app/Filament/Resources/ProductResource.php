@@ -118,11 +118,14 @@ class ProductResource extends Resource
                     ->label('Prix')
                     ->money('mad', true)
                     ->sortable(),
-                BadgeColumn::make('promo_code')
-                    ->label('Code promo')
-                    ->colors(['primary']),
-                TextColumn::make('status')
+                BadgeColumn::make('status')
                     ->label('Statut')
+                    ->colors([
+                        'primary' => ProductStatus::PENDING->value,
+                        'success' => ProductStatus::DELIVERED->value,
+                        'danger' => ProductStatus::CANCELLED->value,
+                        'warning' => ProductStatus::PROCESSING->value,
+                    ])
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('created_at')
