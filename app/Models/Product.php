@@ -13,6 +13,7 @@ class Product extends Model
         'phone', 
         'address',
         'promo_code',
-        'price'
+        'price',
+        'status'
     ];
 }
