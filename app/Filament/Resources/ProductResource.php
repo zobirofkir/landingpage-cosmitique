@@ -203,7 +203,7 @@ class ProductResource extends Resource
                         ->label('Supprimer définitivement'),
                 ]),
             ])
-            ->modifyQueryUsing(fn ($query) => $query->withTrashed())
+            ->modifyQueryUsing(fn ($query) => $query->whereNull('deleted_at'))
             ->defaultSort('created_at', 'desc');
     }
 
