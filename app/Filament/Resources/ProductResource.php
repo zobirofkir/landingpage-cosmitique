@@ -133,6 +133,11 @@ class ProductResource extends Resource
                     ->dateTime('d M Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('deleted_at')
+                    ->label('Supprimé le')
+                    ->dateTime('d M Y H:i')
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 Filter::make('promo_code')
@@ -155,7 +160,17 @@ class ProductResource extends Resource
                 Tables\Actions\ViewAction::make()
                     ->label('Voir'),
                 Tables\Actions\DeleteAction::make()
-                    ->label('Supprimer'),
+                    ->label('Supprimer')
+                    ->before(function (Product $record) {
+                        $record->addHistorique('Supprimé', 'Produit supprimé via Filament');
+                    }),
+                Tables\Actions\RestoreAction::make()
+                    ->label('Restaurer')
+                    ->before(function (Product $record) {
+                        $record->addHistorique('Restauré', 'Produit restauré via Filament');
+                    }),
+                Tables\Actions\ForceDeleteAction::make()
+                    ->label('Supprimer définitivement'),
                 Action::make('changeStatus')
                     ->label('Order Status')
                     ->form([
@@ -176,9 +191,19 @@ class ProductResource extends Resource
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make()
-                        ->label('Supprimer la sélection'),
+                        ->label('Supprimer la sélection')
+                        ->before(function ($records) {
+                            foreach ($records as $record) {
+                                $record->addHistorique('Supprimé en masse', 'Suppression via action en masse');
+                            }
+                        }),
+                    Tables\Actions\RestoreBulkAction::make()
+                        ->label('Restaurer la sélection'),
+                    Tables\Actions\ForceDeleteBulkAction::make()
+                        ->label('Supprimer définitivement'),
                 ]),
             ])
+            ->modifyQueryUsing(fn ($query) => $query->withTrashed())
             ->defaultSort('created_at', 'desc');
     }
 
@@ -233,9 +258,31 @@ class ProductResource extends Resource
                                     ->dateTime('d M Y H:i')
                                     ->columnSpan(2)
                                     ->color('gray'),
+                                TextEntry::make('deleted_at')
+                                    ->label('Supprimé le')
+                                    ->dateTime('d M Y H:i')
+                                    ->columnSpan(2)
+                                    ->color('danger')
+                                    ->visible(fn ($record) => $record->trashed()),
                             ]),
                     ])
                     ->columns(1)
+                    ->collapsible(),
+
+                Section::make('Historique')
+                    ->schema([
+                        TextEntry::make('historique')
+                            ->label('')
+                            ->formatStateUsing(function ($state) {
+                                if (!$state) return 'Aucun historique';
+                                return collect($state)->map(function ($entry) {
+                                    return "• {$entry['action']} - {$entry['timestamp']} par {$entry['user']}" . 
+                                           ($entry['details'] ? " ({$entry['details']})" : '');
+                                })->join("\n");
+                            })
+                            ->html()
+                            ->columnSpanFull(),
+                    ])
                     ->collapsible(),
             ]);
     }

@@ -18,7 +18,7 @@ const HeaderComponent = () => {
 
   return (
     <>
-    <OfferBarComponent />
+    {/* <OfferBarComponent /> */}
       <header
         className={`sticky top-0 w-full z-50 transition-transform duration-300 ${
           isHeaderVisible ? 'translate-y-0' : '-translate-y-full'
