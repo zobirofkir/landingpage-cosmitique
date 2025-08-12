@@ -21,3 +21,10 @@ Route::post('/products', [ProductController::class, 'store'])->name("products.st
  * Store Contact
  */
 Route::post('/contacts', [ContactController::class, 'store'])->name("contacts.store");
+
+/**
+ * Thank You Page
+ */
+Route::get('/thanks', function () {
+    return Inertia::render('ThanksPage');
+})->name('thanks');
