@@ -268,22 +268,6 @@ class ProductResource extends Resource
                     ])
                     ->columns(1)
                     ->collapsible(),
-
-                Section::make('Historique')
-                    ->schema([
-                        TextEntry::make('historique')
-                            ->label('')
-                            ->formatStateUsing(function ($state) {
-                                if (!$state) return 'Aucun historique';
-                                return collect($state)->map(function ($entry) {
-                                    return "• {$entry['action']} - {$entry['timestamp']} par {$entry['user']}" . 
-                                           ($entry['details'] ? " ({$entry['details']})" : '');
-                                })->join("\n");
-                            })
-                            ->html()
-                            ->columnSpanFull(),
-                    ])
-                    ->collapsible(),
             ]);
     }
 
