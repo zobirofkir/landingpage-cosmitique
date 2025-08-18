@@ -9,6 +9,8 @@ use Filament\Forms\Form;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Select;
+use App\Enums\ProductStatus;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -20,6 +22,7 @@ use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Components\Grid as InfoGrid;
 use Filament\Infolists\Components\Section;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Tables\Actions\Action;
 
 class ProductResource extends Resource
 {
@@ -69,6 +72,16 @@ class ProductResource extends Resource
                         TextInput::make('promo_code')
                             ->label('Code promo')
                             ->maxLength(50),
+                        Select::make('status')
+                            ->label('Statut')
+                            ->options([
+                                ProductStatus::PENDING->value => 'Pending',
+                                ProductStatus::DELIVERED->value => 'Delivered',
+                                ProductStatus::CANCELLED->value => 'Cancelled',
+                                ProductStatus::PROCESSING->value => 'Processing',
+                            ])
+                            ->required()
+                            ->default(ProductStatus::PENDING->value),
                     ]),
             ]);
     }
@@ -105,11 +118,23 @@ class ProductResource extends Resource
                     ->label('Prix')
                     ->money('mad', true)
                     ->sortable(),
-                BadgeColumn::make('promo_code')
-                    ->label('Code promo')
-                    ->colors(['primary']),
+                BadgeColumn::make('status')
+                    ->label('Statut')
+                    ->colors([
+                        'primary' => ProductStatus::PENDING->value,
+                        'success' => ProductStatus::DELIVERED->value,
+                        'danger' => ProductStatus::CANCELLED->value,
+                        'warning' => ProductStatus::PROCESSING->value,
+                    ])
+                    ->sortable()
+                    ->searchable(),
                 TextColumn::make('created_at')
                     ->label('Créé le')
+                    ->dateTime('d M Y H:i')
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('deleted_at')
+                    ->label('Supprimé le')
                     ->dateTime('d M Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -135,14 +160,50 @@ class ProductResource extends Resource
                 Tables\Actions\ViewAction::make()
                     ->label('Voir'),
                 Tables\Actions\DeleteAction::make()
-                    ->label('Supprimer'),
+                    ->label('Supprimer')
+                    ->before(function (Product $record) {
+                        $record->addHistorique('Supprimé', 'Produit supprimé via Filament');
+                    }),
+                Tables\Actions\RestoreAction::make()
+                    ->label('Restaurer')
+                    ->before(function (Product $record) {
+                        $record->addHistorique('Restauré', 'Produit restauré via Filament');
+                    }),
+                Tables\Actions\ForceDeleteAction::make()
+                    ->label('Supprimer définitivement'),
+                Action::make('changeStatus')
+                    ->label('Order Status')
+                    ->form([
+                        Select::make('status')
+                            ->label('Statut')
+                            ->options([
+                                ProductStatus::PENDING->value => 'Pending',
+                                ProductStatus::DELIVERED->value => 'Delivered',
+                                ProductStatus::CANCELLED->value => 'Cancelled',
+                                ProductStatus::PROCESSING->value => 'Processing',
+                            ])
+                            ->required(),
+                    ])
+                    ->action(function (Product $record, array $data): void {
+                        $record->update(['status' => $data['status']]);
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make()
-                        ->label('Supprimer la sélection'),
+                        ->label('Supprimer la sélection')
+                        ->before(function ($records) {
+                            foreach ($records as $record) {
+                                $record->addHistorique('Supprimé en masse', 'Suppression via action en masse');
+                            }
+                        }),
+                    Tables\Actions\RestoreBulkAction::make()
+                        ->label('Restaurer la sélection'),
+                    Tables\Actions\ForceDeleteBulkAction::make()
+                        ->label('Supprimer définitivement'),
                 ]),
             ])
+            ->modifyQueryUsing(fn ($query) => $query->whereNull('deleted_at'))
             ->defaultSort('created_at', 'desc');
     }
 
@@ -197,6 +258,12 @@ class ProductResource extends Resource
                                     ->dateTime('d M Y H:i')
                                     ->columnSpan(2)
                                     ->color('gray'),
+                                TextEntry::make('deleted_at')
+                                    ->label('Supprimé le')
+                                    ->dateTime('d M Y H:i')
+                                    ->columnSpan(2)
+                                    ->color('danger')
+                                    ->visible(fn ($record) => $record->trashed()),
                             ]),
                     ])
                     ->columns(1)

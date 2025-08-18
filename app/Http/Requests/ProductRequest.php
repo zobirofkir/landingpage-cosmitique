@@ -29,25 +29,12 @@ class ProductRequest extends FormRequest
             'quantity' => 'required|integer|min:1',
             'phone' => 'required|string|max:15',
             'address' => 'required|string|max:500',
-            'promo_code' => 'nullable|string|max:255',
+
             'price' => 'required|numeric|min:0',
         ];
     }
 
-    /**
-     * Add Only LIDERMCOSMETIQUE20 promo code
-     */
-    public function prepareForValidation()
-    {
-        $promo = $this->input('promo_code');
-        $validPromos = ['liderm20', 'jihad20', 'soukaina20', 'nouhaila20', 'nada20', 'halima20', 'nariman20', 'sarah20', 'yasmina20', 'ahlam20', 'sabah20', 'nohaila20', 'narimane20', 'hajar20'];
 
-        if ($promo && !in_array($promo, $validPromos)) {
-            $this->merge([
-                'promo_code' => null,
-            ]);
-        }
-    }
 
     /**
      * Get the validation messages that apply to the request.
@@ -75,8 +62,7 @@ class ProductRequest extends FormRequest
             'address.required' => 'L\'adresse est obligatoire.',
             'address.string' => 'L\'adresse doit être une chaîne de caractères.',
             'address.max' => 'L\'adresse ne doit pas dépasser 500 caractères.',
-            'promo_code.string' => 'Le code promo doit être une chaîne de caractères.',
-            'promo_code.max' => 'Le code promo ne doit pas dépasser 255 caractères.',
+
 
 
             /**

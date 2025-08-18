@@ -14,37 +14,22 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
   const { isSubmitting, handleFormSubmit } = useFormHandler(handleSubmit);
 
   const BASE_PRICE = 179.89;
-  const DISCOUNT_RATE = 0.20;
 
-  const VALID_PROMOS = ['liderm20', 'jihad20', 'soukaina20', 'nouhaila20', 'nada20', 'halima20', 'nariman20', 'sarah20', 'yasmina20', 'ahlam20', 'sabah20', 'nohaila20', 'narimane20', 'hajar20'];
-
-  const [promoCode, setPromoCode] = useState('liderm20');
-  const [discountApplied, setDiscountApplied] = useState(true);
-  const [promoError, setPromoError] = useState('');
-
-  const quantity = Math.max(1, parseInt(formData.quantity || 1));
+  const quantity = Math.max(1, Math.min(3, parseInt(formData.quantity || 3)));
 
   const handleQuantityChange = (delta) => {
-    const newQuantity = Math.max(1, quantity + delta);
+    const newQuantity = Math.max(1, Math.min(3, quantity + delta));
     handleChange({ target: { name: 'quantity', value: newQuantity } });
   };
 
-  const applyPromoCode = () => {
-    const code = promoCode.trim().toLowerCase(); 
-    if (VALID_PROMOS.includes(code)) {
-      setDiscountApplied(true);
-      setPromoError('');
-    } else {
-      setDiscountApplied(false);
-      setPromoError('❌ Code promo invalide');
+  const calculatePrice = (qty) => {
+    if (qty >= 3) {
+      return (BASE_PRICE * 2).toFixed(2);
     }
+    return (BASE_PRICE * qty).toFixed(2);
   };
 
-  const finalUnitPrice = discountApplied
-    ? BASE_PRICE * (1 - DISCOUNT_RATE)
-    : BASE_PRICE;
-
-  const finalPrice = (finalUnitPrice * quantity).toFixed(2);
+  const finalPrice = calculatePrice(quantity);
 
   const formFields = [
     {
@@ -113,12 +98,13 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
               handleChange({
                 target: {
                   name: 'quantity',
-                  value: Math.max(1, parseInt(e.target.value || 1)),
+                  value: Math.max(1, Math.min(3, parseInt(e.target.value || 3))),
                 },
               })
             }
             className="w-16 text-center text-lg border border-orange-300 dark:border-orange-500 rounded-lg py-2 bg-white dark:bg-zinc-800 text-gray-900 dark:text-white"
             min="1"
+            max="3"
           />
           <button
             type="button"
@@ -137,37 +123,15 @@ const ProductFormComponent = ({ formData, errors, handleChange, handleSubmit }) 
       >
         <input type="hidden" name="price" value={formData.price} />
 
-        {/* Promo Code */}
-        <div className="text-center space-y-2">
-          <div className="flex justify-center gap-2">
-            <input
-              type="text"
-              name="promo_code"
-              value={formData.promo_code || 'liderm20'}
-              onChange={(e) => {
-                handleChange(e);
-                setPromoCode(e.target.value);
-              }}
-              placeholder="Entrez le code promo"
-              className="w-52 px-4 py-2 rounded-lg border border-orange-300 dark:border-orange-500 bg-white dark:bg-zinc-800 text-gray-900 dark:text-white"
-            />
-
-            <button
-              type="button"
-              onClick={applyPromoCode}
-              className="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-semibold transition"
-            >
-              Appliquer
-            </button>
-          </div>
-          {discountApplied && (
+        {/* Quantity Discount Info */}
+        {quantity >= 3 && (
+          <div className="text-center space-y-2">
             <p className="text-green-600 font-medium flex items-center justify-center gap-1">
               <HiCheckCircle className="text-green-500 w-5 h-5" />
-              Code promo appliqué: -20%
+              Offre spéciale: 3+ articles = prix de 2!
             </p>
-          )}
-          {promoError && <p className="text-red-500 font-medium">{promoError}</p>}
-        </div>
+          </div>
+        )}
 
         {formFields.map((field, idx) => (
           <motion.div

@@ -23,10 +23,29 @@ const useForm = () => {
     setSuccessMessage('');
 
     try {
-      const response = await axios.post('/products', formData);
-      setSuccessMessage(response.data.message);
-      resetForm();
-      setShowModal(true);
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = '/products';
+      
+      const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+      if (csrfToken) {
+        const csrfInput = document.createElement('input');
+        csrfInput.type = 'hidden';
+        csrfInput.name = '_token';
+        csrfInput.value = csrfToken;
+        form.appendChild(csrfInput);
+      }
+      
+      Object.keys(formData).forEach(key => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = formData[key];
+        form.appendChild(input);
+      });
+      
+      document.body.appendChild(form);
+      form.submit();
     } catch (error) {
       if (error.response && error.response.status === 422) {
         setErrors(error.response.data.errors);

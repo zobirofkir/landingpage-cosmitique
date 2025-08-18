@@ -24,8 +24,6 @@ class ProductController extends Controller
     
         Mail::to(['contact@lidermcosmetique.com', 'Medmediabuyer@gmail.com'])->send(new ProductStored($product));
     
-        return response()->json([
-            'message' => 'Merci beaucoup, nous vous contacterons bientôt. / شكراً جزيلاً، سنتواصل معكم قريباً.'
-        ]);
+        return redirect()->route('thanks');
     }
 }
