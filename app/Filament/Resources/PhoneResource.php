@@ -30,9 +30,7 @@ class PhoneResource extends Resource
     {
         return $form
             ->schema([
-                TextColumn::make("phone_number")
-                            ->label("Phone Number")
-                            ->required(),
+                //
             ]);
     }
 
