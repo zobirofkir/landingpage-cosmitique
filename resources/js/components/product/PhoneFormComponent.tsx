@@ -42,7 +42,7 @@ const PhoneFormComponent = () => {
       className="bg-gradient-to-br from-green-50 to-green-100 dark:from-zinc-800 dark:to-zinc-900 p-6 rounded-2xl shadow-lg border border-green-300 dark:border-zinc-700 mt-8"
     >
       <h3 className="text-2xl font-bold text-center mb-4 text-green-700 dark:text-green-400">
-        Quick Phone Order - طلب سريع عبر الهاتف
+        Commande rapide par téléphone - طلب سريع عبر الهاتف
       </h3>
       
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -52,7 +52,7 @@ const PhoneFormComponent = () => {
           </div>
           <input
             type="tel"
-            placeholder="Your phone number / رقم الهاتف الخاص بك"
+            placeholder="Votre numéro de téléphone / رقم الهاتف الخاص بك"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             required
@@ -69,11 +69,11 @@ const PhoneFormComponent = () => {
           }`}
         >
           {isSubmitting ? (
-            <span>Please wait... / يرجى الانتظار</span>
+            <span>Veuillez patienter... / يرجى الانتظار</span>
           ) : (
             <>
               <HiShoppingCart className="w-5 h-5" />
-              Quick Order - طلب سريع
+              Commande rapide - طلب سريع
             </>
           )}
         </motion.button>
