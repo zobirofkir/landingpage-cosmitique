@@ -4,6 +4,7 @@ namespace App\Filament\Widgets;
 
 use App\Models\Product;
 use App\Enums\ProductStatus;
+use App\Models\Phone;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 
@@ -26,11 +27,23 @@ class ProductStatsWidget extends BaseWidget
                 ->description('Successfully delivered')
                 ->descriptionIcon('heroicon-m-check-circle')
                 ->color('success'),
+
+            Stat::make('Total Phone Numbers', Phone::count())
+                ->description('Registered phone numbers')
+                ->descriptionIcon('heroicon-m-phone')
+                ->color('primary'),
+            
+            Stat::make('Unique Customers', Product::distinct('phone')->count())
+                ->description('Customers with orders')
+                ->descriptionIcon('heroicon-m-users')
+                ->color('info'),
+
             
             Stat::make('Total Revenue', number_format(Product::sum('price'), 2) . ' MAD')
                 ->description('Total sales amount')
                 ->descriptionIcon('heroicon-m-currency-euro')
                 ->color('success'),
+                
         ];
     }
 }
