@@ -48,7 +48,7 @@ class PhoneResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                // Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -68,8 +68,8 @@ class PhoneResource extends Resource
     {
         return [
             'index' => Pages\ListPhones::route('/'),
-            'create' => Pages\CreatePhone::route('/create'),
-            'edit' => Pages\EditPhone::route('/{record}/edit'),
+            // 'create' => Pages\CreatePhone::route('/create'),
+            // 'edit' => Pages\EditPhone::route('/{record}/edit'),
         ];
     }
 }
