@@ -18,7 +18,13 @@ class PhoneResource extends Resource
 {
     protected static ?string $model = Phone::class;
 
+    protected static ?string $navigationLabel = 'Orders By Phone Number';
+    protected static ?string $navigationGroup = 'Boutique';
+    protected static ?string $modelLabel = 'Orders';
+    protected static ?string $pluralModelLabel = 'Orders';
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    
 
     public static function form(Form $form): Form
     {
