@@ -15,7 +15,6 @@ const ProductComponent = () => {
 
   return (
     <section
-      id="products"
       className="py-16 transition-colors duration-500 bg-white text-gray-800 dark:bg-black dark:text-white mt-10"
     >
       {showModal && <ModalComponent setShowModal={setShowModal} />}
@@ -23,7 +22,7 @@ const ProductComponent = () => {
         
         <ProductImageComponent />
 
-        <div className="space-y-6">
+        <div className="space-y-6" id='products'>
           <ProductFormComponent
             formData={formData}
             errors={errors}
