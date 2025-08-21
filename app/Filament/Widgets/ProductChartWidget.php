@@ -10,6 +10,7 @@ class ProductChartWidget extends ChartWidget
 {
     protected static ?string $heading = 'Product Orders by Status';
     protected static ?int $sort = 2;
+    protected int | string | array $columnSpan = 'full';
 
     protected function getData(): array
     {
