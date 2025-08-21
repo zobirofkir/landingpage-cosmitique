@@ -24,9 +24,9 @@ Route::post('/products', [ProductController::class, 'store'])->name("products.st
 Route::post('/contacts', [ContactController::class, 'store'])->name("contacts.store");
 
 /**
- * Phone Number Route
+ * Store Phone
  */
-Route::post('/phone-numbers', [PhoneController::class, 'store'])->name("phone-numbers.store");
+Route::post('/phones', [PhoneController::class, 'store'])->name('phones.store');
 
 /**
  * Thank You Page

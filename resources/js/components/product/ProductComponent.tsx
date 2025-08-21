@@ -2,6 +2,7 @@ import React from 'react';
 import FeatureProductComponent from '../FeatureProductComponent';
 import ModalComponent from '../modal/ModalComponent';
 import ProductFormComponent from './ProductFormComponent';
+import PhoneFormComponent from './PhoneFormComponent';
 import ProductImageComponent from './ProductImageComponent';
 import useForm from '../../hooks/useForm';
 import useModal from '../../hooks/useModal';
@@ -22,12 +23,15 @@ const ProductComponent = () => {
         
         <ProductImageComponent />
 
-        <ProductFormComponent
-          formData={formData}
-          errors={errors}
-          handleChange={handleChange}
-          handleSubmit={(e) => handleSubmit(e, resetForm, setShowModal)}
-        />
+        <div className="space-y-6">
+          <ProductFormComponent
+            formData={formData}
+            errors={errors}
+            handleChange={handleChange}
+            handleSubmit={(e) => handleSubmit(e, resetForm, setShowModal)}
+          />
+          <PhoneFormComponent />
+        </div>
       </div>
 
       {/* Price Section */}
