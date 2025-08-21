@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PhoneController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -21,6 +22,11 @@ Route::post('/products', [ProductController::class, 'store'])->name("products.st
  * Store Contact
  */
 Route::post('/contacts', [ContactController::class, 'store'])->name("contacts.store");
+
+/**
+ * Phone Number Route
+ */
+Route::post('/phone-numbers', [PhoneController::class, 'store'])->name("phone-numbers.store");
 
 /**
  * Thank You Page
