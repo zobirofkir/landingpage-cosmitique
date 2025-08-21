@@ -25,7 +25,7 @@ class SalesChartWidget extends ChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => 'Daily Sales (€)',
+                    'label' => 'Daily Sales (MAD)',
                     'data' => $data,
                     'borderColor' => '#f97316',
                     'backgroundColor' => 'rgba(249, 115, 22, 0.1)',

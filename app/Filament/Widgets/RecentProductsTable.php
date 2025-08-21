@@ -23,7 +23,7 @@ class RecentProductsTable extends BaseWidget
                 Tables\Columns\TextColumn::make('phone')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('price')
-                    ->money('EUR')
+                    ->formatStateUsing(fn ($state) => number_format($state, 2) . ' MAD')
                     ->sortable(),
                 Tables\Columns\BadgeColumn::make('status')
                     ->colors([

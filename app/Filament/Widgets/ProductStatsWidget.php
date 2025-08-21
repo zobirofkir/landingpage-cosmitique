@@ -27,7 +27,7 @@ class ProductStatsWidget extends BaseWidget
                 ->descriptionIcon('heroicon-m-check-circle')
                 ->color('success'),
             
-            Stat::make('Total Revenue', '€' . number_format(Product::sum('price'), 2))
+            Stat::make('Total Revenue', number_format(Product::sum('price'), 2) . ' MAD')
                 ->description('Total sales amount')
                 ->descriptionIcon('heroicon-m-currency-euro')
                 ->color('success'),
